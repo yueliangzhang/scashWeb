@@ -1,6 +1,6 @@
 {extend name="base" /}
 
-{block name="title"}系统配置参数{/block}
+{block name="title"}系統配置參數{/block}
 {block name="body"}
 <style>
     .layui-tab-content {
@@ -14,12 +14,12 @@
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 选项卡开始 -->
+            <!-- 選項卡開始 -->
             <div class="layui-tab layui-tab-brief" lay-filter="configInfoTab">
                 <ul class="layui-tab-title">
-                    <li class="layui-this" lay-id="system">网站配置</li>
-                    <li lay-id="storage">文件存储</li>
-                    <li lay-id="setconfig">支付设置</li>
+                    <li class="layui-this" lay-id="system">網站配置</li>
+                    <li lay-id="storage">文件存儲</li>
+                    <li lay-id="setconfig">支付設置</li>
                     <li lay-id="setcontact">聯絡我們</li>
                 </ul>
                 <div class="layui-tab-content">
@@ -33,7 +33,7 @@
                     {include file="configure/setcontact" /}
                 </div>
             </div>
-            <!-- //选项卡结束 -->
+            <!-- //選項卡結束 -->
         </div>
     </div>
 </div>
@@ -48,12 +48,12 @@
         var element = layui.element;
         var upload = layui.upload;
 
-        //图片上传
+        //圖片上傳
         upload.render({
             elem: '.imageMore',
-            url: "{:url('mxadmin/upload/upload')}", //改成您自己的上传接口
+            url: "{:url('mxadmin/upload/upload')}", //改成您自己的上傳接口
             acceptMime: 'image/*',
-            size: 2048, //限制文件大小，单位 KB
+            size: 2048, //限制文件大小，單位 KB
             done: function(res){
                 if (res.code === 1) {
                     layer.msg(res.msg, {icon: 1});
@@ -65,7 +65,7 @@
             }
         });
 
-        // 文件存储类型切换事件
+        // 文件存儲類型切換事件
         form.on('radio(raEngine)', function (data) {
             changeType(data.value);
         });
@@ -81,16 +81,16 @@
                 $('#QiniuTpl').hide();
             }
         }
-        // 初始化加载
+        // 初始化加載
         changeType({$storage.engine|default='1'});
 
-        // 监听tab切换 操作：文档 - 内置模块 - 常用元素操作 element - 监听tab切换
+        // 監聽tab切換 操作：文檔 - 內置模塊 - 常用元素操作 element - 監聽tab切換
         element.on('tab(configInfoTab)', function() {
             layfilter = this.getAttribute('lay-id') + 'Submit';
             getSubmit(layfilter);
         });
 
-        // 表单提交事件
+        // 表單提交事件
         function getSubmit(layfilter) {
             form.on('submit('+ layfilter +')', function (data) {
                 var loadIndex = layer.load(2);
@@ -105,10 +105,10 @@
                 return false;
             });
         }
-        // 初始化加载
+        // 初始化加載
         getSubmit('systemSubmit');
 
-        // 测试邮箱配置
+        // 測試郵箱配置
         form.on('submit(emailTest)', function (data) {
             var loadIndex = layer.load(2);
             $.post("{:url('mxadmin/configure/emailtest')}", data.field, function (res) {
