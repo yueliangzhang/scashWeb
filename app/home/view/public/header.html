@@ -1,0 +1,149 @@
+<header class="header noOpaque">
+    <!--导航-->
+    <div id="navBox" class="header-nav menu" data-type="index">
+        <div class="container">
+            <div class="logobox">
+                <h1 class="logo">
+                    <a href="/" title="{$sysconf.webname}">
+                        <img class="logoa" src="/static/aliyun/images/logo.png" alt="{$sysconf.webname}">
+                        <img class="logob" src="/static/aliyun/images/logob.svg" alt="{$sysconf.webname}">{$sysconf.webname}
+                    </a>
+                </h1>
+                <div class="logoRight" style="margin-left:255px">
+                    <div class="flex subTitle">
+                        <h3>{$sysconf.webname}</h3>
+                        <p>KaiHu123.Com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="navDiy pc">
+                {eq name='islogin' value='1'}
+                <a href="{:config('app.hostname')}/member" class="reg" title="个人中心">个人中心</a>
+                {else /}
+                <a href="{:config('app.hostname')}/member" class="reg" title="登录">登录</a>
+                {/eq}
+            </div>
+            <!--<div class="sbtn"><i class="fa iconfont">&#xe627;</i></div>-->
+            <ul class="navbar">
+                <li class="navbar-item{eq name='control' value='index'} active{/eq}"><a href="/" title="首页">首页</a></li>
+                <li class="navbar-item{eq name='control' value='cloud'} active{/eq}{eq name='control' value='shop'} active{/eq}"><a href="/Cloud/" title="国际云厂商"><span class="nav1">云•国际</span></a></li>
+                <li class="navbar-item{eq name='control' value='server'} active{/eq}{eq name='control' value='stand'} active{/eq}"><a href="/Server/" title="物理机"><span class="nav2">独立•服务器</span></a></li>
+                <li class="navbar-item{eq name='control' value='solution'} active{/eq}{eq name='control' value='article'} active{/eq}"><a href="/Solution/" title="技术帮助"><span class="nav3">技术帮助</span></a></li>
+                <li class="navbar-item{eq name='control' value='introduce'} active{/eq}"><a href="/Introduce" title="">购买说明</a></li>
+                <li class="navbar-item{eq name='control' value='contact'} active{/eq}"><a href="/Contact" title="联系我们">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="moble">
+        <a class="moble-bars" id="btn-bars"><i class="fa nav-btn off iconfont">&#xe63d;</i></a>
+        <div class="navDiy pc">
+            <a href="/Cloud/" class="login" title="云产品">云产品</a>
+            <a href="/Server/" class="login" title="物理机">物理机</a>
+            {eq name='islogin' value='1'}
+            <a href="{:config('app.hostname')}/member" class="reg" title="会员中心">会员中心</a>
+            {else /}
+            <a href="{:config('app.hostname')}/member" class="reg" title="登录">登录</a>
+            {/eq}
+            
+        </div>
+    </div>
+
+    <div class="navDown navDown1">
+        <div class="navList">
+            <div class="navLeft">
+                <div class="navUl">
+                    <ul>
+                        {volist name='nav[1]["children"]' id='vo'}
+                        <li>
+                            <span>
+                                <a href="/Computing/{$vo.alias}/" title="{$vo.name}">{$vo.name}</a>
+                            </span>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            <div class="navRight">
+                {volist name='nav[1]["children"]' id='vo'}
+                <div class="tabCon">
+                    <h3 style="font-weight: bold;">{$vo.name}</h3>
+                    <div class="url">
+                        <ul>
+                            {volist name='vo.children' id='vo1'}
+                            <li>
+                                <a href="/Cloud/{$vo1.alias}/" title="{$vo1.name}">
+                                    <p>{$vo1.name} {eq name='vo1.hot' value='1'}<i class="hot"></i>{/eq}</p>
+                                </a>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+    <div class="navDown navDown2">
+        <div class="navList">
+            <div class="navLeft">
+                <div class="navUl">
+                    <ul>
+                        {volist name='nav[0]["children"]' id='vo'}
+                        <li>
+                            <span>
+                                <a href="/Dedicated/{$vo.alias}/" title="{$vo.name}">{$vo.name}</a>
+                            </span>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            <div class="navRight">
+                {volist name='nav[0]["children"]' id='vo'}
+                <div class="tabCon">
+                    <h3 style="font-weight: bold;">{$vo.name}</h3>
+                    <div class="url">
+                        <ul>
+                            {volist name='vo.children' id='vo1'}
+                            <li>
+                                <a href="/Server/{$vo1.alias}/" title="{$vo1.name}">
+                                    <p>{$vo1.name} {eq name='vo1.hot' value='1'}<i class="hot"></i>{/eq}</p>
+                                </a>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+    <div class="navDown navDown3">
+        <div class="navList">
+            <div class="navLeft">
+                <div class="navUl">
+                    <ul>
+                        <li><span>技术帮助文档</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navRight">
+                <div class="tabCon">
+                    <h3 style="font-weight: bold;">云计算技术帮助文档</h3>
+                    <div class="url">
+                        <ul>
+                            {volist name='nav[2]["children"]' id='vo'}
+                            <li>
+                                <a href="/Solution/{$vo.alias}/" title="{$vo.name}">
+                                    <p>{$vo.name} {eq name='vo.hot' value='1'}<i class="new"></i>{/eq}</p>
+                                </a>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navMask" style="display: none;"></div>
+</header>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="applicable-device" content="pc,mobile">
+    <title>{$cate.name} - {$cate.parentname} - {$sysconf.webname}</title>
+    <meta name="description" content="{$cate.intro}">
+    <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="{$cate.name}">
+    <meta property="og:description" content="{$cate.intro}">
+    <meta property="og:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
+    <link rel="canonical" href="{:config('app.hostname')}/Cloud/{$cate.alias}/">
+    <meta name="twitter:title" content="{$cate.name}">
+    <meta name="twitter:description" content="{$cate.intro}">
+    <meta name="twitter:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
+    <link rel="stylesheet" rev="stylesheet" href="/static/aliyun/style/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/aliyun/style/font-awesome-4.7.0/css/font-awesome.min.css" media="screen" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/static/aliyun/style/index_ban.css">
+    <script src="/static/aliyun/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+</head>
+
+<body class="umAni">
+{include file='public/header'}
+
+<div class="breadcrumb">
+    <div class="container">
+        <i class="fa fa-home"></i> <a href="/" title="{$sysconf.webname}">首页</a> &raquo; <a href="/Server/" title="物理机/独立服务器">物理机/独立服务器 </a> &raquo; {$cate.name}
+    </div>
+</div>
+<div class="container">
+    <div class="main">
+        <div class="umPostApp post">
+            <div class="container">
+                <div class="box">
+                    <div class="img">
+                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/1.png" alt="{$cate.name}" />
+                    </div>
+                    <div class="text">
+                        <div class="shopTitle">
+                            <h2 class="shopTit">{$cate.name}<span></span></h2>
+                        </div>
+                        <div class="umDes">{$cate.intro}</div>
+                        <div class="umPrice">
+                            <span class="vip1">支持USDT和支付宝<em>可发票</em></span>
+                        </div>
+                        <div class="umPrice">
+                            <span class="vip1"><em>可退款</em></span>
+                        </div>
+                        <div class="shopBtn">
+                            <a href="/Introduce" target="_blank" title="购买说明"><span>购买说明</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="article">
+            <div class="article-box">
+                <div class="postList tabBox">
+                    <div class="tabConBox">
+                        <div class="tabCon">
+                            <div class="container_shop">
+                                <!-- VPS卡片 -->
+                                {volist name='list' id='vo'}
+                                <div class="card">
+                                    <div class="card-title"><a href="/stand/{$vo.alias}/" title="{$vo.title}"><h4>{$vo.title}</h4></a></div>
+                                    <div class="vps-info"><a href="/Server/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></div>
+                                    <div class="vps-info">CPU：{$vo.cpu}</div>
+                                    <div class="vps-info">内存：{$vo.ram}</div>
+                                    <div class="vps-info">硬盘：{$vo.hdd}</div>
+                                    <div class="vps-info">带宽：{$vo.bandwidth}</div>
+                                    <div class="vps-info">IP数：{$vo.ips}</div>
+                                    <!--<div class="price"><span>￥{$vo.selled}</span> ￥{:intval($vo.selled*$vo.discount)}/月</div>
+                                    <div class="button-container">
+                                        <a href="/stand/{$vo.alias}/" class="buy-btn" target="_blank" title="{$vo.title}">立即开通</a>
+                                    </div>-->
+                                </div>
+                                {/volist}
+                            </div>
+                            <!--分页-->
+                            <nav class="text-center">
+                                <div class='navigation'>
+                                    {$list|raw}
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--文章列表-->
+        <div class="PostBox newsBg">
+            <article class="post news n1">
+                <div class="postTitle anim fadeInUp">
+                    <h3><i class="fa fa-quote-left"></i>技术 / 支持</h3>
+                    <span class="title2"></span>
+                </div>
+                <div class="PostNews">
+                    <ul>
+                        {volist name='article' id='vo'}
+                        <li class="anim fadeInUp">
+                            <div class="post-img loading">
+                                <a class="pic" href="/article/{$vo.alias}/" title="{$vo.title}">
+                                    <div class="msk"></div>
+                                    <i class="fa fa-search"></i>
+                                    <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="{$vo['headimg']}" alt="{$vo.title}" />
+                                </a></div>
+                            <div class="post-text">
+                                <h4><a href="/article/{$vo.alias}/" title="{$vo.title}">{$vo.title}</a></h4>
+                                <span class="time"><i class="fa fa-clock-o"></i>{$vo.addtime|date='m-d H:i:s'}</span>
+                                <span><a href="/Solution/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></span>
+                                <p>{$vo.intro|mb_substr=0, 80}...</p>
+                            </div>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <div class="more anim fadeInUp"><a href="/Solution/{$cate.alias}/" title="{$cate.name}"><span>查看更多 + </span></a></div>
+            </article>
+        </div>
+    </div>
+</div>
+
+{include file='public/footer'}
+<script src="/static/aliyun/js/lib.js"></script>
+<script src="/static/aliyun/js/function.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="applicable-device" content="pc,mobile">
+    <title>{$tag.name} - {$sysconf.webname}</title>
+    <meta name="description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等开户与充值。同时从事服务器租用、云主机和软件开发的互联网公司。'}">
+    <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="{$tag.name}">
+    <meta property="og:description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等开户与充值。同时从事服务器租用、云主机和软件开发的互联网公司。'}">
+    <meta property="og:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
+    <link rel="canonical" href="{:config('app.hostname')}/tag/{$tag.name}">
+    <meta name="twitter:title" content="{$tag.name}">
+    <meta name="twitter:description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等，为中国和全球客户开户与充值。同时物理机/服务器租用、云主机和软件开发的互联网公司。'}">
+    <meta name="twitter:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
+    <link rel="stylesheet" rev="stylesheet" href="/static/aliyun/style/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/aliyun/style/font-awesome-4.7.0/css/font-awesome.min.css" media="screen" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/static/aliyun/style/index_ban.css">
+    <script src="/static/aliyun/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+</head>
+
+<body class="umAni">
+{include file='public/header'}
+
+<div class="breadcrumb">
+    <div class="container">
+        <i class="fa fa-home"></i> <a href="/" title="{$sysconf.webname}">首页</a> &raquo; {$tag.name}
+    </div>
+</div>
+<div class="container">
+    <div class="main">
+        <div class="umPostApp post">
+            <div class="container">
+                <div class="box">
+                    <div class="img">
+                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/1.png" alt="{$tag.name}" />
+                    </div>
+                    <div class="text">
+                        <div class="shopTitle">
+                            <h2 class="shopTit">{$tag.name}<span></span></h2>
+                        </div>
+                        <div class="umDes">{$tag.description?$tag.description:$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等开户与充值。同时从事服务器租用、云主机和软件开发的互联网公司。'}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--内容切换-->
+        <div class="PostBox jxhdBg" style="background-color: #FFFFFF">
+            <article class="post">
+                <div class="postTitle anim fadeInUp">
+                    <h3>{$tag.name}关联的标签数据</h3>
+                </div>
+                <div class="tabsBox">
+                    <div class="tabsNav ckNav anim fadeInUp">
+                        <ul class="ckTabs">
+                            <li><span>技术帮助</span></li>
+                            <li><span>物理机/服务器</span></li>
+                            <li><span>云计算</span></li>
+                        </ul>
+                    </div>
+                    <div class="tabsCon cktabCon anim fadeInUp">
+                        <div class="tabCon">
+                            <div class="PostNews">
+                                <ul>
+                                    {volist name='list' id='vo'}
+                                    {eq name='vo.is_article' value='0'}
+                                    <li class="anim fadeInUp">
+                                        <div class="post-img loading">
+                                            <a class="pic" href="/article/{$vo.child.alias}/" title="{$vo.child.title}">
+                                                <div class="msk"></div>
+                                                <i class="fa fa-search"></i>
+                                                <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/1.png" alt="{$vo.child.title}" />
+                                            </a></div>
+                                        <div class="post-text">
+                                            <h4><a href="/article/{$vo.child.alias}/" title="{$vo.child.title}">{$vo.child.title}</a></h4>
+                                            <span class="time"><i class="fa fa-clock-o"></i>{$vo.child.addtime|date='m-d H:i:s'}</span>
+                                            <p>{$vo.child.intro|mb_substr=0, 80}...</p>
+                                        </div>
+                                    </li>
+                                    {/eq}
+                                    {/volist}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tabCon">
+                            <div class="container_shop">
+                                {volist name='list' id='vo'}
+                                {eq name='vo.is_article' value='1'}
+                                <div class="card">
+                                    <div class="card-title"><a href="/stand/{$vo.child.alias}" title="{$vo.child.title}"><h4>{$vo.child.title}</h4></a></div>
+                                    <div class="vps-info">{$vo.child.name}</div>
+                                    <div class="vps-info">CPU：{$vo.child.cpu}</div>
+                                    <div class="vps-info">内存：{$vo.child.ram}</div>
+                                    <div class="vps-info">硬盘：{$vo.child.hdd}</div>
+                                    <div class="vps-info">带宽：{$vo.child.bandwidth}</div>
+                                    <div class="vps-info">IP数：{$vo.child.ips}</div>
+                                </div>
+                                {/eq}
+                                {/volist}
+                            </div>
+                        </div>
+                        <div class="tabCon">
+                            <div class="container_shop">
+                                {volist name='list' id='vo'}
+                                {eq name='vo.is_article' value='2'}
+                                <div class="card">
+                                    <div class="card-title"><a href="/vps/{$vo.child.alias}/" title="{$vo.child.title}"><h4>{$vo.child.title}</h4></a></div>
+                                    <div class="vps-info">简称：{$vo.child.name}</div>
+                                    <div class="vps-info">分类：{$vo.child.name}</div>
+                                    <div class="vps-info">英文名：{$vo.child.cname}</div>
+                                    <div class="vps-info">介绍：{$vo.child.des|mb_substr=0, 50}...</div>
+                                </div>
+                                {/eq}
+                                {/volist}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <!----------->
+
+
+    </div>
+</div>
+
+{include file='public/footer'}
+<script src="/static/aliyun/js/lib.js"></script>
+<script src="/static/aliyun/js/function.js"></script>
+</body>
+
+</html>

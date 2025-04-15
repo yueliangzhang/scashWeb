@@ -1,0 +1,196 @@
+{extend name="base" /}
+{block name="title"}支付订单{/block}
+{block name="body"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">订单号</label>
+                        <div class="layui-input-inline">
+                            <input name="trade_no" class="layui-input" autocomplete="off" placeholder="输入订单号"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">订单状态</label>
+                        <div class="layui-input-inline">
+                            <select name="status">
+                                <option value="0">--- 全部 ---</option>
+                                <option value="1">待付款</option>
+                                <option value="2">待开户/服务器</option>
+                                <option value="3">成功</option>
+                                <option value="4">待退款</option>
+                                <option value="5">退款成功</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">&emsp;
+                        <button class="layui-btn icon-btn" lay-filter="roleTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="roleTable" lay-filter="roleTable"></table>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="roleRefund">
+    <form id="roleReForm" lay-filter="roleReForm" class="layui-form model-form">
+        <input name="id" type="hidden"/>
+        <blockquote class="layui-elem-quote">订单退款的手续费由买方承担</blockquote>
+        <div class="layui-form-item">
+            <label class="layui-form-label">退款地址</label>
+            <div class="layui-input-inline" style="width:200px;">
+                <input name="address" placeholder="请输入退款地址" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
+            </div>
+            <div class="layui-form-mid layui-word-aux">trc20地址</div>
+        </div>
+        <div class="layui-form-item text-right">
+            <button class="layui-btn" lay-filter="roleReSubmit" lay-submit>保存</button>
+            <button class="layui-btn layui-btn-primary" type="button" mx-event="closeDialog">取消</button>
+        </div>
+    </form>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="roleTbBar">
+    {{#  if(d.status === 0){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="pay">继续支付</a>
+    {{#  } }}
+    {{# if (d.status === 1){ }}
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="refund">退款</a>
+    {{#  } }}
+</script>
+{/block}
+
+{block name="script"}
+<script>
+    layui.use(['layer', 'form', 'table', 'admin', 'zTree', 'laydate'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var admin = layui.admin;
+        var laydate = layui.laydate;
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#roleTable',
+            url: "{:url('member/order/datalist')}",
+            page: {limit: 10},
+            limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
+            totalRow: true,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'title', title: '订单标题', align: 'left', totalRowText: '合计'},
+                {field: 'trade_no', title: '订单号', align: 'left'},
+                {
+                    title: '付款类型', templet: function (d) {
+                        return [
+                            '支付宝',
+                            'USDT'
+                        ][d.paytype];
+                    }, align: 'left'
+                },
+                {field: 'usd', title: '美金', align: 'left', totalRow: true},
+                {field: 'num', title: '付款金额', align: 'left', totalRow: true},
+                {field: 'invoice', title: '发票金额', align: 'left', totalRow: true},
+                {field: 'addtime', title: '下单时间', align: 'left'},
+                {field: 'paytime', title: '付款时间', align: 'left'},
+                {
+                    title: '状态', templet: function (d) {
+                        return [
+                            '<font color="blank">待付款</font>',
+                            '<font color="blue">已付款(待开)</font>',
+                            '<font color="green">成功</font>',
+                            '<font color="blue">待退款</font>',
+                            '<font color="red">退款成功</font>'
+                        ][d.status];
+                    }, align: 'left',fixed: 'right'
+                },
+                {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 150, fixed: 'right'}
+            ]],
+            parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.total, //解析数据长度
+                    "data": res.data.data //解析数据列表
+                };
+            }
+        });
+
+        /* 表格搜索 */
+        form.on('submit(roleTbSearch)', function (data) {
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('member/order/search')}"});
+            return false;
+        });
+
+        /* 表格工具条点击事件 */
+        table.on('tool(roleTable)', function (obj) {
+            if (obj.event === 'refund') { // 审核弹窗
+                refund(obj.data);
+            }
+        });
+
+        /* 退款 */
+        function refund(mData) {
+            if (mData.paytype === 0) { //支付宝退款
+                layer.confirm('确定要申请退款选中的数据吗？', {
+                    title: '申请订单退款',
+                    skin: 'layui-layer-admin',
+                    shade: 0.5,
+                    //shadeClose: true,
+                }, function (i) {
+                    layer.close(i);
+                    var loadIndex = layer.load(2);
+                    $.post("{:url('member/order/refund')}", {
+                        id: mData ? mData.id : ''
+                    }, function (res) {
+                        layer.close(loadIndex);
+                        if (res.code === 1) {
+                            layer.msg(res.msg, {icon: 1});
+                            insTb.reload();
+                        } else {
+                            layer.msg(res.msg, {icon: 5, anim: 6});
+                        }
+                    }, 'json');
+                });
+            }else{
+                admin.open({
+                    type: 1,
+                    title: '申请订单退款',
+                    area: '510px',
+                    shade: 0.5,
+                    //shadeClose: true,
+                    content: $('#roleRefund').html(),
+                    success: function (layero, dIndex) {
+                        // 回显表单数据
+                        form.val('roleReForm', mData);
+                        // 表单提交事件
+                        form.on('submit(roleReSubmit)', function (data) {
+                            var loadIndex = layer.load(2);
+                            $.post("{:url('member/order/refund')}", data.field, function (res) {
+                                layer.close(loadIndex);
+                                if (res.code === 1) {
+                                    layer.close(dIndex);
+                                    layer.msg(res.msg, {icon: 1});
+                                    insTb.reload();  // 保存成功刷新表格
+                                } else {
+                                    layer.msg(res.msg, {icon: 5, anim: 6});
+                                }
+                            }, 'json');
+                            return false;
+                        });
+                    }
+                });
+            }
+        }
+    });
+</script>
+{/block}

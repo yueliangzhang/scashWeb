@@ -1,0 +1,330 @@
+{extend name="base" /}
+{block name="title"}标签管理{/block}
+{block name="body"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">标签</label>
+                        <div class="layui-input-inline">
+                            <input name="keywords" class="layui-input" autocomplete="off" placeholder="输入标签"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-inline">
+                            <select name="status">
+                                <option value="0">--- 全部 ---</option>
+                                <option value="1">未提交</option>
+                                <option value="2">已提交</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">&emsp;
+                        <button class="layui-btn icon-btn" lay-filter="roleTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                        <button class="layui-btn layui-btn-warm" lay-filter="roleTbExport" lay-submit>
+                            <i class="layui-icon">&#xe67d;</i>导出
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="roleTable" lay-filter="roleTable"></table>
+        </div>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="roleTbBar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<!-- 表单弹窗 -->
+<script type="text/html" id="AllAddDialog">
+    <form id="roleEditForm" lay-filter="roleEditForm" class="layui-form model-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">标签导入</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" id="importfile">
+                    <i class="layui-icon">&#xe67c;</i>上传excel数据
+                </button>
+            </div>
+        </div>
+    </form>
+</script>
+<script type="text/html" id="roleEditDialog">
+    <form id="roleEditForm" lay-filter="roleEditForm" class="layui-form model-form">
+        <input name="id" type="hidden"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标签</label>
+            <div class="layui-input-block">
+                <input name="name" placeholder="请输入标签" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">介绍</label>
+            <div class="layui-input-block">
+                <textarea name="description" placeholder="请输入标签介绍" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">关联ID</label>
+            <div class="layui-input-block">
+                <input name="goods_id" placeholder="请输入关联云|服务器|文章" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标签来源</label>
+            <div class="layui-input-block">
+                <input type="radio" name="is_goods" value="0" title="文章" checked>
+                <input type="radio" name="is_goods" value="1" title="服务器">
+                <input type="radio" name="is_goods" value="2" title="公有云">
+            </div>
+        </div>
+        <div class="layui-form-item text-right">
+            <button class="layui-btn" lay-filter="roleEditSubmit" lay-submit>保存</button>
+            <button class="layui-btn layui-btn-primary" type="button" mx-event="closeDialog">取消</button>
+        </div>
+    </form>
+</script>
+<script type="text/html" id="userTbState">
+    <input type="checkbox" lay-filter="userTbStateCk" value="{{d.id}}" lay-skin="switch" lay-text="是|否" {{d.status==1?'checked':''}} style="display: none;"/>
+    <p style="display: none;">{{d.status==1?'是':'否'}}</p>
+</script>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/static/assets/libs/layui_exts/excel.js"></script>
+<script>
+    layui.use(['layer', 'form', 'table', 'admin', 'zTree', 'upload'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var admin = layui.admin;
+        var upload = layui.upload;
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#roleTable',
+            url: "{:url('mxadmin/tags/datalist')}",
+            page: {limit: 45},
+            limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
+            toolbar: ['<p>',
+                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量删除</button>',
+                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>',
+                '<button lay-event="addall" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>批量添加</button>',
+                '</p>'].join(''),
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'id', title: '编号', align: 'left'},
+                {field: 'name', title: '标签', align: 'left'},
+                {field: 'num', title: '标签关联', align: 'left'},
+                {
+                    title: '标签来源', templet: function (d) {
+                        return [
+                            '文章',
+                            '服务器',
+                            '公有云'
+                        ][d.is_goods];
+                    }
+                },
+                {field: 'status', title: '推荐状态', templet: '#userTbState', align: 'center', sort: true},
+                {title: '操作', toolbar: '#roleTbBar', align: 'center',fixed: 'right', minWidth: 140}
+            ]],
+            parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.total, //解析数据长度
+                    "data": res.data.data //解析数据列表
+                };
+            }
+        });
+
+        /* 表格搜索 */
+        form.on('submit(roleTbSearch)', function (data) {
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/tags/search')}"});
+            return false;
+        });
+
+        /* 表格工具条点击事件 */
+        table.on('tool(roleTable)', function (obj) {
+            if (obj.event === 'del') { // 删除
+                doDel(obj);
+            } else if (obj.event === 'edit') {
+                showEditModel(obj.data);
+            }
+        });
+
+        /* 表格头工具栏点击事件 */
+        table.on('toolbar(roleTable)', function (obj) {
+            if (obj.event === 'del') { // 删除
+                var checkRows = table.checkStatus('roleTable');
+                if (checkRows.data.length === 0) {
+                    layer.msg('请选择要删除的数据', {icon: 5, anim: 6});
+                    return;
+                }
+                var ids = checkRows.data.map(function (d) {
+                    return d.id;
+                });
+                doDel({ids: ids});
+            }else if (obj.event === 'add') { //添加
+                showEditModel();
+            }else if (obj.event === 'addall') {
+                showAddModel();
+            }
+        });
+
+        /* 显示导入弹窗 */
+        function showAddModel() {
+            admin.open({
+                type: 1,
+                title: '导入标签',
+                shade: 0.5,
+                //shadeClose: true,
+                content: $('#AllAddDialog').html(),
+                success: function (layero, dIndex) {
+                    //执行实例
+                    var uploadInst = upload.render({
+                        elem: '#importfile', //绑定元素
+                        url: '{:url("/mxadmin/tags/addexcel")}', //上传接口
+                        method: 'POST',
+                        accept: 'file',
+                        exts: 'xlsx|xls',
+                        choose: function (obj) {
+                            layer.load();
+                        },
+                        done: function(res){
+                            layer.close(dIndex);
+                            layer.closeAll('loading');
+                            //上传完毕回调
+                            //console.log(res)
+                            if(res.code == 1){
+                                layer.open({
+                                    title: '导入结果'
+                                    ,content: res.msg
+                                    ,btn:['确定']
+                                    ,yes:function(index, layero){
+                                        location.reload();//刷新单前页
+                                    }
+                                });
+                            }else{
+                                layer.msg(res.msg, {icon: 5});
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        /* 显示修改弹窗 */
+        function showEditModel(mData) {
+            admin.open({
+                type: 1,
+                title: (mData ? '修改' : '添加') + '标签',
+                area: '510px',
+                shade: 0.5,
+                //shadeClose: true,
+                content: $('#roleEditDialog').html(),
+                success: function (layero, dIndex) {
+                    // 回显表单数据
+                    form.val('roleEditForm', mData);
+                    // 表单提交事件
+                    form.on('submit(roleEditSubmit)', function (data) {
+                        var loadIndex = layer.load(2);
+                        $.post(mData ? "{:url('mxadmin/tags/edit')}" : "{:url('mxadmin/tags/add')}", data.field, function (res) {
+                            layer.close(loadIndex);
+                            if (res.code === 1) {
+                                layer.close(dIndex);
+                                layer.msg(res.msg, {icon: 1});
+                                insTb.reload();  // 保存成功刷新表格
+                            } else {
+                                layer.msg(res.msg, {icon: 5, anim: 6});
+                            }
+                        }, 'json');
+                        return false;
+                    });
+                }
+            });
+        }
+
+        /* 删除 */
+        function doDel(obj) {
+            layer.confirm('确定要删除选中的数据吗？', {
+                title: '删除数据',
+                skin: 'layui-layer-admin',
+                shade: 0.5,
+                //shadeClose: true,
+            }, function (i) {
+                layer.close(i);
+                var loadIndex = layer.load(2);
+                $.post("{:url('mxadmin/tags/del')}", {
+                    id: obj.data ? obj.data.id : '',
+                    ids: obj.ids ? obj.ids.join(',') : ''
+                }, function (res) {
+                    layer.close(loadIndex);
+                    if (res.code === 1) {
+                        layer.msg(res.msg, {icon: 1});
+                        insTb.reload();
+                    } else {
+                        layer.msg(res.msg, {icon: 5, anim: 6});
+                    }
+                }, 'json');
+            });
+        }
+
+        /* 表格导出 */
+        form.on('submit(roleTbExport)', function (data) {
+            loading = layer.load(1, {shade: [0.3, '#fff']});
+            var $ = layui.jquery;
+            var excel = layui.excel;
+            $.ajax({
+                url: '{:url("mxadmin/tags/excel")}',
+                data: data.field,
+                success: function(res) {
+                    layer.close(loading);
+                    layer.msg(res.msg);
+                    // 假如返回的 res.data 是需要导出的列表数据
+                    // 1. 数组头部新增表头
+                    res.data.unshift({name:'关键词',url:'文章地址'});
+                    // 3. 执行导出函数，系统会弹出弹框
+                    excel.exportExcel({
+                        sheet1: res.data
+                    }, '关键词.xlsx', 'xlsx');
+                },
+                error:function(res){
+                    layer.close(loading);
+                    layer.msg(res.msg);
+                }
+            });
+            return false;
+        });
+        
+        /* 修改用户状态 */
+        form.on('switch(userTbStateCk)', function (obj) {
+            var loadIndex = layer.load(2);
+            $.post("{:url('mxadmin/tags/edit_state_same')}", {
+                id: obj.elem.value,
+                status: obj.elem.checked ? 1 : 0
+            }, function (res) {
+                layer.close(loadIndex);
+                if (res.code === 1) {
+                    layer.msg(res.msg);
+                    insTb.reload();
+                } else {
+                    layer.msg(res.msg, {icon: 5, anim: 6});
+                    $(obj.elem).prop('checked', !obj.elem.checked);
+                    form.render('checkbox');
+                }
+            }, 'json');
+        });
+    });
+</script>
+{/block}

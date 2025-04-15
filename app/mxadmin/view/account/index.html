@@ -1,0 +1,276 @@
+{extend name="base" /}
+{block name="title"}账户管理{/block}
+{block name="body"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户ID</label>
+                        <div class="layui-input-inline">
+                            <input name="userid" class="layui-input" autocomplete="off" placeholder="请输入客户ID"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">云账户UID</label>
+                        <div class="layui-input-inline">
+                            <input name="uid" class="layui-input" autocomplete="off" placeholder="请输入云账户UID"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">邮箱地址</label>
+                        <div class="layui-input-inline">
+                            <input name="email" class="layui-input" autocomplete="off" placeholder="请输入邮箱地址"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">客户通讯</label>
+                        <div class="layui-input-inline">
+                            <input name="remarks" class="layui-input" autocomplete="off" placeholder="请输入客服微信、飞机、淘宝账户"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">账户类型</label>
+                        <div class="layui-input-inline">
+                            <select name="type">
+                                <option value="0">--- 全部 ---</option>
+                                {volist name='type' id='vo' key='k'}
+                                <option value="{$k}">{$vo}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">&emsp;
+                        <button class="layui-btn icon-btn" lay-filter="roleTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="roleTable" lay-filter="roleTable"></table>
+        </div>
+    </div>
+</div>
+
+<!-- 表单弹窗 -->
+<script type="text/html" id="roleEditDialog">
+    <form id="roleEditForm" lay-filter="roleEditForm" class="layui-form model-form">
+        <input name="id" type="hidden"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户ID</label>
+            <div class="layui-input-block">
+                <input name="userid" placeholder="请输入用户ID" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">云账户UID</label>
+            <div class="layui-input-block">
+                <input name="uid" placeholder="请输入云账户UID" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input name="email" placeholder="请输入邮箱地址" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户类型</label>
+            <div class="layui-input-block">
+                {volist name='type' id='vo' key='k'}
+                <input type="radio" name="type" value="{$k-1}" title="{$vo}">
+                {/volist}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">金额</label>
+            <div class="layui-input-block">
+                <input name="usd" placeholder="请输入金额" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户信息</label>
+            <div class="layui-input-block">
+                <textarea name="info" placeholder="请输入开户的账户信息" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系方式</label>
+            <div class="layui-input-block">
+                <textarea name="remarks" placeholder="请输入联系客户的淘宝、微信和飞机账号" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item text-right">
+            <button class="layui-btn" lay-filter="roleEditSubmit" lay-submit>保存</button>
+            <button class="layui-btn layui-btn-primary" type="button" mx-event="closeDialog">取消</button>
+        </div>
+    </form>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="roleTbBar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<!-- 表格状态列 -->
+<script type="text/html" id="userTbState">
+    <input type="checkbox" lay-filter="userTbStateCk" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" {{d.status==1?'checked':''}} style="display: none;"/>
+    <p style="display: none;">{{d.status==1?'启用':'禁用'}}</p>
+</script>
+{/block}
+
+{block name="script"}
+<script>
+    layui.use(['layer', 'form', 'table', 'admin', 'zTree'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var admin = layui.admin;
+        var laydate = layui.laydate;
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#roleTable',
+            url: "{:url('mxadmin/account/datalist')}",
+            page: {limit: 45},
+            limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
+            toolbar: ['<p>',
+                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量删除</button>',
+                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>',
+                '</p>'].join(''),
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox'},
+                {field: 'id', title: 'ID', align: 'left', sort: true},
+                {field: 'users', title: '用户信息', align: 'left'},
+                {field: 'uid', title: '云账户UID', align: 'left'},
+                {field: 'email', title: '邮箱', align: 'left'},
+                {field: 'usd', title: '余额美金', align: 'left'},
+                {field: 'info', title: '开户信息', align: 'left'},
+                {field: 'remarks', title: '联系方式', align: 'left'},
+                {field: 'addtime', title: '注册时间', align: 'left'},
+                {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 210, fixed: 'right'}
+            ]],
+            parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.total, //解析数据长度
+                    "data": res.data.data //解析数据列表
+                };
+            }
+        });
+
+        /* 表格搜索 */
+        form.on('submit(roleTbSearch)', function (data) {
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/account/search')}"});
+            return false;
+        });
+
+        /* 表格工具条点击事件 */
+        table.on('tool(roleTable)', function (obj) {
+            if (obj.event === 'del') { // 删除
+                doDel(obj);
+            } else if (obj.event === 'edit') { // 修改
+                showEditModel(obj.data);
+            }
+        });
+
+        /* 表格头工具栏点击事件 */
+        table.on('toolbar(roleTable)', function (obj) {
+            if (obj.event === 'del') { // 删除
+                var checkRows = table.checkStatus('roleTable');
+                if (checkRows.data.length === 0) {
+                    layer.msg('请选择要删除的数据', {icon: 5, anim: 6});
+                    return;
+                }
+                var ids = checkRows.data.map(function (d) {
+                    return d.id;
+                });
+                doDel({ids: ids});
+            }else if (obj.event === 'add') { //添加
+                showEditModel();
+            }
+        });
+
+        /* 删除 */
+        function doDel(obj) {
+            layer.confirm('确定要删除选中的数据吗？', {
+                title: '删除数据',
+                skin: 'layui-layer-admin',
+                shade: 0.5,
+                //shadeClose: true,
+            }, function (i) {
+                layer.close(i);
+                var loadIndex = layer.load(2);
+                $.post("{:url('mxadmin/account/del')}", {
+                    id: obj.data ? obj.data.id : '',
+                    ids: obj.ids ? obj.ids.join(',') : ''
+                }, function (res) {
+                    layer.close(loadIndex);
+                    if (res.code === 1) {
+                        layer.msg(res.msg, {icon: 1});
+                        insTb.reload();
+                    } else {
+                        layer.msg(res.msg, {icon: 5, anim: 6});
+                    }
+                }, 'json');
+            });
+        }
+
+        /* 修改启用状态 */
+        form.on('switch(userTbStateCk)', function (obj) {
+            var loadIndex = layer.load(2);
+            $.post("{:url('mxadmin/account/edit_state_same')}", {
+                id: obj.elem.value,
+                status: obj.elem.checked ? 1 : 0
+            }, function (res) {
+                layer.close(loadIndex);
+                if (res.code === 1) {
+                    layer.msg(res.msg);
+                    insTb.reload();
+                } else {
+                    layer.msg(res.msg, {icon: 5, anim: 6});
+                    $(obj.elem).prop('checked', !obj.elem.checked);
+                    form.render('checkbox');
+                }
+            }, 'json');
+        });
+
+        /* 账户修改 */
+        function showEditModel(mData) {
+            admin.open({
+                type: 1,
+                title: (mData ? '修改' : '添加') + '账户',
+                area: '510px',
+                shade: 0.5,
+                //shadeClose: true,
+                content: $('#roleEditDialog').html(),
+                success: function (layero, dIndex) {
+                    // 回显表单数据
+                    form.val('roleEditForm', mData);
+                    // 表单提交事件
+                    form.on('submit(roleEditSubmit)', function (data) {
+                        var loadIndex = layer.load(2);
+                        $.post(mData ? "{:url('mxadmin/account/edit')}" : "{:url('mxadmin/account/add')}", data.field, function (res) {
+                            layer.close(loadIndex);
+                            if (res.code === 1) {
+                                layer.close(dIndex);
+                                layer.msg(res.msg, {icon: 1});
+                                insTb.reload();  // 保存成功刷新表格
+                            } else {
+                                layer.msg(res.msg, {icon: 5, anim: 6});
+                            }
+                        }, 'json');
+                        return false;
+                    });
+                }
+            });
+        }
+
+    });
+</script>
+{/block}

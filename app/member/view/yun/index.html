@@ -1,0 +1,213 @@
+{extend name="base" /}
+{block name="title"}云账户管理{/block}
+{block name="body"}
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">云账户UID</label>
+                        <div class="layui-input-inline">
+                            <input name="uid" class="layui-input" autocomplete="off" placeholder="输入云账户UID"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开户邮箱</label>
+                        <div class="layui-input-inline">
+                            <input name="email" class="layui-input" autocomplete="off" placeholder="输入邮箱地址"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">账户类型</label>
+                        <div class="layui-input-inline">
+                            <select name="type">
+                                <option value="0">--- 全部 ---</option>
+                                <option value="1">阿里云</option>
+                                <option value="2">腾讯云</option>
+                                <option value="3">AWS</option>
+                                <option value="4">谷歌云</option>
+                                <option value="5">Azure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">&emsp;
+                        <button class="layui-btn icon-btn" lay-filter="roleTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                        <button class="layui-btn layui-btn-warm" lay-filter="roleTbExport" lay-submit>
+                            <i class="layui-icon">&#xe67d;</i>导出
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="roleTable" lay-filter="roleTable"></table>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="roleReCloud">
+    <form id="roleReForm" lay-filter="roleReForm" class="layui-form model-form">
+        <input name="id" type="hidden" />
+        <input type="hidden" name="rate" value="{$setconfig.rate}" />
+        <input type="hidden" name="type" />
+        <input type="hidden" name="tax" value="{$setconfig.tax}" />
+        <div class="layui-form-item">
+            <label class="layui-form-label">金额</label>
+            <div class="layui-input-inline" style="width:200px;">
+                <input name="num" placeholder="请输入金额USD" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
+            </div>
+            <div class="layui-form-mid layui-word-aux">美金USD</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">兑换汇率</label>
+            <div class="layui-input-inline" style="width:200px; margin-top: 10px;">
+                {$setconfig.rate}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否开票</label>
+            <div class="layui-input-inline" style="width:200px;">
+                <input type="radio" name="istax" value="1" title="是">
+                <input type="radio" name="istax" value="0" title="否" checked>
+            </div>
+        </div>
+        <div class="layui-form-item text-right">
+            <button class="layui-btn" lay-filter="roleReSubmit" lay-submit>确认充值</button>
+            <button class="layui-btn layui-btn-primary" type="button" mx-event="closeDialog">取消</button>
+        </div>
+    </form>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="roleTbBar">
+    <a class="layui-btn layui-btn-xs" lay-event="recharge">充值</a>
+</script>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/static/assets/libs/layui_exts/excel.js"></script>
+<script type="text/javascript" src="/template/tmp/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/template/tmp/js/jquery.qrcode.min.js"></script>
+<script>
+    layui.use(['layer', 'form', 'table', 'admin', 'upload'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var admin = layui.admin;
+
+        /* 渲染表格 */
+        var insTb = table.render({
+            elem: '#roleTable',
+            url: "{:url('member/yun/datalist')}",
+            page: {limit: 15},
+            limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
+            cellMinWidth: 100,
+            height: 'full-50',
+            cols: [[
+                {type: 'checkbox'},
+                {
+                    title: '账户类型', templet: function (d) {
+                        return [
+                            '阿里云国际',
+                            '腾讯云国际',
+                            '华为云国际',
+                            'AWS',
+                            'GCP',
+                            'Azure'
+                        ][d.type];
+                    }, align: 'center'
+                },
+                {field: 'uid', title: '云账户UID', align: 'left'},
+                {field: 'email', title: '登录邮箱', align: 'left'},
+                {field: 'info', title: '账户详细', align: 'left'},
+                {field: 'usd', title: '余额', align: 'left'},
+                {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 120, fixed: 'right'}
+            ]],
+            parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.total, //解析数据长度
+                    "data": res.data.data //解析数据列表
+                };
+            }
+        });
+
+        /* 表格搜索 */
+        form.on('submit(roleTbSearch)', function (data) {
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('member/yun/search')}"});
+            return false;
+        });
+
+        /* 表格导出 */
+        form.on('submit(roleTbExport)', function (data) {
+            loading = layer.load(1, {shade: [0.3, '#fff']});
+            var $ = layui.jquery;
+            var excel = layui.excel;
+            $.ajax({
+                url: '{:url("member/yun/excel")}',
+                data: data.field,
+                success: function(res) {
+                    layer.close(loading);
+                    layer.msg(res.msg);
+                    // 假如返回的 res.data 是需要导出的列表数据
+                    // 1. 数组头部新增表头
+                    res.data.unshift({uid: '云账户UID',type: '云类型',email:'登录邮箱',usd:'金额',info:'账户详细',status:'状态',addtime: '创建时间'});
+                    // 3. 执行导出函数，系统会弹出弹框
+                    excel.exportExcel({
+                        sheet1: res.data
+                    }, '云账户列表.xlsx', 'xlsx');
+                },
+                error:function(res){
+                    layer.close(loading);
+                    layer.msg(res.msg);
+                }
+            });
+            return false;
+        });
+
+        /* 表格工具条点击事件 */
+        table.on('tool(roleTable)', function (obj) {
+            if (obj.event === 'recharge') { // 修改
+                showRechargeModel(obj.data);
+            }
+        });
+
+        /* 显示账户申请弹窗 */
+        function showRechargeModel(mData) {
+            admin.open({
+                type: 1,
+                title: '账户充值',
+                area: '510px',
+                shade: 0.5,
+                //shadeClose: true,
+                content: $('#roleReCloud').html(),
+                success: function (layero, dIndex) {
+                    // 回显表单数据
+                    form.val('roleReForm', mData);
+                    // 表单提交事件
+                    form.on('submit(roleReSubmit)', function (data) {
+                        var loadIndex = layer.load(2);
+                        $.post("{:url('member/yun/recharge')}", data.field, function (res) {
+                            console.log(res);
+                            layer.close(loadIndex);
+                            if (res.code === 1) {
+                                layer.close(dIndex);
+                                layer.msg(res.msg, {icon: 1});
+                                window.open(res.url, '_blank');
+                                insTb.reload();  // 保存成功刷新表格
+                                //window.open(res.url, '_blank');
+                            } else {
+                                layer.msg(res.msg, {icon: 5, anim: 6});
+                            }
+                        }, 'json');
+                        return false;
+                    });
+                }
+            });
+        }
+
+    });
+</script>
+{/block}

@@ -1,0 +1,45 @@
+@font-face{font-family:iconfont;src:url(iconfont.woff2?t=1627441940519) format("woff2"),url(iconfont.woff?t=1627441940519) format("woff"),url(iconfont.ttf?t=1627441940519) format("truetype")}.iconfont{font-style:normal;font-size:14px;font-family:iconfont!important;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+/**PCç‰ˆ-å¾®ä¿¡äºŒç»´ç **/
+.add-qrcode{position:fixed;z-index:999;max-width:150px;overflow:hidden;background:#fff;padding:20px;text-align:center;border:1px solid #ebebeb;box-shadow: 0 1px 5px 0 rgba(0,0,0,.05);}
+.addleft{right:50%;}
+.addright{left:50%;}
+.add-qrcode img{min-width:80px;max-width:100%;height:auto;text-align: center;}
+.add-qrcode p {line-height:150%;margin:10px 0 0 0!important;color:#555555;}
+/**æ‰‹æœºç‰ˆ-æ·»åŠ å¾®ä¿¡æŒ‰é’®**/
+.add-wechat .add{background:#cc3333;color:#ffffff;}
+.add-wechat .add:hover{background:#dd3c3c;}
+.btn-add #close_add{color:#cc3333;}
+.add-abox{background:#ffffff;border:1px solid #ebebeb;box-shadow: 0 1px 5px 0 rgba(0,0,0,.05);}
+.add-abox div{margin-bottom:0!important;}
+.add-wechat {padding:10px 15px;overflow: hidden;box-sizing: border-box;}
+.add-fixed {position: fixed;left:0;right:0;bottom:0;height:70px;z-index:999;background: #ffffff;box-shadow: 0 -3px 5px 0 rgba(0,0,0,.05);}
+.add-wechat .add-ico{background: #30cf30;color:#ffffff;border-radius: 50%;line-height: 50px!important; height:50px;width:50px;text-align: center;float:left;margin:0 10px 0 0!important;}
+.add-wechat .add-ico i{font-size:30px!important;}
+.add-wechat .add-text{float:left;margin: 0 !important;padding: 0 !important;}
+.add-wechat .add-text h4{font-weight: bold!important;line-height:28px!important;font-size:18px!important;margin:0!important;padding:0!important;background: #ffffff!important;border:0!important;}
+.add-wechat .add-text h4::before{content: ""!important;;font-size: 0!important;margin: 0 !important;padding: 0 !important;;}
+.add-wechat .add-text p{color:#888888;margin:0!important;line-height: 100%!important;}
+.add-wechat .add , .add-wechat .add-kf{float:right; padding:0 15px!important;border-radius: 15px; margin-top:8px!important; line-height: 34px!important; cursor:pointer;}
+.add-wechat .add a , .add-wechat .add-kf a{display: block; color:#ffffff;text-decoration: none!important;font-family: "iconfont" !important;}
+.add-wechat .add-kf a:before{content:"\e6356";margin-right:5px;}
+.add-wechat .add-kf{background:#0eb55e;color:#ffffff;}
+.add-wechat .add-kf:hover{background:#0dab59;}
+.add-wechat .add-text p.add-kfc , .add-wechat .add-text p.add-kfn{font-size:13px;line-height:25px !important;}
+.add-wechat .add-kfc{color:#333333!important;}
+.add-wechat .add-kfn{color:#ff944d!important;}
+.add-wechat-upbg{background:rgb(0 0 0 / 70%);position:fixed;top:0;bottom:0;left:0;right:0;width:100%;height:100%;z-index: 10000;display: none;}
+.add-wechat-up{background:#ffffff;position:fixed;top:50%;left:50%;overflow: hidden;height:160px;width:300px;margin-left:-150px;margin-top:-80px;box-shadow: 0 1px 5px 0 rgba(0,0,0,.05);}
+.add-wechat-up .text-add{padding:20px; text-align: center;height:110px;overflow: hidden;box-sizing: border-box;}
+.add-wechat-up .text-add h4{font-family: "iconfont" !important;line-height: 24px;font-size:16px;margin:0 0 10px 0;font-weight: normal;}
+.add-wechat-up .text-add h4:before{content:"\e60f6";margin-right:5px;color:#21a53b;}
+.add-wechat-up .text-add p{font-size:13px;line-height: 18px;color:#888888;margin:0!important}
+.btn-add{height:50px;border-top:1px solid #f0ebea;overflow: hidden;}
+.btn-add #close_add {line-height: 50px; height:50px;width:100%;text-align: center;box-sizing: border-box;font-size:16px;cursor:pointer;}
+.btn-add #close_add a {display:block;color:#cc3333;}
+.add-wechat70{height:70px;overflow: hidden;display: block;}
+.awaddtips , .awaddtips_m{position:fixed;z-index:998;width:100%;left:0;right:0;padding:0 20px;height:30px;line-height:30px;font-size:14px;color:#ffffff;background:rgb(20 115 20 / 0.5);}
+.awaddtips{bottom:0}
+.awaddtips_m{bottom:70px;}
+.awaddtips * , .awaddtips_m *{position:absolute;color:#fff}
+.awaddtips p , .awaddtips_m p{ font-family: "iconfont" !important;margin:0!important}
+.awaddtips p:before , .awaddtips_m p:before{content:"\e61b6";margin-right:5px;}

@@ -1,0 +1,126 @@
+{extend name="base" /}
+
+{block name="title"}系统配置参数{/block}
+{block name="body"}
+<style>
+    .layui-tab-content {
+        margin: 15px auto 0;
+    }
+    .layui-form-label{
+        padding-left: 0;
+        width: 95px;
+    }
+</style>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 选项卡开始 -->
+            <div class="layui-tab layui-tab-brief" lay-filter="configInfoTab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this" lay-id="system">网站配置</li>
+                    <li lay-id="storage">文件存储</li>
+                    <li lay-id="setconfig">支付设置</li>
+                    <li lay-id="setcontact">联系我们</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <!-- tab1 -->
+                    {include file="configure/system" /}
+                    <!-- tab2 -->
+                    {include file="configure/storage" /}
+                    <!-- tab3 -->
+                    {include file="configure/setconfig" /}
+                    <!-- tab4 -->
+                    {include file="configure/setcontact" /}
+                </div>
+            </div>
+            <!-- //选项卡结束 -->
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    layui.use(['layer', 'form', 'element', 'upload'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var element = layui.element;
+        var upload = layui.upload;
+
+        //图片上传
+        upload.render({
+            elem: '.imageMore',
+            url: "{:url('mxadmin/upload/upload')}", //改成您自己的上传接口
+            acceptMime: 'image/*',
+            size: 2048, //限制文件大小，单位 KB
+            done: function(res){
+                if (res.code === 1) {
+                    layer.msg(res.msg, {icon: 1});
+                    this.item.prev('input').val(res.data.filePath);
+                    this.item.after(' <a href="'+res.data.filePath+'" target="_blank"><img src="'+res.data.filePath+'" height="38"></a>');
+                } else {
+                    layer.msg(res.msg, {icon: 5, anim: 6});
+                }
+            }
+        });
+
+        // 文件存储类型切换事件
+        form.on('radio(raEngine)', function (data) {
+            changeType(data.value);
+        });
+        function changeType(value) {
+            if (value == 1) {
+                $('#QiniuTpl').hide();
+                $('#AliyunTpl').hide();
+            } else if (value == 2) {
+                $('#QiniuTpl').show();
+                $('#AliyunTpl').hide();
+            } else if (value == 3) {
+                $('#AliyunTpl').show();
+                $('#QiniuTpl').hide();
+            }
+        }
+        // 初始化加载
+        changeType({$storage.engine|default='1'});
+
+        // 监听tab切换 操作：文档 - 内置模块 - 常用元素操作 element - 监听tab切换
+        element.on('tab(configInfoTab)', function() {
+            layfilter = this.getAttribute('lay-id') + 'Submit';
+            getSubmit(layfilter);
+        });
+
+        // 表单提交事件
+        function getSubmit(layfilter) {
+            form.on('submit('+ layfilter +')', function (data) {
+                var loadIndex = layer.load(2);
+                $.post("{:url('mxadmin/configure/submit')}", data.field, function (res) {
+                    layer.close(loadIndex);
+                    if (res.code === 1) {
+                        layer.msg(res.msg, {icon: 1});
+                    } else {
+                        layer.msg(res.msg, {icon: 5, anim: 6});
+                    }
+                }, 'json');
+                return false;
+            });
+        }
+        // 初始化加载
+        getSubmit('systemSubmit');
+
+        // 测试邮箱配置
+        form.on('submit(emailTest)', function (data) {
+            var loadIndex = layer.load(2);
+            $.post("{:url('mxadmin/configure/emailtest')}", data.field, function (res) {
+                layer.close(loadIndex);
+                if (res.code === 1) {
+                    layer.msg(res.msg, {icon: 1});
+                } else {
+                    layer.msg(res.msg, {icon: 5, anim: 6});
+                }
+            }, 'json');
+            return false;
+        });
+    });
+</script>
+{/block}

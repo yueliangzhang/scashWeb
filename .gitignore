@@ -1,0 +1,7 @@
+/.idea
+/.vscode
+/runtime
+/composer.lock
+*.log
+*.env
+*.config

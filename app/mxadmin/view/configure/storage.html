@@ -1,0 +1,72 @@
+<div class="layui-tab-item">
+    <!-- 表单开始 -->
+    <form class="layui-form" id="storageForm" lay-filter="storageForm">
+        <input type="hidden" name="typename" value="storage">
+        <div class="layui-form-item">
+            <label class="layui-form-label">存储引擎</label>
+            <div class="layui-input-block">
+                <input type="radio" name="engine" lay-filter="raEngine" value="1" title="本地(不推荐)" {present name="storage.engine"}{eq name="storage.engine" value="1"}checked{/eq}{/present}/>
+                <input type="radio" name="engine" lay-filter="raEngine" value="2" title="七牛云" {present name="storage.engine"}{eq name="storage.engine" value="2"}checked{/eq}{/present}/>
+                <input type="radio" name="engine" lay-filter="raEngine" value="3" title="阿里云" {present name="storage.engine"}{eq name="storage.engine" value="3"}checked{/eq}{/present}/>
+            </div>
+        </div>
+        <div id="QiniuTpl">
+            <div class="layui-form-item">
+                <label class="layui-form-label">AccessKey</label>
+                <div class="layui-input-block">
+                    <input name="accesskey" placeholder="请输入AccessKey" value="{$storage.accesskey|default=''}" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">SecretKey</label>
+                <div class="layui-input-block">
+                    <input type="password" name="secretkey" placeholder="请输入SecretKey" value="{$storage.secretkey|default=''}" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">空间bucket</label>
+                <div class="layui-input-block">
+                    <input name="bucket" placeholder="请输入空间bucket" value="{$storage.bucket|default=''}" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">空间域名</label>
+                <div class="layui-input-block">
+                    <input name="domain" placeholder="请输入空间域名" value="{$storage.domain|default=''}" class="layui-input"/>
+                </div>
+            </div>
+        </div>
+        <div id="AliyunTpl">
+            <div class="layui-form-item">
+                <label class="layui-form-label">AliAccessKey</label>
+                <div class="layui-input-block">
+                    <input name="AliAccessKey" placeholder="请输入AliAccessKey" value="{$storage.AliAccessKey|default=''}" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">AliSecretKey</label>
+                <div class="layui-input-block">
+                    <input type="password" name="AliSecretKey" placeholder="请输入AliSecretKey" value="{$storage.AliSecretKey|default=''}" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">空间bucket</label>
+                <div class="layui-input-block">
+                    <input name="Alibucket" placeholder="请输入空间bucket" value="{$storage.Alibucket|default=''}" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">空间域名</label>
+                <div class="layui-input-block">
+                    <input name="Alidomain" placeholder="请输入空间域名" value="{$storage.Alidomain|default=''}" class="layui-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-filter="storageSubmit" lay-submit>&emsp;保存配置&emsp;</button>
+            </div>
+        </div>
+    </form>
+    <!-- //表单结束 -->
+</div>

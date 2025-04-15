@@ -1,0 +1,39 @@
+<div class="layui-tab-item">
+    <!-- 表单开始 -->
+    <form class="layui-form" id="setconfigForm" lay-filter="setconfigForm">
+        <input type="hidden" name="typename" value="setconfig">
+        <div class="layui-form-item">
+            <label class="layui-form-label">兑换汇率</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input name="rate" placeholder="请输入USDT兑换RMB汇率" value="{$setconfig.rate|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公司税率</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input name="tax" placeholder="请输入企业税点" value="{$setconfig.tax|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <fieldset class="layui-elem-field">
+        <legend>USDT - 充值地址设置</legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ERC20充值</label>
+            <div class="layui-input-block" style="width: 500px;">
+                <input name="ercAddr" placeholder="请输入ERC20充值地址" value="{$setconfig.ercAddr|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">TRC20充值</label>
+            <div class="layui-input-block" style="width: 500px;">
+                <input name="trcAddr" placeholder="请输入TRC20充值地址" value="{$setconfig.trcAddr|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        </fieldset>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-filter="setconfigSubmit" lay-submit>&emsp;保存配置&emsp;</button>
+            </div>
+        </div>
+    </form>
+    <!-- //表单结束 -->
+</div>

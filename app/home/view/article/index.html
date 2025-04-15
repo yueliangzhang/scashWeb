@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta itemprop="dateUpdate" content="{$info.addtime|date='Y-m-d H:i:s'}">
+    <title>{$info.title} - {$cate.name} - {$sysconf.webname}</title>
+    <meta name="description" content="{$info.description}">
+    <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="{$info.title}">
+    <meta property="og:description" content="{$info.description}">
+    <meta property="og:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
+    <link rel="canonical" href="{:config('app.hostname')}/article/{$info.alias}/">
+    <meta name="twitter:title" content="{$info.title}">
+    <meta name="twitter:description" content="{$info.description}">
+    <meta name="twitter:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
+    <link rel="stylesheet" rev="stylesheet" href="/static/aliyun/style/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/static/aliyun/style/font-awesome-4.7.0/css/font-awesome.min.css" media="screen" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/static/aliyun/style/index_ban.css">
+    <link rel="stylesheet" type="text/css" href="/static/aliyun/style/iconfont.css">
+    <script src="/static/aliyun/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+</head>
+
+<body class="umAni">
+{include file='public/header'}
+
+    <div class="breadcrumb">
+        <div class="container">
+            <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo; <a href="{:config('app.hostname')}/Solution/" title="云计算基础知识与技术">云计算基础知识与技术</a> &raquo; <a href="/Solution/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a> &raquo; {$info.title}
+        </div>
+    </div>
+    <div class="container">
+        <div class="main">
+            <div class="article">
+                <div class="article-box">
+                    <header class="article-top">
+                        <h2 class="article-tit">{$info.title}</h2>
+                    </header>
+                    <div class="postList">
+                        <div class="tabConBox">
+                            <div class="tabCon">
+                                <div class="article-main">
+                                    <div class="container_m">
+                                        <div class="news_left_show">
+                                            <div class="news_show_info">
+                                                {$info.content|raw}
+                                            </div>
+                                        </div>
+                                        <div class="news_right_show">
+                                            <div class="news_r_name">产品推广</div>
+                                            <div class="news_r_news">
+                                                {volist name='recommend' id='vo' key='k'}
+                                                <dd>
+                                                    {lt name='k' value='4'}<i class="top_{$k}">TOP{$k}</i>{/lt}
+                                                    <div class="news_r_show_img">
+                                                        <a href="{eq name='isrand' value='0'}/stand/{$vo.alias}/{else /}/vps/{$vo.alias}/{/eq}" title="{$vo.title}">
+                                                            <img src="/static/aliyun/images/1.png" alt="{$vo.title}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="news_r_show_info">
+                                                        <a href="{eq name='isrand' value='0'}/stand/{$vo.alias}/{else /}/vps/{$vo.alias}/{/eq}" title="{$vo.title}">{$vo.title}</a>
+                                                        <p>{eq name='isrand' value='0'}{$vo.description|mb_substr=0, 20}{else /}{$vo.des|mb_substr=0, 20}{/eq}...</p>
+                                                    </div>
+                                                </dd>
+                                                {/volist}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{include file='public/footer'}
+<script src="/static/aliyun/js/lib.js"></script>
+<script src="/static/aliyun/js/function.js"></script>
+</body>
+
+</html>

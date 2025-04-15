@@ -1,0 +1,193 @@
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row {
+    margin-top: 40px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.img-warp {
+    width: 100%;
+}
+
+.content-card {
+    text-align: left;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+}
+
+.content-card .head {
+    height: 24px;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    overflow: hidden;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.content-card .content {
+    line-height: 24px;
+    font-size: 14px;
+    color: var(--t1);
+    opacity: .8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.advBg ul { font-size:0; padding:20px 0px 0 0; text-align:center; width:88%; margin:0 auto;}
+.advBg ul li{ width:25%; display:inline-table;vertical-align: top;}
+.advBg ul li .liBox{height:100%; text-align:center; font-size:14px;}
+.advBg ul li .liBox .imgBox{width:168px; margin:0 auto; display:block;background-color:#f6f6f6; border-radius:100%; overflow:hidden; font-size:0;background-position:center center; background-repeat:no-repeat; background-image:url(../image/lay.gif); background-size:16px 16px;filter:alpha(opacity=80);opacity:0.8;-webkit-transition:all .3s ease;-o-transition:all .3s ease;transition:all .3s ease;}
+.advBg ul li .liBox .imgBox:hover{filter:alpha(opacity=100);opacity:1;}
+.advBg ul li .liBox img{ width: 100%;}
+.advBg ul li .liBox h4{ font-size: 16px; color: #666; padding: 25px 0 10px; font-weight:normal}
+.advBg ul li .liBox p{line-height:22px; padding:0px 30px; font-size:14px; color:#888}
+.advBg .PostBox {overflow: visible;}
+
+.div2{width:1320px; padding:0 50px;margin:50px auto 0 auto; display:table;  }
+.div2 .left{width:408px; float:left; display:table; min-height:548px; padding:30px;box-shadow: 0px 0px 20px #00000030; border-radius:20px; border:2px #FFF solid; transition: all .3s ease;}
+.div2 .left:hover{border:2px #e4e4e4 solid;box-shadow: 0px 0px 20px #00000080;}
+.div2 .left .img{width:300px; height:250px; margin:0px auto 20px auto; display:block; overflow:hidden}
+.div2 .left .d1{color:#333;font-weight: 700; font-size:20px; padding-bottom:15px;letter-spacing:1px; text-align:center;}
+.div2 .left .d2{color:#666;font-weight: 400; font-size:16px;line-height:35px; height:180px; }
+.div2 .right{width:780px; float:right; display:table;}
+.div2 .right .w330{width:373px; float:left; display:table; min-height:198px; padding:20px 30px;box-shadow: 0px 0px 20px #00000030; border-radius:20px; border:2px #FFF solid; transition: all .3s ease;}
+.div2 .right .w330:hover{border:2px #e4e4e4 solid;box-shadow: 0px 0px 20px #00000080;}
+.div2 .right .w330 .img{width:200px; height:160px; display:block; overflow:hidden; margin-top:-15px;margin-left: 40px;}
+.div2 .right .w330 .d1{color:#333;font-weight: 700; font-size:20px; padding-bottom:15px;letter-spacing:1px; margin-left: 20px;}
+.div2 .right .w330 .d2{color:#666;font-weight: 400; font-size:14px;line-height: 30px; height:30px; margin-left: 20px;}
+.div2 .right .wbfb{width:780px; float:left; margin-top:30px; display:table; min-height:225px; padding:20px 30px;box-shadow: 0px 0px 20px #00000030; border-radius:20px; border:2px #FFF solid; transition: all .3s ease; background:url(../image/index_202310_1_div2_ic4.png) right bottom no-repeat;}
+.div2 .right .wbfb:hover{border:2px #e4e4e4 solid;box-shadow: 0px 0px 20px #00000080;}
+.div2 .right .wbfb .d1{color:#333;font-weight: 700; font-size:20px; padding-bottom:15px;letter-spacing:1px; }
+.div2 .right .wbfb .d2{color:#666;font-weight: 400; font-size:14px;line-height: 30px; height:30px; width:300px; }
+.div2 .zxzx{width:160px; height:45px;line-height:45px;text-align:center;font-size:16px;font-weight: 700;background:#7772f2;border-radius:10px; margin:20px auto 0 auto;transition: all .4s ease-in-out;}
+.div2 .zxzx a{color:#fff;display:block}
+.div2 .zxzx:hover{box-shadow: 0px 0px 20px #7772f2;}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .div2 {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .div2 .left, .div2 .right {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    .div2 .left .img, .div2 .right .w330 .img {
+        width: 100%;
+        height: auto;
+    }
+
+    .div2 .right .w330, .div2 .right .wbfb {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    .div2 .zxzx {
+        width: 120px;
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .div2 .left .d1, .div2 .right .w330 .d1 {
+        font-size: 18px;
+    }
+
+    .div2 .left .d2, .div2 .right .w330 .d2 {
+        font-size: 14px;
+    }
+
+    .div2 .zxzx {
+        width: 100px;
+        font-size: 14px;
+        height: 35px;
+        line-height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .div2 .left .d1, .div2 .right .w330 .d1 {
+        font-size: 16px;
+    }
+
+    .div2 .left .d2, .div2 .right .w330 .d2 {
+        font-size: 12px;
+    }
+
+    .div2 .zxzx {
+        width: 80px;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+/* 图片展示区 */
+.image-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px; /* 图片之间的间隔 */
+    padding: 10px 0;
+    scroll-behavior: smooth; /* 平滑滚动效果 */
+    -ms-overflow-style: none;  /* 隐藏IE的滚动条 */
+    scrollbar-width: none; /* 隐藏Firefox的滚动条 */
+}
+
+/* 隐藏滚动条 */
+.image-gallery::-webkit-scrollbar {
+    display: none; /* 在Webkit浏览器中隐藏滚动条 */
+}
+
+.image-item {
+    flex-shrink: 0; /* 防止图片压缩 */
+    width: auto; /* 每张图片的固定宽度 */
+    height: 300px; /* 图片的高度 */
+    border-radius: 10px; /* 圆角效果 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 图片的阴影效果 */
+    overflow: hidden;
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证图片不变形，填充整个区域 */
+    border-radius: 10px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .image-gallery {
+        justify-content: flex-start; /* 居左对齐 */
+    }
+
+    .image-item {
+        width: 180px; /* 移动端上每张图片的宽度调整 */
+        height: 120px; /* 移动端上的高度调整 */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-gallery {
+        justify-content: flex-start;
+    }
+
+    .image-item {
+        width: 150px; /* 更小的屏幕上调整宽度 */
+        height: 100px; /* 更小的屏幕上调整高度 */
+    }
+}

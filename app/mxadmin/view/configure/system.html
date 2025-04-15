@@ -1,0 +1,62 @@
+<div class="layui-tab-item layui-show">
+    <!-- 表单开始 -->
+    <form class="layui-form" id="systemForm" lay-filter="systemForm">
+        <input type="hidden" name="typename" value="system">
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站LOGO</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input name="logo" value="{$sysconf.logo|default=''}" class="layui-input" placeholder="请选择图片"/>
+                <button type="button" class="layui-btn layui-btn-normal imageMore"><i class="layui-icon">&#xe681;</i>上传图片</button>
+                {notempty name="sysconf.logo"}<a href="{$sysconf.logo}" target="_blank"><img src="{$sysconf.logo}" height="38"></a>{/notempty}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站名称</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input name="webname" placeholder="请输入网站名称" value="{$sysconf.webname|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站域名</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input name="domain" placeholder="请输入网站域名" value="{$sysconf.domain|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站首页标题</label>
+            <div class="layui-input-block" style="width: 600px;">
+                <input name="title" placeholder="请输入网站首页标题" value="{$sysconf.title|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">META关键词</label>
+            <div class="layui-input-block" style="width: 600px;">
+                <textarea name="keywords" placeholder="多个关键词用英文状态 , 号分割" class="layui-textarea">{$sysconf.keywords|default=''}</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">META描述</label>
+            <div class="layui-input-block" style="width: 600px;">
+                <textarea name="description" placeholder="请输入网站描述" class="layui-textarea">{$sysconf.description|default=''}</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公网安备号</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input name="beian" placeholder="请输入公网安备号" value="{$sysconf.beian|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网站备案号</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input name="miitbeian" placeholder="请输入网站备案号" value="{$sysconf.miitbeian|default=''}" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-filter="systemSubmit" lay-submit>&emsp;保存配置&emsp;</button>
+            </div>
+        </div>
+    </form>
+    <!-- //表单结束 -->
+</div>

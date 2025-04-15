@@ -1,0 +1,276 @@
+{extend name="base" /}
+
+{block name="title"}系统首页{/block}
+{block name="body"}
+<link rel="stylesheet" href="/template/tmp/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="/template/tmp/css/public.css" media="all">
+<style>
+    .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
+    .icon {margin-right:10px;color:#1aa094;}
+    .icon-cray {color:#ffb800!important;}
+    .icon-blue {color:#1e9fff!important;}
+    .icon-tip {color:#ff5722!important;}
+    .layuimini-qiuck-module {text-align:center;margin-top: 10px}
+    .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
+    .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
+    .welcome-module {width:100%;height:210px;}
+    .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+    .panel-body {padding:10px}
+    .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
+    .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;margin-top: .3em;}
+    .layui-red {color:red}
+    .main_btn > p {height:40px;}
+    .layui-bg-number {background-color:#F8F8F8;}
+    .layuimini-notice:hover {background:#f6f6f6;}
+    .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+    .layuimini-notice-title,.layuimini-notice-label {
+        padding-right: 70px !important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;}
+    .layuimini-notice-title {line-height:28px;font-size:14px;}
+    .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
+</style>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>数据统计</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-blue">实时</span>
+                                                        <h5>注册用户</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">{$tongji.user}</h1>
+                                                        <small>当前用户总数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-cyan">实时</span>
+                                                        <h5>公有云账户</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">{$tongji.cloud}</h1>
+                                                        <small>当前云账户总数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-orange">实时</span>
+                                                        <h5>服务器数</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">{$tongji.stand}</h1>
+                                                        <small>当前服务器总数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>当月新开</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-blue">实时</span>
+                                                        <h5>注册用户</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">{$tongji.monthUser}</h1>
+                                                        <small>当月新用户数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-cyan">实时</span>
+                                                        <h5>公有云账户</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">{$tongji.monthCloud}</h1>
+                                                        <small>当月云账户总数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-orange">实时</span>
+                                                        <h5>服务器数</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">{$tongji.monthStand}</h1>
+                                                        <small>当前月服务器总数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>未处理订单</div>
+                            <div class="layui-card-body">
+                                <table class="layui-table">
+                                    <thead>
+                                        <tr>
+                                            <th>订单标题</th>
+                                            <th>金额</th>
+                                            <th>付款时间</th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody>
+                                        {volist name='order' id='vo'}
+                                        <tr>
+                                            <td>{$vo.title}</td>
+                                            <td>{$vo.num}</td>
+                                            <td>{$vo.paytime|date='Y-m-d H:i:s'}</td>
+                                        </tr>
+                                        {/volist}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>到期服务器</div>
+                            <div class="layui-card-body">
+                                <table class="layui-table">
+                                    <thead>
+                                        <tr>
+                                            <th>服务器</th>
+                                            <th>到期时间</th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody>
+                                        {volist name='stand' id='vo'}
+                                        <tr>
+                                            <td>{$vo.content|substr=0,20}</td>
+                                            <td>{$vo.endtime|date='Y-m-d'}</td>
+                                        </tr>
+                                        {/volist}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
+                    <div class="layui-card-body layui-text">
+                        {volist name='notice' id="vo"}
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">{$vo.title}</div>
+                            <div class="layuimini-notice-extra">{$vo.addtime|date='Y-m-d H:i:s'}</div>
+                        </div>
+                        {/volist}
+                    </div>
+                </div>
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统文章</div>
+                    <div class="layui-card-body layui-text">
+                        {volist name='article' id="vo"}
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">{$vo.title}</div>
+                            <div class="layuimini-notice-extra">{$vo.addtime|date='Y-m-d H:i:s'}</div>
+                        </div>
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    layui.use(['layer','table','admin','element','index'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer;
+        var table = layui.table;
+        var admin = layui.admin;
+        var element = layui.element;
+        var index = layui.index;
+
+        $('#needTable').on('click', '.need', function () {
+            var url = $(this).attr('lay-href');
+            var title = $(this).attr('data-title');
+            if (top.layui.index) {
+                layer.open({
+                    type: 2,
+                    content: url,
+                    area: ['100%', '100%'],
+                    maxmin: true
+                })
+            }
+        });
+
+        /**
+         * 查看公告信息
+         **/
+        $('body').on('click', '.layuimini-notice', function () {
+            var title = $(this).children('.layuimini-notice-title').text(),
+                noticeTime = $(this).children('.layuimini-notice-extra').text(),
+                content = $(this).children('.layuimini-notice-content').html();
+            var html = '<div style="padding:15px 20px; text-align:justify; line-height: 22px;border-bottom:1px solid #e2e2e2;background-color: #2f4056;color: #ffffff">\n' +
+                '<div style="text-align: center;margin-bottom: 20px;font-weight: bold;border-bottom:1px solid #718fb5;padding-bottom: 5px"><h4 class="text-danger">' + title + '</h4></div>\n' +
+                '<div style="font-size: 12px">' + content + '</div>\n' +
+                '</div>\n';
+            parent.layer.open({
+                type: 1,
+                title: '系统公告'+'<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">'+noticeTime+'</span>',
+                area: '300px;',
+                shade: 0.8,
+                id: 'layuimini-notice',
+                btn: ['关闭'],
+                btnAlign: 'c',
+                moveType: 1,
+                content:html,
+                success: function (layero) {
+                    var btn = layero.find('.layui-layer-btn');
+                }
+            });
+        });
+    });
+
+    /*function notify(param) {
+        $.notifySetup({sound: '/home/notify/audio/'+param+'.mp3'});
+        $('.notify').notify('success');
+    }*/
+</script>
+{/block}
