@@ -1,50 +1,50 @@
 {extend name="base" /}
 
-{block name="title"}用户管理{/block}
+{block name="title"}帳戶管理{/block}
 
 {block name="body"}
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 表格工具栏 -->
+            <!-- 表格工具欄 -->
             <form class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">账&emsp;号</label>
+                        <label class="layui-form-label">帳&emsp;號</label>
                         <div class="layui-input-inline">
-                            <input name="username" class="layui-input" placeholder="输入账号关键词"/>
+                            <input name="username" class="layui-input" placeholder="輸入帳號關鍵詞"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">昵&emsp;称</label>
+                        <label class="layui-form-label">昵&emsp;稱</label>
                         <div class="layui-input-inline">
-                            <input name="nickname" class="layui-input" placeholder="输入昵称关键词"/>
+                            <input name="nickname" class="layui-input" placeholder="輸入昵稱關鍵詞"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">创建时间</label>
+                        <label class="layui-form-label">創建時間</label>
                         <div class="layui-input-inline">
-                            <input name="createDateSel" class="layui-input icon-date" placeholder="选择日期范围" autocomplete="off"/>
+                            <input name="createDateSel" class="layui-input icon-date" placeholder="選擇日期範圍" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">状&emsp;态</label>
+                        <label class="layui-form-label">狀&emsp;態</label>
                         <div class="layui-input-inline">
                             <select name="status">
                                 <option value="">--- 全部 ---</option>
-                                <option value="1">启用</option>
+                                <option value="1">啟用</option>
                                 <option value="0">禁用</option>
                             </select>
                         </div>
                     </div>
                     <div class="layui-inline">&emsp;
                         <button class="layui-btn icon-btn" lay-filter="userTbSearch" lay-submit>
-                            <i class="layui-icon">&#xe615;</i>搜索
+                            <i class="layui-icon">&#xe615;</i>搜尋
                         </button>
                     </div>
                 </div>
             </form>
-            <!-- 数据表格 -->
+            <!-- 數據表格 -->
             <table id="userTable" lay-filter="userTable"></table>
         </div>
     </div>
@@ -53,44 +53,44 @@
 <!-- 表格操作列 -->
 <script type="text/html" id="userTbBar">
     <a class="layui-btn layui-btn-xs {{(d.id != {$admin_id} && d.is_admin == 1)?'layui-btn-disabled':''}}" {{(d.id != {$admin_id} && d.is_admin == 1)?'':'lay-event="edit"'}}>修改</a>
-    <a class="layui-btn layui-btn-xs layui-btn-danger {{(d.id == {$admin_id} || d.is_admin == 1)?'layui-btn-disabled':''}}" {{(d.id == {$admin_id} || d.is_admin == 1)?'':'lay-event="del"'}}>删除</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger {{(d.id == {$admin_id} || d.is_admin == 1)?'layui-btn-disabled':''}}" {{(d.id == {$admin_id} || d.is_admin == 1)?'':'lay-event="del"'}}>刪除</a>
 </script>
-<!-- 表格状态列 -->
+<!-- 表格狀態列 -->
 <script type="text/html" id="userTbState">
-    <input type="checkbox" lay-filter="userTbStateCk" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" {{d.status==1?'checked':''}} style="display: none;"/>
-    <p style="display: none;">{{d.status==1?'启用':'禁用'}}</p>
+    <input type="checkbox" lay-filter="userTbStateCk" value="{{d.id}}" lay-skin="switch" lay-text="啟用|禁用" {{d.status==1?'checked':''}} style="display: none;"/>
+    <p style="display: none;">{{d.status==1?'啟用':'禁用'}}</p>
 </script>
 
-<!-- 表单弹窗 -->
+<!-- 表單彈窗 -->
 <script type="text/html" id="userEditDialog">
     <form id="userEditForm" lay-filter="userEditForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
         <div class="layui-form-item">
-            <label class="layui-form-label layui-form-required">登录账号</label>
+            <label class="layui-form-label layui-form-required">登錄帳號</label>
             <div class="layui-input-block">
-                <input name="username" class="layui-input" placeholder="请输入登录账号" minlength="2" maxlength="20" lay-verType="tips" lay-verify="required|h5" required/>
+                <input name="username" class="layui-input" placeholder="請輸入登錄帳號" minlength="2" maxlength="20" lay-verType="tips" lay-verify="required|h5" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label layui-form-required">账号昵称</label>
+            <label class="layui-form-label layui-form-required">帳號昵稱</label>
             <div class="layui-input-block">
-                <input name="nickname" class="layui-input" placeholder="请输入账号昵称" minlength="2" maxlength="20" lay-verType="tips" lay-verify="required|h5" required/>
+                <input name="nickname" class="layui-input" placeholder="請輸入帳號昵稱" minlength="2" maxlength="20" lay-verType="tips" lay-verify="required|h5" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label layui-form-required">新 密 码</label>
+            <label class="layui-form-label layui-form-required">新 密 碼</label>
             <div class="layui-input-block">
-                <input type="password" name="newpassword" placeholder="请输入新密码" class="layui-input" lay-verType="tips" lay-verify="required" required/>
+                <input type="password" name="newpassword" placeholder="請輸入新密碼" class="layui-input" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label layui-form-required">确认密码</label>
+            <label class="layui-form-label layui-form-required">確認密碼</label>
             <div class="layui-input-block">
-                <input type="password" name="repassword" placeholder="请再次输入新密码" class="layui-input" lay-verType="tips" lay-verify="required|equalTo" lay-equalTo="input[name=newpassword]" lay-equalToText="两次输入密码不一致" required/>
+                <input type="password" name="repassword" placeholder="請再次輸入新密碼" class="layui-input" lay-verType="tips" lay-verify="required|equalTo" lay-equalTo="input[name=newpassword]" lay-equalToText="兩次輸入密碼不一致" required/>
             </div>
         </div>
         <div class="layui-form-item" id="roleName">
-            <label class="layui-form-label layui-form-required">所属角色</label>
+            <label class="layui-form-label layui-form-required">所屬角色</label>
             <div class="layui-input-block">
                 <div id="userEditRoleSel"></div>
             </div>
@@ -121,19 +121,19 @@
             page: {limit: 15},
             limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
             toolbar: ['<p>',
-                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量删除</button>',
-                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加账号</button>&nbsp;',
+                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量刪除</button>',
+                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加帳號</button>&nbsp;',
                 '</p>'].join(''),
             cellMinWidth: 100,
             cols: [[
                 {type: 'checkbox'},
-                {field: 'id', title: '用户ID', align: 'center', sort: true, width: 90},
-                {field: 'username', title: '账号', align: 'center', sort: true},
-                {field: 'nickname', title: '昵称', align: 'center', sort: true},
+                {field: 'id', title: '用戶ID', align: 'center', sort: true, width: 90},
+                {field: 'username', title: '帳號', align: 'center', sort: true},
+                {field: 'nickname', title: '昵稱', align: 'center', sort: true},
                 {
-                    field: 'roleName', title: '所属角色', align: 'center', templet: function (d) {
+                    field: 'roleName', title: '所屬角色', align: 'center', templet: function (d) {
                         if(d.is_admin == 1){
-                            return '<span class="layui-badge layui-badge-red">超级管理员</span>';
+                            return '<span class="layui-badge layui-badge-red">超級管理員</span>';
                         }else{
                             return d.roles.map(function (item) {
                                 return '<span class="layui-badge layui-badge-green">' + item.title + '</span>';
@@ -141,23 +141,23 @@
                         }
                     }
                 },
-                {field: 'last_login_time', title: '上次登录时间', align: 'center', sort: true},
-                {field: 'login_time', title: '登录时间', align: 'center', sort: true},
-                {field: 'create_time', title: '创建时间', align: 'center', sort: true},
-                {field: 'status', title: '状态', templet: '#userTbState', align: 'center', sort: true, width: 100},
+                {field: 'last_login_time', title: '上次登錄時間', align: 'center', sort: true},
+                {field: 'login_time', title: '登錄時間', align: 'center', sort: true},
+                {field: 'create_time', title: '創建時間', align: 'center', sort: true},
+                {field: 'status', title: '狀態', templet: '#userTbState', align: 'center', sort: true, width: 100},
                 {title: '操作', toolbar: '#userTbBar', align: 'center', minWidth: 180}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的數據
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析數據長度
+                    "data": res.data.data //解析數據列表
                 };
             },
         });
 
-        /* 渲染时间选择 */
+        /* 渲染時間選擇 */
         laydate.render({
             elem: 'input[name="createDateSel"]',
             type: 'date',
@@ -165,7 +165,7 @@
             trigger: 'click'
         });
 
-        /* 表格搜索 */
+        /* 表格搜尋 */
         form.on('submit(userTbSearch)', function (data) {
             if (data.field.createDateSel) {
                 var searchDate = data.field.createDateSel.split(' - ');
@@ -180,44 +180,44 @@
             return false;
         });
 
-        /* 表格操作列点击事件 */
+        /* 表格操作列點擊事件 */
         table.on('tool(userTable)', function (obj) {
             if (obj.event === 'edit') { // 修改
                 showEditModel(obj.data);
-            } else if (obj.event === 'del') { // 删除
-                doDel(obj,'您确定要删除“' + obj.data.username + '”的账号吗？');
+            } else if (obj.event === 'del') { // 刪除
+                doDel(obj,'您確定要刪除“' + obj.data.username + '”的帳號嗎？');
             }
         });
 
-        /* 表格头工具栏点击事件 */
+        /* 表格頭工具欄點擊事件 */
         table.on('toolbar(userTable)', function (obj) {
             if (obj.event === 'add') { // 添加
                 showEditModel();
-            } else if (obj.event === 'del') { // 删除
+            } else if (obj.event === 'del') { // 刪除
                 var checkRows = table.checkStatus('userTable');
                 if (checkRows.data.length === 0) {
-                    layer.msg('请选择要删除的账号', {icon: 5, anim: 6});
+                    layer.msg('請選擇要刪除的帳號', {icon: 5, anim: 6});
                     return;
                 }
                 var ids = checkRows.data.map(function (d) {
                     return d.id;
                 });
-                doDel({ids: ids},'您确定要删除选中的这些账号吗？');
+                doDel({ids: ids},'您確定要刪除選中的這些帳號嗎？');
             }
         });
 
-        /* 显示表单弹窗 */
+        /* 顯示表單彈窗 */
         function showEditModel(mData) {
             admin.open({
                 type: 1,
-                title: (mData ? '修改' : '添加') + '账号',
+                title: (mData ? '修改' : '添加') + '帳號',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#userEditDialog').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('userEditForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(userEditSubmit)', function (data) {
                         data.field.role_id = insRoleSel.getValue('valueStr');
                         var loadIndex = layer.load(2);
@@ -233,7 +233,7 @@
                         }, 'json');
                         return false;
                     });
-                    // 渲染多选下拉框
+                    // 渲染多選下拉框
                     var insRoleSel = xmSelect.render({
                         el: '#userEditRoleSel',
                         name: 'userEditRoleSel',
@@ -245,31 +245,31 @@
                         },
                         data: {:json_encode($rolelist)}
                     });
-                    // 回显选中角色
+                    // 回顯選中角色
                     if (mData && mData.roles) {
                         insRoleSel.setValue(mData.roles.map(function (item) {
                             return item.group_id;
                         }));
                     }
-                    // 编辑文本框状态
+                    // 編輯文本框狀態
                     if (mData) {
                         $(layero).find('[name="username"]').attr('disabled','disabled').addClass("layui-bg-gray");
                         $(layero).find('[name="newpassword"]').removeAttr('lay-verType lay-verify required');
-                        $(layero).find('[name="newpassword"]').attr('placeholder','若不修改密码，请留空');
+                        $(layero).find('[name="newpassword"]').attr('placeholder','若不修改密碼，請留空');
                         $(layero).find('[name="repassword"]').attr('lay-verify','equalTo');
                         $(layero).find('[name="repassword"]').removeAttr('required');
                         if (mData.is_admin === 1) {$(layero).find('#roleName').remove();}
                     }
-                    // 禁止弹窗出现滚动条
+                    // 禁止彈窗出現滾動條
                     $(layero).children('.layui-layer-content').css('overflow', 'visible');
                 }
             });
         }
 
-        /* 删除 */
+        /* 刪除 */
         function doDel(obj,txt) {
             layer.confirm(txt, {
-                title: '删除账号',
+                title: '刪除帳號',
                 skin: 'layui-layer-admin',
                 shade: 0.5,
                 //shadeClose: true,
@@ -291,7 +291,7 @@
             });
         }
 
-        /* 修改用户状态 */
+        /* 修改用戶狀態 */
         form.on('switch(userTbStateCk)', function (obj) {
             var loadIndex = layer.load(2);
             $.post("{:url('mxadmin/admin/edit_state_same')}", {

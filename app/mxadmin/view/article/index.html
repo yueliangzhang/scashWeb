@@ -4,32 +4,32 @@
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 表格工具栏 -->
+            <!-- 表格工具欄 -->
             <form class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">标题</label>
+                        <label class="layui-form-label">標題</label>
                         <div class="layui-input-inline">
-                            <input name="title" class="layui-input" autocomplete="off" placeholder="请输入标题"/>
+                            <input name="title" class="layui-input" autocomplete="off" placeholder="請輸入標題"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">文章分类</label>
+                        <label class="layui-form-label">文章分類</label>
                         <div class="layui-input-inline">
                             <div id="classifyParentSel" class="mx-xmselect-tree"></div>
                         </div>
                     </div>
                     <div class="layui-inline">&emsp;
                         <button class="layui-btn icon-btn" lay-filter="roleTbSearch" lay-submit>
-                            <i class="layui-icon">&#xe615;</i>搜索
+                            <i class="layui-icon">&#xe615;</i>搜尋
                         </button>
                         <button class="layui-btn layui-btn-warm" lay-filter="roleTbExport" lay-submit>
-                            <i class="layui-icon">&#xe67d;</i>导出
+                            <i class="layui-icon">&#xe67d;</i>導出
                         </button>
                     </div>
                 </div>
             </form>
-            <!-- 数据表格 -->
+            <!-- 資料表格 -->
             <table id="roleTable" lay-filter="roleTable"></table>
         </div>
     </div>
@@ -38,12 +38,12 @@
 <!-- 表格操作列 -->
 <script type="text/html" id="roleTbBar">
     <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">刪除</a>
 </script>
-<!-- 表格状态列 -->
+<!-- 表格狀態列 -->
 <script type="text/html" id="userTbState">
-    <input type="checkbox" lay-filter="userTbStateCk" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" {{d.status==1?'checked':''}} style="display: none;"/>
-    <p style="display: none;">{{d.status==1?'启用':'禁用'}}</p>
+    <input type="checkbox" lay-filter="userTbStateCk" value="{{d.id}}" lay-skin="switch" lay-text="啟用|禁用" {{d.status==1?'checked':''}} style="display: none;"/>
+    <p style="display: none;">{{d.status==1?'啟用':'禁用'}}</p>
 </script>
 
 {/block}
@@ -65,40 +65,40 @@
             limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
             cellMinWidth: 100,
             toolbar: ['<p>',
-                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量删除</button>',
+                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量刪除</button>',
                 '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加文章</button>',
                 '</p>'].join(''),
             cols: [[
                 {type: 'checkbox'},
                 {field: 'id', title: 'ID', align: 'center', sort: true, width: 100},
-                {field: 'title', title: '标题', align: 'left'},
+                {field: 'title', title: '標題', align: 'left'},
                 {
-                    title: '分类', templet: function (d) {
+                    title: '分類', templet: function (d) {
                         return d.pclass + '->' + d.classname;
                     },align: 'left'
                 },
-                {field: 'clicks', title: '点击次数', align: 'left', sort: true},
-                {field: 'addtime', title: '添加时间', align: 'left'},
-                {field: 'status', title: '状态', templet: '#userTbState', align: 'center'},
+                {field: 'clicks', title: '點擊次數', align: 'left', sort: true},
+                {field: 'addtime', title: '添加時間', align: 'left'},
+                {field: 'status', title: '狀態', templet: '#userTbState', align: 'center'},
                 {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 280, fixed: 'right'}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的數據
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析數據長度
+                    "data": res.data.data //解析數據列表
                 };
             }
         });
 
-        /* 表格搜索 */
+        /* 表格搜尋 */
         form.on('submit(roleTbSearch)', function (data) {
-            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/article/search')}"});
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/article/search')}"}); 
             return false;
         });
 
-        /* 表格工具条点击事件 */
+        /* 表格工具條點擊事件 */
         table.on('tool(roleTable)', function (obj) {
             if (obj.event === 'del') {
                 doDel(obj);
@@ -107,12 +107,12 @@
             }
         });
 
-        /* 表格头工具栏点击事件 */
+        /* 表格頭工具條點擊事件 */
         table.on('toolbar(roleTable)', function (obj) {
-            if (obj.event === 'del') { // 删除
+            if (obj.event === 'del') { // 刪除
                 var checkRows = table.checkStatus('roleTable');
                 if (checkRows.data.length === 0) {
-                    layer.msg('请选择要删除的数据', {icon: 5, anim: 6});
+                    layer.msg('請選擇要刪除的數據', {icon: 5, anim: 6});
                     return;
                 }
                 var ids = checkRows.data.map(function (d) {
@@ -124,7 +124,7 @@
             }
         });
 
-        /* 修改启用状态 */
+        /* 修改啟用狀態 */
         form.on('switch(userTbStateCk)', function (obj) {
             var loadIndex = layer.load(2);
             $.post("{:url('mxadmin/article/edit_state_same')}", {
@@ -143,32 +143,32 @@
             }, 'json');
         });
 
-        /* 显示表单弹窗 */
+        /* 顯示表單彈窗 */
         function showEditModel(mData) {
             var layIndex = admin.open({
                 title: (mData ? '修改' : '添加') + '文章',
                 shade: 0.5,
                 //shadeClose: true,
                 url: "{:url('mxadmin/article/form')}",
-                data: {formdata: mData},     // 传递数据到表单页面
+                data: {formdata: mData},     // 傳遞數據到表單頁面
                 end: function () {
-                    if (admin.getLayerData(layIndex, 'formOk')) {  // 判断表单操作成功标识
+                    if (admin.getLayerData(layIndex, 'formOk')) {  // 判斷表單操作成功標識
                         insTb.reload();  // 成功刷新表格
                     }
                 },
                 success: function (layero, dIndex) {
-                    // 弹窗超出范围不出现滚动条
+                    // 彈窗超出範圍不出現滾動條
                     //$(layero).children('.layui-layer-content').css('overflow', 'visible');
                 }
             });
-            // 窗口打开即全屏
+            // 窗口打開即全屏
             layer.full(layIndex);
         }
 
-        /* 删除 */
+        /* 刪除 */
         function doDel(obj) {
-            layer.confirm('确定要删除选中的数据吗？', {
-                title: '删除数据',
+            layer.confirm('確定要刪除選中的數據嗎？', {
+                title: '刪除數據',
                 skin: 'layui-layer-admin',
                 shade: 0.5,
                 //shadeClose: true,
@@ -190,14 +190,14 @@
             });
         }
 
-        // 渲染下拉树
+        // 渲染下拉樹
         var insXmSel = xmSelect.render({
             el: '#classifyParentSel',
             //layVerify: 'required',
             layVerType: 'tips',
             height: '400px',
             initValue: [],
-            model: {label: {type: 'text'}},
+            model: {label: {type: 'text'}} ,
             prop: {
                 name: 'name',
                 value: 'id'
@@ -206,12 +206,12 @@
             clickClose: true,
             filterable: true,
             filterMethod: function(val, item, index, prop){
-                if(item.name.toLowerCase().indexOf(val.toLowerCase()) != -1){ //名称中包含的大小写都搜索出来
+                if(item.name.toLowerCase().indexOf(val.toLowerCase()) != -1){ //名稱中包含的大小寫都搜索出來
                     return true;
                 }
                 return false; //其他的就不要了
             },
-            searchTips: '请输入关键词进行搜索',
+            searchTips: '請輸入關鍵詞進行搜尋',
             tree: {
                 show: true,
                 indent: 15,
@@ -221,7 +221,7 @@
             data: {:json_encode($class)},
         });
 
-        /* 表格导出 */
+        /* 表格導出 */
         form.on('submit(roleTbExport)', function (data) {
             loading = layer.load(1, {shade: [0.3, '#fff']});
             var $ = layui.jquery;
@@ -232,13 +232,13 @@
                 success: function(res) {
                     layer.close(loading);
                     layer.msg(res.msg);
-                    // 假如返回的 res.data 是需要导出的列表数据
-                    // 1. 数组头部新增表头
-                    res.data.unshift({title: '文章标题',keywords:'关键词',intro:'文章介绍',url:'文章地址'});
-                    // 3. 执行导出函数，系统会弹出弹框
+                    // 假如返回的 res.data 是需要導出的列表數據
+                    // 1. 陣列頭部新增表頭
+                    res.data.unshift({title: '文章標題',keywords:'關鍵詞',intro:'文章介紹',url:'文章地址'});
+                    // 3. 執行導出函數，系統會彈出彈框
                     excel.exportExcel({
                         sheet1: res.data
-                    }, '上线文章.xlsx', 'xlsx');
+                    }, '上線文章.xlsx', 'xlsx');
                 },
                 error:function(res){
                     layer.close(loading);

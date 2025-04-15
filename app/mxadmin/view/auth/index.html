@@ -1,11 +1,11 @@
 {extend name="base" /}
 
-{block name="title"}规则管理{/block}
+{block name="title"}規則管理{/block}
 {block name="body"}
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 数据表格 -->
+            <!-- 數據表格 -->
             <table id="authTable"></table>
         </div>
     </div>
@@ -13,59 +13,59 @@
 
 <!-- 表格操作列 -->
 <script type="text/html" id="authTbBar">
-    <a class="layui-btn layui-btn-xs layui-btn-normal{{#if(d.ismenu != 0){}} layui-btn-disabled{{#}}}"{{#if(d.ismenu == 0){}} lay-event="addson"{{#}}}>添加子规则</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal{{#if(d.ismenu != 0){}} layui-btn-disabled{{#}}}"{{#if(d.ismenu == 0){}} lay-event="addson"{{#}}}>添加子規則</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-xs layui-btn-danger{{#if(d.children){}} layui-btn-disabled{{#}}}"{{#if(!d.children){}} lay-event="del"{{#}}}>删除</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger{{#if(d.children){}} layui-btn-disabled{{#}}}"{{#if(!d.children){}} lay-event="del"{{#}}}>刪除</a>
 </script>
-<!-- 表单弹窗 -->
+<!-- 表單彈窗 -->
 <script type="text/html" id="authEditDialog">
     <form id="authEditForm" lay-filter="authEditForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
         <div class="layui-form-item">
-            <label class="layui-form-label">上级规则</label>
+            <label class="layui-form-label">上級規則</label>
             <div class="layui-input-block">
                 <div id="authEditParentSel" class="mx-xmselect-tree"></div>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label layui-form-required">规则名称</label>
+            <label class="layui-form-label layui-form-required">規則名稱</label>
             <div class="layui-input-block">
-                <input name="title" placeholder="请输入规则名称" class="layui-input" lay-verType="tips" lay-verify="required" required/>
+                <input name="title" placeholder="請輸入規則名稱" class="layui-input" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">规则类型</label>
+            <label class="layui-form-label">規則類型</label>
             <div class="layui-input-block">
-                <input name="ismenu" type="radio" value="0" title="链接" checked/>
-                <input name="ismenu" type="radio" value="1" title="按钮"/>
+                <input name="ismenu" type="radio" value="0" title="鏈接" checked/>
+                <input name="ismenu" type="radio" value="1" title="按鈕"/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">规则URL</label>
+            <label class="layui-form-label">規則URL</label>
             <div class="layui-input-block">
-                <input name="name" placeholder="请输入规则URL" class="layui-input"/>
+                <input name="name" placeholder="請輸入規則URL" class="layui-input"/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">菜单图标</label>
+            <label class="layui-form-label">菜單圖標</label>
             <div class="layui-input-inline">
-                <input name="icon" placeholder="请输入或选择图标" class="layui-input">
+                <input name="icon" placeholder="請輸入或選擇圖標" class="layui-input">
             </div>
             <div class="layui-input-inline" style="width: auto;">
                 <span style="padding:0 12px;min-width:45px" class='layui-btn layui-btn-primary'>
                     <i style="font-size:1.2em;margin:0" class="" id="iconImg"></i>
                 </span>
-                <a class="layui-btn layui-btn-normal" id="ChooseIconBtn">选择图标</a>
+                <a class="layui-btn layui-btn-normal" id="ChooseIconBtn">選擇圖標</a>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">排序权重</label>
+            <label class="layui-form-label">排序權重</label>
             <div class="layui-input-block">
-                <input name="weight" placeholder="请输入排序权重" type="number" class="layui-input" lay-verType="tips" lay-verify="number" value="50"/>
+                <input name="weight" placeholder="請輸入排序權重" type="number" class="layui-input" lay-verType="tips" lay-verify="number" value="50"/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">导航菜单</label>
+            <label class="layui-form-label">導航菜單</label>
             <div class="layui-input-block">
                 <input name="isnav" type="radio" value="1" title="是"/>
                 <input name="isnav" type="radio" value="0" title="否" checked/>
@@ -94,9 +94,9 @@
             elem: '#authTable',
             url: "{:url('mxadmin/auth/datalist')}",
             toolbar: ['<p>',
-                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加规则</button>&nbsp;',
-                '<button lay-event="FoldAll" class="layui-btn layui-btn-sm layui-btn-warm icon-btn"><i class="layui-icon">&#xe602;</i>折叠全部</button>&nbsp;',
-                '<button lay-event="ExpandAll" class="layui-btn layui-btn-sm layui-btn-warm icon-btn"><i class="layui-icon">&#xe61a;</i>展开全部</button>&nbsp;',
+                '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加規則</button>&nbsp;',
+                '<button lay-event="FoldAll" class="layui-btn layui-btn-sm layui-btn-warm icon-btn"><i class="layui-icon">&#xe602;</i>折疊全部</button>&nbsp;',
+                '<button lay-event="ExpandAll" class="layui-btn layui-btn-sm layui-btn-warm icon-btn"><i class="layui-icon">&#xe61a;</i>展開全部</button>&nbsp;',
                 '</p>'].join(''),
             tree: {
                 arrowType: 'arrow2',
@@ -107,61 +107,59 @@
                 isPidData: true
             },
             cols: [[
-                {field: 'id', title: '规则ID', align: 'center', width: 20},
-                {field: 'title', title: '规则名称', minWidth: 130},
-                {field: 'name', title: '规则URL'},
-                {field: 'weight', title: '排序权重', align: 'center', width: 20, edit: 'text'},
-                {title: '菜单图标', templet: '<p><i class="{{d.icon}}"></i></p>', align: 'center', width: 20},
+                {field: 'id', title: '規則ID', align: 'center', width: 20},
+                {field: 'title', title: '規則名稱', minWidth: 130},
+                {field: 'name', title: '規則URL'},
+                {field: 'weight', title: '排序權重', align: 'center', width: 20, edit: 'text'},
+                {title: '菜單圖標', templet: '<p><i class="{{d.icon}}"></i></p>', align: 'center', width: 20},
                 {
-                    title: '规则类型', templet: function (d) {
+                    title: '規則類型', templet: function (d) {
                         return [
-                            '<span class="layui-badge layui-badge-blue">链接</span>',
-                            '<span class="layui-badge layui-badge-gray">按钮</span>'
+                            '<span class="layui-badge layui-badge-blue">鏈接</span>',
+                            '<span class="layui-badge layui-badge-gray">按鈕</span>'
                         ][d.ismenu];
                     }, align: 'center', width: 20
                 },
                 {
-                    title: '导航菜单', templet: function (d) {
+                    title: '導航菜單', templet: function (d) {
                         return [
                             '<span class="layui-badge layui-badge-red">否</span>',
                             '<span class="layui-badge layui-badge-green">是</span>'
                         ][d.isnav];
                     }, align: 'center', width: 20
                 },
-                {field: 'create_time', title: '创建时间', align: 'center'},
-                {field: 'update_time', title: '更新时间', align: 'center'},
+                {field: 'create_time', title: '創建時間', align: 'center'},
+                {field: 'update_time', title: '更新時間', align: 'center'},
                 {title: '操作', toolbar: '#authTbBar', align: 'center', minWidth: 130}
             ]],
         });
 
-        /* 表格操作列点击事件 */
+        /* 表格操作列點擊事件 */
         treeTable.on('tool(authTable)', function (obj) {
-            if (obj.event === 'addson') { // 添加子菜单
+            if (obj.event === 'addson') { // 添加子菜單
                 showEditModel(obj.data, 'son');
             } else if (obj.event === 'edit') { // 修改
                 showEditModel(obj.data);
-            } else if (obj.event === 'del') { // 删除
+            } else if (obj.event === 'del') { // 刪除
                 doDel(obj);
             }
         });
 
-        /* 表格头工具栏点击事件 */
+        /* 表格頭工具欄點擊事件 */
         treeTable.on('toolbar(authTable)', function (obj) {
             if (obj.event === 'add') { // 添加
                 showEditModel();
-            } else if (obj.event === 'FoldAll') { // 折叠全部
-                //insTb.foldAll();
+            } else if (obj.event === 'FoldAll') { // 折疊全部
                 doFold(0);
-            } else if (obj.event === 'ExpandAll') { // 展开全部
-                //insTb.expandAll();
+            } else if (obj.event === 'ExpandAll') { // 展開全部
                 doFold(1);
             }
         });
 
-        /* 监听单元格编辑 */
+        /* 監聽單元格編輯 */
         treeTable.on('edit(authTable)', function(obj){
             if(isNaN(obj.value)){
-                layer.msg('只能输入数字！', {icon: 5, anim: 6});
+                layer.msg('只能輸入數字！', {icon: 5, anim: 6});
                 return false;
             }
             var loadIndex = layer.load(2);
@@ -179,22 +177,20 @@
             }, 'json');
         });
 
-        /* 显示表单弹窗 */
+        /* 顯示表單彈窗 */
         function showEditModel(mData, btnType) {
             admin.open({
                 type: 1,
                 area: '510px',
-                title: (btnType ? '添加子' : mData ? '修改' : '添加') + '规则',
+                title: (btnType ? '添加子' : mData ? '修改' : '添加') + '規則',
                 shade: 0.5,
-                //shadeClose: true,
                 content: $('#authEditDialog').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('authEditForm', btnType ? '' : mData);
                     if(mData && !btnType){
                         $(layero).find('[id="iconImg"]').attr('class',mData.icon);
                     }
-                    // 表单提交事件
                     form.on('submit(authEditSubmit)', function (data) {
                         data.field.pid = insXmSel.getValue('valueStr');
                         var loadIndex = layer.load(2);
@@ -210,21 +206,18 @@
                         }, 'json');
                         return false;
                     });
-                    // 这个是treeTable提供的遍历数据的方法
                     insTb.eachData(function(i,item){
-                        if (item.ismenu == 1) item.disabled = true;  // 如果是按钮设置不可选
+                        if (item.ismenu == 1) item.disabled = true;
                     });
                     if (mData) {
                         insTb.refresh();
-                        // 这个是treeTable提供的遍历数据的方法
                         insTb.eachData(function(i,item){
-                            if (item.id == mData.id) item.disabled = true;  // 自身菜单不可选
+                            if (item.id == mData.id) item.disabled = true;
                         });
                     }
-                    // 渲染下拉树
                     var insXmSel = xmSelect.render({
                         el: '#authEditParentSel',
-                        tips: '顶级规则',
+                        tips: '頂級規則',
                         height: '250px',
                         data: insTb.options.data,
                         initValue: btnType ? [mData.id] : mData ? [mData.pid] : [],
@@ -235,8 +228,6 @@
                         },
                         radio: true,
                         clickClose: true,
-                        //filterable: true,
-                        //searchTips: '请输入关键词进行搜索',
                         tree: {
                             show: true,
                             indent: 15,
@@ -245,9 +236,7 @@
                         },
                         disabled: btnType ? true : false,
                     });
-                    // 弹窗不出现滚动条
                     $(layero).children('.layui-layer-content').css('overflow', 'visible');
-
                     $('#ChooseIconBtn').click(function () {
                         showIconModel();
                     });
@@ -255,13 +244,12 @@
             });
         }
 
-        /* 删除 */
+        /* 刪除 */
         function doDel(obj) {
-            layer.confirm('确定要删除“' + obj.data.title + '”的规则吗？', {
-                title: '删除规则',
+            layer.confirm('確定要刪除“' + obj.data.title + '”的規則嗎？', {
+                title: '刪除規則',
                 skin: 'layui-layer-admin',
                 shade: 0.5,
-                //shadeClose: true,
             }, function (i) {
                 layer.close(i);
                 var loadIndex = layer.load(2);
@@ -277,12 +265,11 @@
             });
         }
 
-        /* 图标选择 */
+        /* 圖標選擇 */
         function showIconModel() {
             var layIndex = admin.open({
-                title: '图标选择',
+                title: '圖標選擇',
                 shade: 0.5,
-                //shadeClose: true,
                 area: ['750px', '500px'],
                 url: "{:url('mxadmin/auth/icon')}",
                 end: function () {
@@ -295,14 +282,14 @@
             });
         }
 
-        /* 折叠/展开 */
+        /* 折疊/展開 */
         function doFold(type) {
             $.post("{:url('mxadmin/auth/datalist_open_same')}", {type: type}, function (res) {
                 if (type === 0) {
-                    layer.msg('已全部折叠');
+                    layer.msg('已全部折疊');
                     insTb.refresh();
                 } else {
-                    layer.msg('已全部展开');
+                    layer.msg('已全部展開');
                     insTb.refresh();
                 }
             }, 'json');
