@@ -11,7 +11,7 @@ use app\common\model\Article;
 
 class Cloud extends HomeBase
 {
-	//首页
+	//首頁
 	public function index($limit = 32)
 	{
 		$child = Category::where('pid', 80)->column('id');

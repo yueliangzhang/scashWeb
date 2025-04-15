@@ -1,37 +1,37 @@
 {extend name="base" /}
-{block name="title"}申诉退款{/block}
+{block name="title"}申訴退款{/block}
 {block name="body"}
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 表格工具栏 -->
+            <!-- 表格工具欄 -->
             <form class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">退款单号</label>
+                        <label class="layui-form-label">退款單號</label>
                         <div class="layui-input-inline">
-                            <input name="trade_no" class="layui-input" autocomplete="off" placeholder="输入订单号"/>
+                            <input name="trade_no" class="layui-input" autocomplete="off" placeholder="輸入訂單號"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">退款状态</label>
+                        <label class="layui-form-label">退款狀態</label>
                         <div class="layui-input-inline">
                             <select name="status">
                                 <option value="">--- 全部 ---</option>
-                                <option value="1">待审核</option>
+                                <option value="1">待審核</option>
                                 <option value="2">成功</option>
-                                <option value="3">失败</option>
+                                <option value="3">失敗</option>
                             </select>
                         </div>
                     </div>
                     <div class="layui-inline">&emsp;
                         <button class="layui-btn icon-btn" lay-filter="roleTbSearch" lay-submit>
-                            <i class="layui-icon">&#xe615;</i>搜索
+                            <i class="layui-icon">&#xe615;</i>搜尋
                         </button>
                     </div>
                 </div>
             </form>
-            <!-- 数据表格 -->
+            <!-- 數據表格 -->
             <table id="roleTable" lay-filter="roleTable"></table>
         </div>
     </div>
@@ -66,57 +66,57 @@
             cols: [[
                 {type: 'checkbox'},
                 {
-                    title: '退款类型', templet: function(d) {
+                    title: '退款類型', templet: function(d) {
                         return [
-                            '支付宝',
+                            '支付寶',
                             'trc20'
                         ][d.type];
                     }, align: 'left'
                 },
-                {field: 'trade_no', title: '订单号', align: 'left'},
+                {field: 'trade_no', title: '訂單號', align: 'left'},
                 {field: 'address', title: '退款地址', align: 'left'},
-                {field: 'num', title: '退款金额', align: 'left'},
-                {field: 'usd', title: '美金数量', align: 'left'},
-                {field: 'addtime', title: '申请时间', align: 'left'},
-                {field: 'endtime', title: '完成时间', align: 'left'},
-                {field: 'reson', title: '失败原因', align: 'left'},
+                {field: 'num', title: '退款金額', align: 'left'},
+                {field: 'usd', title: '美金數量', align: 'left'},
+                {field: 'addtime', title: '申請時間', align: 'left'},
+                {field: 'endtime', title: '完成時間', align: 'left'},
+                {field: 'reson', title: '失敗原因', align: 'left'},
                 {
-                    title: '状态', templet: function (d) {
+                    title: '狀態', templet: function (d) {
                         return [
-                            '<font color="blue">待审核</font>',
+                            '<font color="blue">待審核</font>',
                             '<font color="green">成功</font>',
-                            '<font color="red">失败</font>'
+                            '<font color="red">失敗</font>'
                         ][d.status];
                     }, align: 'left',width:100, fixed: 'right'
                 },
                 {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 150, fixed: 'right'}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的數據
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析數據長度
+                    "data": res.data.data //解析數據列表
                 };
             }
         });
 
-        /* 表格搜索 */
+        /* 表格搜尋 */
         form.on('submit(roleTbSearch)', function (data) {
-            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('member/refund/search')}"});
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('member/refund/search')}"}); 
             return false;
         });
 
-        /* 表格工具条点击事件 */
+        /* 表格工具條點擊事件 */
         table.on('tool(roleTable)', function (obj) {
-            if (obj.event === 'cancel') { // 审核弹窗
+            if (obj.event === 'cancel') { // 審核彈窗
                 cancel(obj);
             }
         });
 
         /* 取消 */
         function cancel(obj) {
-            layer.confirm('确定要取消选中的数据吗？', {
+            layer.confirm('確定要取消選中的數據嗎？', {
                 title: '取消退款',
                 skin: 'layui-layer-admin',
                 shade: 0.5,

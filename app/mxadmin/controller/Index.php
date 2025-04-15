@@ -1,6 +1,6 @@
 <?php
 /**
- * 后台首页
+ * 后台首頁
  * @author tigger
  */
 declare (strict_types = 1);
@@ -23,7 +23,7 @@ class Index extends AdminBase
     protected $noNeedAuth = ['index', 'main'];
 
     /**
-     * 显示后台首页
+     * 显示后台首頁
      * @return \think\response\View
      */
     public function index()

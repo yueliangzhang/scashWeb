@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="applicable-device" content="pc,mobile">
-    <title>{$cate.name} - {$cate.parentname}代理开户 - {$sysconf.webname}</title>
+    <title>{$cate.name} - {$cate.parentname}代理開戶 - {$sysconf.webname}</title>
     <meta name="description" content="{$cate.intro}">
     <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
     <meta property="og:title" content="{$cate.name}">
@@ -26,7 +26,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i> <a href="/" title="{$sysconf.webname}">首页</a> &raquo; <a href="/Cloud/" title="云产品">云产品</a> &raquo; {$cate.name}
+        <i class="fa fa-home"></i> <a href="/" title="{$sysconf.webname}">首頁</a> &raquo; <a href="/Cloud/" title="雲產品">雲產品</a> &raquo; {$cate.name}
     </div>
 </div>
 <div class="container">
@@ -39,17 +39,17 @@
                     </div>
                     <div class="text">
                         <div class="shopTitle">
-                            <h2 class="shopTit">{$cate.parentname} - {$cate.name}代理开户<span></span></h2>
+                            <h2 class="shopTit">{$cate.parentname} - {$cate.name}代理開戶<span></span></h2>
                         </div>
                         <div class="umDes">{$cate.intro}</div>
                         <div class="umPrice">
-                            <span class="vip1">支持USDT和支付宝<em>可发票</em></span>
+                            <span class="vip1">支持USDT和支付寶<em>可發票</em></span>
                         </div>
                         <div class="umPrice">
                             <span class="vip1"><em>可退款</em></span>
                         </div>
                         <div class="shopBtn">
-                            <a href="/Introduce" target="_blank" title="购买说明"><span>购买说明</span></a>
+                            <a href="/Introduce" target="_blank" title="購買說明"><span>購買說明</span></a>
                         </div>
                     </div>
                 </div>
@@ -66,18 +66,18 @@
                                 {volist name='list' id='vo'}
                                 <div class="card">
                                     <div class="card-title"><a href="/vps/{$vo.alias}" title="{$vo.title}"><h4>{$vo.title}</h4></a></div>
-                                    <div class="vps-info">简称：{$vo.name}</div>
-                                    <div class="vps-info">分类：<a href="/Cloud/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></div>
+                                    <div class="vps-info">簡稱：{$vo.name}</div>
+                                    <div class="vps-info">分類：<a href="/Cloud/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></div>
                                     <div class="vps-info">英文名：{$vo.cname}</div>
-                                    <div class="vps-info">介绍：{$vo.des|mb_substr=0, 50}...</div>
+                                    <div class="vps-info">介紹：{$vo.des|mb_substr=0, 50}...</div>
                                     <!--<div class="price"><span>最低充值</span> ¥{$vo.usd*$setconfig['rate']}</div>
                                     <div class="button-container">
-                                        <a href="/vps/{$vo.alias}/" class="buy-btn" target="_blank" title="{$vo.title}">立即开通</a>
+                                        <a href="/vps/{$vo.alias}/" class="buy-btn" target="_blank" title="{$vo.title}">立即開通</a>
                                     </div>-->
                                 </div>
                                 {/volist}
                             </div>
-                            <!--分页-->
+                            <!--分頁-->
                             <nav class="text-center">
                                 <div class='navigation'>
                                     {$list|raw}
@@ -93,7 +93,7 @@
         <div class="PostBox newsBg">
             <article class="post news n1">
                 <div class="postTitle anim fadeInUp">
-                    <h3><i class="fa fa-quote-left"></i>技术 / 支持</h3>
+                    <h3><i class="fa fa-quote-left"></i>技術 / 支持</h3>
                     <span class="title2"></span>
                 </div>
                 <div class="PostNews">
@@ -116,7 +116,7 @@
                         {/volist}
                     </ul>
                 </div>
-                <div class="more anim fadeInUp"><a href="/Solution/{$cate.alias}/" title="解决方案"><span>查看更多 + </span></a></div>
+                <div class="more anim fadeInUp"><a href="/Solution/{$cate.alias}/" title="解決方案"><span>查看更多 + </span></a></div>
             </article>
         </div>
     </div>

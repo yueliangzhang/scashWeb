@@ -88,7 +88,7 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
         },
 
         /**
-         * 初始化首页
+         * 初始化首頁
          * @param data
          */
         renderHome: function (data) {

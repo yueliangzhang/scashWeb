@@ -7,15 +7,15 @@
     <meta http-equiv="Content-Language" content="zh-CN" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="applicable-device" content="pc,mobile">
-    <title>联系我们 - {$sysconf.webname}</title>
-    <meta name="description" content="联系我们">
+    <title>聯絡我們 - {$sysconf.webname}</title>
+    <meta name="description" content="聯絡我們">
     <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
-    <meta property="og:title" content="联系我们">
-    <meta property="og:description" content="联系我们">
+    <meta property="og:title" content="聯絡我們">
+    <meta property="og:description" content="聯絡我們">
     <meta property="og:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
     <link rel="canonical" href="{:config('app.hostname')}/Contact">
-    <meta name="twitter:title" content="联系我们">
-    <meta name="twitter:description" content="联系我们">
+    <meta name="twitter:title" content="聯絡我們">
+    <meta name="twitter:description" content="聯絡我們">
     <meta name="twitter:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
     <link rel="stylesheet" rev="stylesheet" href="/static/aliyun/style/style.css" type="text/css" media="all" />
     <link rel="stylesheet" href="/static/aliyun/style/font-awesome-4.7.0/css/font-awesome.min.css" media="screen" type="text/css" />
@@ -30,7 +30,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo; 正文
+        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首頁</a> &raquo; 正文
     </div>
 </div>
 <div class="container">
@@ -40,7 +40,7 @@
         <div class="article">
             <div class="article-box">
                 <header class="article-top">
-                    <h2 class="article-tit">Telegram在线客服咨询</h2>
+                    <h2 class="article-tit">Telegram線上客服諮詢</h2>
                 </header>
                 <article class="article-main">
                     <div class="account-container">
@@ -61,13 +61,13 @@
         <div class="article">
             <div class="article-box">
                 <header class="article-top">
-                    <h2 class="article-tit">QQ客服咨询</h2>
+                    <h2 class="article-tit">QQ客服諮詢</h2>
                 </header>
                 <article class="article-main">
                     <div class="account-container">
                         {volist name='list' id='vo'}
                         {eq name='vo.type' value='1'}
-                        <div class="account">{$vo.nickname}&nbsp;&nbsp; QQ号：{$vo.code}</div>
+                        <div class="account">{$vo.nickname}&nbsp;&nbsp; QQ號：{$vo.code}</div>
                         {/eq}
                         {/volist}
                     </div>
@@ -79,13 +79,13 @@
         <div class="article">
             <div class="article-box">
                 <header class="article-top">
-                    <h2 class="article-tit">微信客服咨询</h2>
+                    <h2 class="article-tit">微信客服諮詢</h2>
                 </header>
                 <article class="article-main">
                     <div class="account-container">
                         {volist name='list' id='vo'}
                         {eq name='vo.type' value='0'}
-                        <div class="account">{$vo.nickname}&nbsp;&nbsp; 微信号：{$vo.code}</div>
+                        <div class="account">{$vo.nickname}&nbsp;&nbsp; 微信號：{$vo.code}</div>
                         {/eq}
                         {/volist}
                     </div>
@@ -96,15 +96,15 @@
         <div class="article">
             <div class="article-box">
                 <header class="article-top">
-                    <h2 class="article-tit">技术客服咨询</h2>
+                    <h2 class="article-tit">技術客服諮詢</h2>
                 </header>
                 <article class="article-main">
-                    <p>中国大陆微信：<img src="{$setcontact.wechat}" style="width: 150px;"></p>
+                    <p>中國大陸地區微信：<img src="{$setcontact.wechat}" style="width: 150px;"></p>
                     <p>Telegram：<a href="https://t.me/{$setcontact.telegram}" target="_blank">@{$setcontact.telegram}</a></p>
                     <p>WhatsApp：<a href="https://wa.me/85363710155" target="_blank">+853-6371-0155</a></p>
                     <p>E-mail：<a href="mailto:250339@qq.com" target="_blank">250339@qq.com</a></p>
                     <p><br /></p>
-                    <p><span style="font-size: 10px; color: #BFBFBF;">以上联系方式为&nbsp;Gugu Intelligent Technology Co., Ltd 所有</span></p>
+                    <p><span style="font-size: 10px; color: #BFBFBF;">以上聯繫方式為&nbsp;Gugu Intelligent Technology Co., Ltd 所有</span></p>
                 </article>
             </div>
         </div>

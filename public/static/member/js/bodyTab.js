@@ -79,7 +79,7 @@ layui.define(["element", "jquery"], function(exports) {
 		//显示左侧菜单
 		var _this = this;
 		$(".navBar ul").html(
-			'<li class="layui-nav-item layui-this"><a data-url="/member/index/main"><i class="layui-icon" data-icon="&#xe68e;">&#xe68e;</i><cite>首页</cite></a></li>'
+			'<li class="layui-nav-item layui-this"><a data-url="/member/index/main"><i class="layui-icon" data-icon="&#xe68e;">&#xe68e;</i><cite>首頁</cite></a></li>'
 		).append(_this.navBar(dataStr));
 		element.init(); //初始化页面元素
 	

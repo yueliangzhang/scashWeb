@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页
+ * 首頁
  */
 namespace app\advs\controller;
 use app\advs\AdvsBase;
@@ -9,7 +9,7 @@ use app\common\model\User;
 class Index extends AdvsBase
 {
     /**
-     * 首页展示
+     * 首頁展示
      */
     public function index()
     {

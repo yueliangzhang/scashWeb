@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta http-equiv="Content-Language" content="zh-TW">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta name="applicable-device" content="pc,mobile">
@@ -34,16 +34,16 @@
 <body class="umAni">
 {include file='public/header'}
 
-<!--轮播大图_开始-->
+<!--輪播大圖_開始-->
 <div class="sliderbox">
     <div class="owl-carousel owl-theme banner">
         <div class="item">
-            <a href="/Cloud/" title="国际云厂商">
+            <a href="/Cloud/" title="國際雲廠商">
                 <img src="/static/aliyun/images/banner2.png" alt="{$sysconf.title}" />
             </a>
         </div>
         <div class="item">
-            <a href="/Server/" title="独立服务器">
+            <a href="/Server/" title="獨立伺服器">
                 <img src="/static/aliyun/images/banner1.png" alt="{$sysconf.title}" />
             </a>
         </div>
@@ -65,38 +65,38 @@
         <ul>
             <li>
                 <div id="pfzk">HOT</div>
-                <a href="/Dedicated/hkserver/" title="香港服务器">
+                <a href="/Dedicated/hkserver/" title="香港伺服器">
                     <div class="aui-bar-pic"><img src="/static/aliyun/images/index_ban_fwq.png" width="50" height="50"></div>
                     <div class="aui-bar-head">
-                        <p class="aui-bar-title">香港服务器</p>
-                        <p class="aui-bar-text">CN2 GIA 双向直连</p>
+                        <p class="aui-bar-title">香港伺服器</p>
+                        <p class="aui-bar-text">CN2 GIA 雙向直連</p>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="/Computing/alibabacloud/" title="阿里云国际版">
+                <a href="/Computing/alibabacloud/" title="阿里雲國際版">
                     <div class="aui-bar-pic"><img src="/static/aliyun/images/aliyun.png" width="50" height="50"></div>
                     <div class="aui-bar-head">
-                        <p class="aui-bar-title">阿里云国际版</p>
-                        <p class="aui-bar-text">免注册、免认证、免备案</p>
+                        <p class="aui-bar-title">阿里雲國際版</p>
+                        <p class="aui-bar-text">免註冊、免認證、免備案</p>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="/Computing/amazon/" title="亚马逊云AWS">
+                <a href="/Computing/amazon/" title="亞馬遜雲AWS">
                     <div class="aui-bar-pic"><img src="/static/aliyun/images/aws.png" width="50" height="50"></div>
                     <div class="aui-bar-head">
-                        <p class="aui-bar-title">亚马逊云AWS</p>
-                        <p class="aui-bar-text">免注册、免备案、稳定不封号</p>
+                        <p class="aui-bar-title">亞馬遜雲AWS</p>
+                        <p class="aui-bar-text">免註冊、免備案、穩定不封號</p>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="/Dedicated/usaserver/" title="美国服务器">
+                <a href="/Dedicated/usaserver/" title="美國伺服器">
                     <div class="aui-bar-pic"><img src="/static/aliyun/images/index_ban_cdn.png" width="50" height="50"></div>
                     <div class="aui-bar-head">
-                        <p class="aui-bar-title">美国服务器</p>
-                        <p class="aui-bar-text">G口大带宽业务更稳定</p>
+                        <p class="aui-bar-title">美國伺服器</p>
+                        <p class="aui-bar-text">G口大帶寬業務更穩定</p>
                     </div>
                 </a>
             </li>
@@ -104,19 +104,19 @@
     </div>
 </div>
 
-<!--轮播大图_层结束-->
+<!--輪播大圖_層結束-->
 <div class="container Wauto">
     <div class="main w1200">
         <div class="article w1">
-            <!--精选产品-->
+            <!--精選產品-->
             <div class="PostBox jxhdBg" style="background-color: #FFFFFF">
                 <article class="post">
                     <div class="postTitle anim fadeInUp">
-                        <h3>六大国际云厂商</h3>
-                        <span class="title2">{$sysconf.webname}推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等，为中国或者全球客户提供免费开户与充值服务</span>
+                        <h3>六大國際雲廠商</h3>
+                        <span class="title2">{$sysconf.webname}推薦：阿里雲國際、騰訊雲國際、華為雲國際、亞馬遜雲(AWS)、谷歌雲(GCP)和微軟雲(Azure)等，為中國或者全球客戶提供免費開戶與充值服務</span>
                     </div>
 
-                    <!--国际云厂商-->
+                    <!--國際雲廠商-->
                     <div class="tabsBox">
                         <div class="tabsNav ckNav anim fadeInUp" style="margin-left: 10px; margin-right: 10px;">
                             <ul class="ckTabs">
@@ -125,7 +125,7 @@
                                 {/volist}
                             </ul>
                         </div>
-                        <!--对应推荐产品-->
+                        <!--對應推薦產品-->
                         <div class="tabsCon cktabCon anim fadeInUp">
                             {volist name='cloud' id='vo'}
                             <div class="tabCon">
@@ -133,10 +133,10 @@
                                     {volist name='vo.cloud' id='v'}
                                     <div class="card">
                                         <div class="card-title"><a href="/vps/{$v.alias}/" title="{$v.title}"><h4>{$v.title}</h4></a></div>
-                                        <div class="vps-info">简称：{$v.name}</div>
-                                        <div class="vps-info">分类：<a href="/Cloud/{$v.cate}/" title="{$v.classname}">{$v.classname}</a></div>
+                                        <div class="vps-info">簡稱：{$v.name}</div>
+                                        <div class="vps-info">分類：<a href="/Cloud/{$v.cate}/" title="{$v.classname}">{$v.classname}</a></div>
                                         <div class="vps-info">英文名：{$v.cname}</div>
-                                        <div class="vps-info">介绍：{$v.des|mb_substr=0, 50}...</div>
+                                        <div class="vps-info">介紹：{$v.des|mb_substr=0, 50}...</div>
                                         <div class="button-container">
                                             <a href="/vps/{$v.alias}/" class="buy-btn" target="_blank" title="{$v.title}">立即查看</a>
                                         </div>
@@ -154,11 +154,11 @@
             <div class="PostBox jxhdBg" style="background-color: #FFFFFF">
                 <article class="post">
                     <div class="postTitle anim fadeInUp">
-                        <h3>云/独立/站群/高防/裸金属 服务器</h3>
-                        <span class="title2">{$sysconf.webname}推荐：(香港、美国、新加坡)云服务器、(香港、美国、新加坡)裸金属服务器、GPU服务器、站群服务器、高防服务器、香港服务器和美国服务器，可免费试用</span>
+                        <h3>雲/獨立/站群/高防/裸金屬 伺服器</h3>
+                        <span class="title2">{$sysconf.webname}推薦：(香港、美國、新加坡)雲伺服器、(香港、美國、新加坡)裸金屬伺服器、GPU伺服器、站群伺服器、高防伺服器、香港伺服器和美國伺服器，可免費試用</span>
                     </div>
 
-                    <!--服务器推荐-->
+                    <!--伺服器推薦-->
                     <div class="tabsBox">
                         <div class="tabsNav ckNav anim fadeInUp" style="margin-left: 10px; margin-right: 10px;">
                             <ul class="ckTabs">
@@ -177,10 +177,10 @@
                                         <div class="card-title"><a href="/stand/{$v.alias}/" title="{$v.title}"><h4>{$v.title}</h4></a></div>
                                         <div class="vps-info"><a href="/Server/{$v.cate}/" title="{$v.classname}">{$v.classname}</a></div>
                                         <div class="vps-info">CPU：{$v.cpu}</div>
-                                        <div class="vps-info">内存：{$v.ram}</div>
-                                        <div class="vps-info">硬盘：{$v.hdd}</div>
-                                        <div class="vps-info">带宽：{$v.bandwidth}</div>
-                                        <div class="vps-info">IP数：{$v.ips}</div>
+                                        <div class="vps-info">記憶體：{$v.ram}</div>
+                                        <div class="vps-info">硬碟：{$v.hdd}</div>
+                                        <div class="vps-info">帶寬：{$v.bandwidth}</div>
+                                        <div class="vps-info">IP數：{$v.ips}</div>
                                         <div class="button-container">
                                             <a href="/stand/{$v.alias}/" class="buy-btn" target="_blank" title="{$v.title}">立即查看</a>
                                         </div>
@@ -194,49 +194,49 @@
                 </article>
             </div>
 
-            <!--优势-->
+            <!--優勢-->
             <div class="PostBox advBg">
                 <article class="post">
                     <div class="postTitle anim fadeInUp">
-                        <h3>{$sysconf.webname}推荐国际云优势</h3>
-                        <span class="title2">国际站所有的产品，不需要实认证就能直接购买</span>
+                        <h3>{$sysconf.webname}推薦國際雲優勢</h3>
+                        <span class="title2">國際站所有的產品，不需要實認證就能直接購買</span>
                     </div>
                     <div class="PostBox">
                         <ul>
                             <li class="anim fadeInUp">
                                 <div class="liBox">
                                     <div class="imgBox">
-                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426067403450.png" alt="国际云代理注册">
+                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426067403450.png" alt="國際雲代理註冊">
                                     </div>
-                                    <h4>免注册快速开户</h4>
-                                    <p>仅需提供一个邮箱注册，收几次验证码。极速开户，即刻开启{$sysconf.webname}代理的业务产品上云之旅。</p>
+                                    <h4>免註冊快速開戶</h4>
+                                    <p>僅需提供一個郵箱註冊，收幾次驗證碼。極速開戶，即刻開啟{$sysconf.webname}代理的業務產品上雲之旅。</p>
                                 </div>
                             </li>
                             <li class="anim fadeInUp">
                                 <div class="liBox">
                                     <div class="imgBox">
-                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426099106089.png" alt="免备案无需实名">
+                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426099106089.png" alt="免備案無需實名">
                                     </div>
-                                    <h4>免备案无需实名</h4>
-                                    <p>{$sysconf.webname}国际云的业务产品无需实认证、免备案，快速注册直接购买。更好的保障您的个人信息安全。</p>
+                                    <h4>免備案無需實名</h4>
+                                    <p>{$sysconf.webname}國際雲的業務產品無需實認證、免備案，快速註冊直接購買。更好的保障您的個人信息安全。</p>
                                 </div>
                             </li>
                             <li class="anim fadeInUp">
                                 <div class="liBox">
                                     <div class="imgBox">
-                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426134371623.png" alt="免绑定信用卡">
+                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426134371623.png" alt="免綁定信用卡">
                                     </div>
-                                    <h4>PayPal免绑定</h4>
-                                    <p>通过谷咕云计算进行注册，不需要绑定PayPal信用卡，即可新购、充值、续费{$sysconf.webname}代理的业务产品，无须担心卡被盗刷。</p>
+                                    <h4>PayPal免綁定</h4>
+                                    <p>通過谷咕雲計算進行註冊，不需要綁定PayPal信用卡，即可新購、充值、續費{$sysconf.webname}代理的業務產品，無須擔心卡被盜刷。</p>
                                 </div>
                             </li>
                             <li class="anim fadeInUp">
                                 <div class="liBox">
                                     <div class="imgBox">
-                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426178142897.png" alt="多种支付方式，可开发票">
+                                        <img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-original="/static/aliyun/images/202407081720426178142897.png" alt="多種支付方式，可開發票">
                                     </div>
-                                    <h4>多种支付方式</h4>
-                                    <p>{$sysconf.webname}国际云的业务产品我们按美金计费您可以选择USDT或人民币支付，人民币支付可以按当天的汇率来计算，人民币支付可开发票</p>
+                                    <h4>多種支付方式</h4>
+                                    <p>{$sysconf.webname}國際雲的業務產品我們按美金計費您可以選擇USDT或人民幣支付，人民幣支付可以按當天的匯率來計算，人民幣支付可開發票</p>
                                 </div>
                             </li>
                         </ul>
@@ -244,15 +244,15 @@
                 </article>
             </div>
 
-            <!--关于我们-->
+            <!--關於我們-->
             <!--案例展示-->
 
 
-            <!--新闻资讯-->
+            <!--新聞資訊-->
             <div class="PostBox newsBg">
                 <article class="post news n1">
                     <div class="postTitle anim fadeInUp">
-                        <h3><i class="fa fa-quote-left"></i>推荐国际云技术 / 支持</h3>
+                        <h3><i class="fa fa-quote-left"></i>推薦國際雲技術 / 支持</h3>
                         <span class="title2"></span>
                     </div>
                     <div class="PostNews">
@@ -275,7 +275,7 @@
                             {/volist}
                         </ul>
                     </div>
-                    <div class="more anim fadeInUp"><a href="/Solution/" title="解决方案"><span>查看更多 + </span></a></div>
+                    <div class="more anim fadeInUp"><a href="/Solution/" title="解決方案"><span>查看更多 + </span></a></div>
                 </article>
             </div>
 
@@ -285,7 +285,7 @@
 
 {include file='public/footer'}
 
-    
+
 <script src="/static/aliyun/js/lib.js"></script>
 <script src="/static/aliyun/js/function.js"></script>
 </body>

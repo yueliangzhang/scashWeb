@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页
+ * 首頁
  */
 declare (strict_types = 1);
 namespace app\member\controller;

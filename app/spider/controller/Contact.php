@@ -1,6 +1,6 @@
 <?php
 /**
- * 联系我们
+ * 聯絡我們
  */
 namespace app\spider\controller;
 use app\spider\SpiderBase;
@@ -10,7 +10,7 @@ use app\common\model\Custom;
 class Contact extends SpiderBase
 {
 	/**
-	 * 联系我们
+	 * 聯絡我們
 	 */
 	public function index()
 	{

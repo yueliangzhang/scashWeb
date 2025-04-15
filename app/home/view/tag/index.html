@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="applicable-device" content="pc,mobile">
     <title>{$tag.name} - {$sysconf.webname}</title>
-    <meta name="description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等开户与充值。同时从事服务器租用、云主机和软件开发的互联网公司。'}">
+    <meta name="description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理雲產品推薦：阿里雲國際、騰訊雲國際、華為雲國際、亞馬遜雲(AWS)、谷歌雲(GCP)和微軟雲(Azure)等開戶與充值。同時從事伺服器租用、雲主機和軟件開發的互聯網公司。'}">
     <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
     <meta property="og:title" content="{$tag.name}">
-    <meta property="og:description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等开户与充值。同时从事服务器租用、云主机和软件开发的互联网公司。'}">
+    <meta property="og:description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理雲產品推薦：阿里雲國際、騰訊雲國際、華為雲國際、亞馬遜雲(AWS)、谷歌雲(GCP)和微軟雲(Azure)等開戶與充值。同時從事伺服器租用、雲主機和軟件開發的互聯網公司。'}">
     <meta property="og:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
     <link rel="canonical" href="{:config('app.hostname')}/tag/{$tag.name}">
     <meta name="twitter:title" content="{$tag.name}">
-    <meta name="twitter:description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等，为中国和全球客户开户与充值。同时物理机/服务器租用、云主机和软件开发的互联网公司。'}">
+    <meta name="twitter:description" content="{$tag.description?$tag.description:$tag['name'].','.$sysconf['webname'].'代理雲產品推薦：阿里雲國際、騰訊雲國際、華為雲國際、亞馬遜雲(AWS)、谷歌雲(GCP)和微軟雲(Azure)等，為中國和全球客戶開戶與充值。同時物理機/伺服器租用、雲主機和軟件開發的互聯網公司。'}">
     <meta name="twitter:image" content="{:config('app.hostname')}/static/aliyun/images/1.png">
     <link rel="stylesheet" rev="stylesheet" href="/static/aliyun/style/style.css" type="text/css" media="all" />
     <link rel="stylesheet" href="/static/aliyun/style/font-awesome-4.7.0/css/font-awesome.min.css" media="screen" type="text/css" />
@@ -26,7 +26,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i> <a href="/" title="{$sysconf.webname}">首页</a> &raquo; {$tag.name}
+        <i class="fa fa-home"></i> <a href="/" title="{$sysconf.webname}">首頁</a> &raquo; {$tag.name}
     </div>
 </div>
 <div class="container">
@@ -41,24 +41,24 @@
                         <div class="shopTitle">
                             <h2 class="shopTit">{$tag.name}<span></span></h2>
                         </div>
-                        <div class="umDes">{$tag.description?$tag.description:$sysconf['webname'].'代理云产品推荐：阿里云国际、腾讯云国际、华为云国际、亚马逊云(AWS)、谷歌云(GCP)和微软云(Azure)等开户与充值。同时从事服务器租用、云主机和软件开发的互联网公司。'}</div>
+                        <div class="umDes">{$tag.description?$tag.description:$sysconf['webname'].'代理雲產品推薦：阿里雲國際、騰訊雲國際、華為雲國際、亞馬遜雲(AWS)、谷歌雲(GCP)和微軟雲(Azure)等開戶與充值。同時從事伺服器租用、雲主機和軟件開發的互聯網公司。'}</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--内容切换-->
+        <!--內容切換-->
         <div class="PostBox jxhdBg" style="background-color: #FFFFFF">
             <article class="post">
                 <div class="postTitle anim fadeInUp">
-                    <h3>{$tag.name}关联的标签数据</h3>
+                    <h3>{$tag.name}關聯的標籤數據</h3>
                 </div>
                 <div class="tabsBox">
                     <div class="tabsNav ckNav anim fadeInUp">
                         <ul class="ckTabs">
-                            <li><span>技术帮助</span></li>
-                            <li><span>物理机/服务器</span></li>
-                            <li><span>云计算</span></li>
+                            <li><span>技術幫助</span></li>
+                            <li><span>物理機/伺服器</span></li>
+                            <li><span>雲計算</span></li>
                         </ul>
                     </div>
                     <div class="tabsCon cktabCon anim fadeInUp">
@@ -93,10 +93,10 @@
                                     <div class="card-title"><a href="/stand/{$vo.child.alias}" title="{$vo.child.title}"><h4>{$vo.child.title}</h4></a></div>
                                     <div class="vps-info">{$vo.child.name}</div>
                                     <div class="vps-info">CPU：{$vo.child.cpu}</div>
-                                    <div class="vps-info">内存：{$vo.child.ram}</div>
-                                    <div class="vps-info">硬盘：{$vo.child.hdd}</div>
-                                    <div class="vps-info">带宽：{$vo.child.bandwidth}</div>
-                                    <div class="vps-info">IP数：{$vo.child.ips}</div>
+                                    <div class="vps-info">記憶體：{$vo.child.ram}</div>
+                                    <div class="vps-info">硬碟：{$vo.child.hdd}</div>
+                                    <div class="vps-info">帶寬：{$vo.child.bandwidth}</div>
+                                    <div class="vps-info">IP數：{$vo.child.ips}</div>
                                 </div>
                                 {/eq}
                                 {/volist}
@@ -108,10 +108,10 @@
                                 {eq name='vo.is_article' value='2'}
                                 <div class="card">
                                     <div class="card-title"><a href="/vps/{$vo.child.alias}/" title="{$vo.child.title}"><h4>{$vo.child.title}</h4></a></div>
-                                    <div class="vps-info">简称：{$vo.child.name}</div>
-                                    <div class="vps-info">分类：{$vo.child.name}</div>
+                                    <div class="vps-info">簡稱：{$vo.child.name}</div>
+                                    <div class="vps-info">分類：{$vo.child.name}</div>
                                     <div class="vps-info">英文名：{$vo.child.cname}</div>
-                                    <div class="vps-info">介绍：{$vo.child.des|mb_substr=0, 50}...</div>
+                                    <div class="vps-info">介紹：{$vo.child.des|mb_substr=0, 50}...</div>
                                 </div>
                                 {/eq}
                                 {/volist}

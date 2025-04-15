@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta http-equiv="Content-Language" content="zh-TW" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="applicable-device" content="pc,mobile">
     <title>{$info.title} - {$cate.parentname} - {$sysconf.webname}</title>
@@ -30,7 +30,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo; <a href="/Server/" title="物理机">物理机</a> &raquo; <a href="/Server/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a> &raquo; {$info.title}
+        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首頁</a> &raquo; <a href="/Server/" title="物理機">物理機</a> &raquo; <a href="/Server/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a> &raquo; {$info.title}
     </div>
 </div>
 <div class="container">
@@ -53,24 +53,24 @@
                                 </div>
                                 <div class="shop_show_jg">
                                     <span>英文名： {$info.alias}</span>
-                                    <span>分类： <a href="/Server/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a></span>
-                                    <!--<span>价格：￥ {$info.selled}</span>
-                                    <span>折扣价：<i>￥ {:intval($info.selled*$info.discount)} {$info.discount*10}折</i></span>-->
+                                    <span>分類： <a href="/Server/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a></span>
+                                    <!--<span>價格：￥ {$info.selled}</span>
+                                    <span>折扣價：<i>￥ {:intval($info.selled*$info.discount)} {$info.discount*10}折</i></span>-->
                                 </div>
                                 <!--<form action="/goods/buying" method="post" target="_blank">
                                     <input type="hidden" name="id" value="{$info.id}">
                                     <input type="hidden" name="num" value="{:intval($info.selled*$info.discount)}">
                                     <div class="shop_show_jg">
-                                        <span>库存数量：{$info.num}</span>
-                                        <span class="shop_num_but">是否开票：
+                                        <span>庫存數量：{$info.num}</span>
+                                        <span class="shop_num_but">是否開票：
                                             <input type="radio" name="invoice" value="1">是
                                             <input type="radio" name="invoice" value="0" checked>否</span>
                                         <span class="shop_num_but">支付方式：
                                             <input type="radio" name="paytype" value="1">USDT
-                                            <input type="radio" name="paytype" value="0" checked>支付宝</span>
+                                            <input type="radio" name="paytype" value="0" checked>支付寶</span>
                                     </div>
                                     <div class="shop_show_jg">
-                                        <input type="submit" name="buying" value="立即购买" class="buy-button" />
+                                        <input type="submit" name="buying" value="立即購買" class="buy-button" />
                                     </div>
                                 </form>-->
                                 
@@ -79,20 +79,20 @@
                         <div class="shop_show_bks">
                             <div class="shop_bks_left">
                                 <div class="shop_bks_spsx">
-                                    <div class="shop_bks_spsx_title">商品属性</div>
+                                    <div class="shop_bks_spsx_title">商品屬性</div>
                                     <div class="shop_show_sx">
                                         <p>
                                             CPU：{$info.cpu}<br/>
-                                            内存：{$info.ram}<br/>
-                                            硬盘：{$info.hdd}<br/>
-                                            带宽：{$info.bandwidth}<br/>
-                                            IP数：{$info.ips}
+                                            記憶體：{$info.ram}<br/>
+                                            硬碟：{$info.hdd}<br/>
+                                            帶寬：{$info.bandwidth}<br/>
+                                            IP數：{$info.ips}
                                         </p>
                                     </div>
 
                                 </div>
                                 <div class="shop_bks_spjj">
-                                    <div class="shop_bks_spsx_title">商品简介</div>
+                                    <div class="shop_bks_spsx_title">商品簡介</div>
                                     <div class="news_show_info">
                                         {$info.intro|raw}
                                     </div>
@@ -100,7 +100,7 @@
 
                             </div>
                             <div class="news_right_show">
-                                <div class="news_r_name">产品推荐</div>
+                                <div class="news_r_name">產品推薦</div>
                                 <div class="news_r_news">
                                     {volist name='recommend' id='vo' key='k'}
                                     <dd>

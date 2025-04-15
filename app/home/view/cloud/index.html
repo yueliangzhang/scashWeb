@@ -28,7 +28,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i><a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo; 云产品
+        <i class="fa fa-home"></i><a href="{:config('app.hostname')}" title="{$sysconf.webname}">首頁</a> &raquo; 云产品
     </div>
 </div>
 <div class="container">
@@ -41,17 +41,17 @@
                     </div>
                     <div class="text">
                         <div class="shopTitle">
-                            <h2 class="shopTit">{$sysconf.webname}代理的业务<span></span></h2>
+                            <h2 class="shopTit">{$sysconf.webname}代理的業務<span></span></h2>
                         </div>
                         <div class="umDes">{$seo.info}</div>
                         <div class="umPrice">
-                            <span class="vip1">支持USDT和支付宝<em>可发票</em></span>
+                            <span class="vip1">支持USDT和支付寶<em>可發票</em></span>
                         </div>
                         <div class="umPrice">
                             <span class="vip1"><em>可退款</em></span>
                         </div>
                         <div class="shopBtn">
-                            <a href="/Introduce" target="_blank" title="购买说明"><span>购买说明</span></a>
+                            <a href="/Introduce" target="_blank" title="购买说明"><span>購買說明</span></a>
                         </div>
                     </div>
                 </div>
@@ -68,10 +68,10 @@
                                 {volist name='list' id='vo'}
                                 <div class="card">
                                     <div class="card-title"><a href="/vps/{$vo.alias}/" title="{$vo.title}"><h4>{$vo.title}</h4></a></div>
-                                    <div class="vps-info">简称：{$vo.name}</div>
+                                    <div class="vps-info">簡稱：{$vo.name}</div>
                                     <div class="vps-info">英文名：{$vo.cname}</div>
-                                    <div class="vps-info">分类：<a href="/Cloud/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></div>
-                                    <div class="vps-info">介绍：{$vo.des|mb_substr=0, 50}...</div>
+                                    <div class="vps-info">分類：<a href="/Cloud/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></div>
+                                    <div class="vps-info">介紹：{$vo.des|mb_substr=0, 50}...</div>
                                     <!--<div class="price"><span>最低充值</span> ¥{:intval($vo.usd*$setconfig['rate'])}</div>
                                     <div class="button-container">
                                         <a href="/vps/{$vo.alias}/" class="buy-btn" target="_blank" title="{$vo.title}">立即开通</a>

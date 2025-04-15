@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页
+ * 首頁
  */
 namespace app\home\controller;
 use app\home\HomeBase;

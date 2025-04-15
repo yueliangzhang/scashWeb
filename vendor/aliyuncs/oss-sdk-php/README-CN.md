@@ -138,7 +138,7 @@ foreach($bucketList as $bucket) {
 
 - MIT
 
-## 联系我们
+## 聯絡我們
 
 - [阿里云OSS官方网站](http://oss.aliyun.com)
 - [阿里云OSS官方论坛](http://bbs.aliyun.com)

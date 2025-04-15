@@ -2,7 +2,7 @@
     <div class="lock-screen-time"></div>
     <div class="lock-screen-date"></div>
     <div class="lock-screen-form">
-        <input placeholder="请输入登录密码解锁" class="lock-screen-psw" maxlength="20" type="password"/>
+        <input placeholder="請輸入登錄密碼解鎖" class="lock-screen-psw" maxlength="20" type="password"/>
         <i class="layui-icon layui-icon-right lock-screen-enter"></i>
         <br/>
         <div class="lock-screen-tip"></div>
@@ -10,7 +10,7 @@
     <div class="lock-screen-tool">
         <div class="lock-screen-tool-item">
             <i class="layui-icon layui-icon-logout" mx-event="logout" data-confirm="false" data-url="{:url('merchant/login/logout')}"></i>
-            <div class="lock-screen-tool-tip">退出登录</div>
+            <div class="lock-screen-tool-tip">退出登錄</div>
         </div>
     </div>
 </div>
@@ -20,15 +20,15 @@
         var $ = layui.jquery;
         var util = layui.util;
         var admin = layui.admin;
-        var rightPsw = '{$password}';  // 正确密码的MD5密文
-        // 获取各个组件
+        var rightPsw = '{$password}';  // 正確密碼的MD5密文
+        // 獲取各個組件
         var $form = $('.lock-screen-wrapper .lock-screen-form');
         var $psw = $form.find('.lock-screen-psw');
         var $tip = $form.find('.lock-screen-tip');
         var $time = $('.lock-screen-wrapper .lock-screen-time');
         var $date = $('.lock-screen-wrapper .lock-screen-date');
 
-        // 监听Enter键和F5键
+        // 監聽Enter鍵和F5鍵
         $(window).keydown(function (event) {
             if (admin.isLockScreen) {
                 if (event.keyCode === 13 || event.keyCode === 116) {
@@ -42,7 +42,7 @@
             }
         });
 
-        // 监听输入
+        // 監聽輸入
         $psw.on('input', function () {
             var psw = $psw.val();
             if (rightPsw === toMd5Hex(psw)) {
@@ -56,24 +56,24 @@
             }
         });
 
-        // 监听按钮点击
+        // 監聽按鈕點擊
         $form.find('.lock-screen-enter').click(function (e) {
             doVer(true);
         });
 
-        // 处理事件
+        // 處理事件
         function doVer(emptyRest) {
             if ($form.hasClass('show-psw')) {
                 $psw.focus();
                 var psw = $psw.val();
                 if (!psw) {
-                    emptyRest ? restForm() : $tip.text('请输入登录密码解锁');
+                    emptyRest ? restForm() : $tip.text('請輸入登錄密碼解鎖');
                 } else if (rightPsw === toMd5Hex(psw)) {
                     restForm();
                     admin.unlockScreen();
                 } else {
                     $psw.val('');
-                    $tip.text('密码不正确');
+                    $tip.text('密碼不正確');
                     $form.addClass('show-back');
                 }
             } else {
@@ -90,7 +90,7 @@
             $form.removeClass('show-psw show-back');
         }
 
-        // 时间、日期
+        // 時間、日期
         function setDate() {
             var date = new Date();
             $time.text(util.toDateString(date, 'HH:mm'));

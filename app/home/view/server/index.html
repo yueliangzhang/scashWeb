@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta http-equiv="Content-Language" content="zh-TW">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta name="applicable-device" content="pc,mobile">
@@ -28,7 +28,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i><a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo; 独立服务器/物理机
+        <i class="fa fa-home"></i><a href="{:config('app.hostname')}" title="{$sysconf.webname}">首頁</a> &raquo; 獨立伺服器/物理機
     </div>
 </div>
 <div class="container">
@@ -45,13 +45,13 @@
                         </div>
                         <div class="umDes">{$seo.info}</div>
                         <div class="umPrice">
-                            <span class="vip1">支持USDT和支付宝<em>可发票</em></span>
+                            <span class="vip1">支持USDT和支付寶<em>可發票</em></span>
                         </div>
                         <div class="umPrice">
                             <span class="vip1"><em>可退款</em></span>
                         </div>
                         <div class="shopBtn">
-                            <a href="/Introduce" target="_blank" title="购买说明"><span>购买说明</span></a>
+                            <a href="/Introduce" target="_blank" title="購買說明"><span>購買說明</span></a>
                         </div>
                     </div>
                 </div>
@@ -70,18 +70,18 @@
                                     <div class="card-title"><a href="/stand/{$vo.alias}/" title="{$vo.title}"><h4>{$vo.title}</h4></a></div>
                                     <div class="vps-info"><a href="/Server/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></div>
                                     <div class="vps-info">CPU：{$vo.cpu}</div>
-                                    <div class="vps-info">内存：{$vo.ram}</div>
-                                    <div class="vps-info">硬盘：{$vo.hdd}</div>
-                                    <div class="vps-info">带宽：{$vo.bandwidth}</div>
-                                    <div class="vps-info">IP数：{$vo.ips}</div>
+                                    <div class="vps-info">記憶體：{$vo.ram}</div>
+                                    <div class="vps-info">硬碟：{$vo.hdd}</div>
+                                    <div class="vps-info">帶寬：{$vo.bandwidth}</div>
+                                    <div class="vps-info">IP數：{$vo.ips}</div>
                                     <!--<div class="price"><span>￥{$vo.selled}</span> ￥{:intval($vo.selled*$vo.discount)}/月</div>
                                     <div class="button-container">
-                                        <a href="/stand/{$vo.alias}/" class="buy-btn" target="_blank" title="{$vo.title}">立即开通</a>
+                                        <a href="/stand/{$vo.alias}/" class="buy-btn" target="_blank" title="{$vo.title}">立即開通</a>
                                     </div>-->
                                 </div>
                                 {/volist}
                             </div>
-                            <!--分页-->
+                            <!--分頁-->
                             <nav class="text-center">
                                 <div class='navigation'>
                                     {$list|raw}

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta http-equiv="Content-Language" content="zh-TW">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta name="applicable-device" content="pc,mobile">
-    <title>{$category.name}开户 - {$sysconf.webname}</title>
+    <title>{$category.name}開戶 - {$sysconf.webname}</title>
     <meta name="description" content="{$category.intro}">
     <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
     <meta property="og:title" content="{$category.name}">
@@ -28,7 +28,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i><a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo;  <a href="{:config('app.hostname')}/Cloud">云产品</a> &raquo; {$category.name}
+        <i class="fa fa-home"></i><a href="{:config('app.hostname')}" title="{$sysconf.webname}">首頁</a> &raquo;  <a href="{:config('app.hostname')}/Cloud">雲產品</a> &raquo; {$category.name}
     </div>
 </div>
 <div class="container">
@@ -41,17 +41,17 @@
                     </div>
                     <div class="text">
                         <div class="shopTitle">
-                            <h2 class="shopTit">{$category.name}开户<span></span></h2>
+                            <h2 class="shopTit">{$category.name}開戶<span></span></h2>
                         </div>
                         <div class="umDes">{$category.intro}</div>
                         <div class="umPrice">
-                            <span class="vip1">支持USDT和支付宝<em>可发票</em></span>
+                            <span class="vip1">支持USDT和支付寶<em>可發票</em></span>
                         </div>
                         <div class="umPrice">
                             <span class="vip1"><em>可退款</em></span>
                         </div>
                         <div class="shopBtn">
-                            <a href="/Introduce" target="_blank" title="购买说明"><span>购买说明</span></a>
+                            <a href="/Introduce" target="_blank" title="購買說明"><span>購買說明</span></a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
         <div class="PostBox jxhdBg" style="background-color: #FFFFFF">
             <article class="post">
                 <div class="postTitle anim fadeInUp">
-                    <h3>{$category.name}可开户的产品列表</h3>
+                    <h3>{$category.name}可開戶的產品列表</h3>
                 </div>
                 <div class="tabsBox">
                     <div class="tabsNav ckNav anim fadeInUp">
@@ -72,7 +72,7 @@
                             {/volist}
                         </ul>
                     </div>
-                    <!--对应推荐产品-->
+                    <!--對應推薦產品-->
                     <div class="tabsCon cktabCon anim fadeInUp">
                         {volist name='list' id='vo'}
                         <div class="tabCon">
@@ -80,10 +80,10 @@
                                 {volist name='vo.cloud' id='v'}
                                 <div class="card">
                                     <div class="card-title"><a href="/vps/{$v.alias}/" title="{$v.title}"><h4>{$v.title}</h4></a></div>
-                                    <div class="vps-info">简称：{$v.name}</div>
-                                    <div class="vps-info">分类：{$vo.name}</div>
+                                    <div class="vps-info">簡稱：{$v.name}</div>
+                                    <div class="vps-info">分類：{$vo.name}</div>
                                     <div class="vps-info">英文名：{$v.alias}</div>
-                                    <div class="vps-info">介绍：{$v.des|mb_substr=0, 50}...</div>
+                                    <div class="vps-info">介紹：{$v.des|mb_substr=0, 50}...</div>
                                 </div>
                                 {/volist}
                             </div>

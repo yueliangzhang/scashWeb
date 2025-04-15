@@ -58,7 +58,7 @@ $ ./vendor/bin/phpunit tests/Qiniu/Tests/
 
 - [所有贡献者](https://github.com/qiniu/php-sdk/contributors)
 
-## 联系我们
+## 聯絡我們
 
 - 如果需要帮助，请提交工单（在portal右侧点击咨询和建议提交工单，或者直接向 support@qiniu.com 发送邮件）
 - 如果有什么问题，可以到问答社区提问，[问答社区](https://qiniu.segmentfault.com/)

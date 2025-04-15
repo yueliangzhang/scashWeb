@@ -1,33 +1,33 @@
 {extend name="base" /}
-{block name="title"}云账户管理{/block}
+{block name="title"}雲帳戶管理{/block}
 {block name="body"}
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 表格工具栏 -->
+            <!-- 表格工具欄 -->
             <form class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">云账户UID</label>
+                        <label class="layui-form-label">雲帳戶UID</label>
                         <div class="layui-input-inline">
-                            <input name="uid" class="layui-input" autocomplete="off" placeholder="输入云账户UID"/>
+                            <input name="uid" class="layui-input" autocomplete="off" placeholder="輸入雲帳戶UID"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">开户邮箱</label>
+                        <label class="layui-form-label">開戶郵箱</label>
                         <div class="layui-input-inline">
-                            <input name="email" class="layui-input" autocomplete="off" placeholder="输入邮箱地址"/>
+                            <input name="email" class="layui-input" autocomplete="off" placeholder="輸入郵箱地址"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">账户类型</label>
+                        <label class="layui-form-label">帳戶類型</label>
                         <div class="layui-input-inline">
                             <select name="type">
                                 <option value="0">--- 全部 ---</option>
-                                <option value="1">阿里云</option>
-                                <option value="2">腾讯云</option>
+                                <option value="1">阿里雲</option>
+                                <option value="2">騰訊雲</option>
                                 <option value="3">AWS</option>
-                                <option value="4">谷歌云</option>
+                                <option value="4">谷歌雲</option>
                                 <option value="5">Azure</option>
                             </select>
                         </div>
@@ -37,12 +37,12 @@
                             <i class="layui-icon">&#xe615;</i>搜索
                         </button>
                         <button class="layui-btn layui-btn-warm" lay-filter="roleTbExport" lay-submit>
-                            <i class="layui-icon">&#xe67d;</i>导出
+                            <i class="layui-icon">&#xe67d;</i>導出
                         </button>
                     </div>
                 </div>
             </form>
-            <!-- 数据表格 -->
+            <!-- 資料表格 -->
             <table id="roleTable" lay-filter="roleTable"></table>
         </div>
     </div>
@@ -54,27 +54,27 @@
         <input type="hidden" name="type" />
         <input type="hidden" name="tax" value="{$setconfig.tax}" />
         <div class="layui-form-item">
-            <label class="layui-form-label">金额</label>
+            <label class="layui-form-label">金額</label>
             <div class="layui-input-inline" style="width:200px;">
-                <input name="num" placeholder="请输入金额USD" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
+                <input name="num" placeholder="請輸入金額USD" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
             </div>
             <div class="layui-form-mid layui-word-aux">美金USD</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">兑换汇率</label>
+            <label class="layui-form-label">兌換匯率</label>
             <div class="layui-input-inline" style="width:200px; margin-top: 10px;">
                 {$setconfig.rate}
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">是否开票</label>
+            <label class="layui-form-label">是否開票</label>
             <div class="layui-input-inline" style="width:200px;">
                 <input type="radio" name="istax" value="1" title="是">
                 <input type="radio" name="istax" value="0" title="否" checked>
             </div>
         </div>
         <div class="layui-form-item text-right">
-            <button class="layui-btn" lay-filter="roleReSubmit" lay-submit>确认充值</button>
+            <button class="layui-btn" lay-filter="roleReSubmit" lay-submit>確認充值</button>
             <button class="layui-btn layui-btn-primary" type="button" mx-event="closeDialog">取消</button>
         </div>
     </form>
@@ -107,40 +107,40 @@
             cols: [[
                 {type: 'checkbox'},
                 {
-                    title: '账户类型', templet: function (d) {
+                    title: '帳戶類型', templet: function (d) {
                         return [
-                            '阿里云国际',
-                            '腾讯云国际',
-                            '华为云国际',
+                            '阿里雲國際',
+                            '騰訊雲國際',
+                            '華為雲國際',
                             'AWS',
                             'GCP',
                             'Azure'
                         ][d.type];
                     }, align: 'center'
                 },
-                {field: 'uid', title: '云账户UID', align: 'left'},
-                {field: 'email', title: '登录邮箱', align: 'left'},
-                {field: 'info', title: '账户详细', align: 'left'},
-                {field: 'usd', title: '余额', align: 'left'},
+                {field: 'uid', title: '雲帳戶UID', align: 'left'},
+                {field: 'email', title: '登入郵箱', align: 'left'},
+                {field: 'info', title: '帳戶詳細', align: 'left'},
+                {field: 'usd', title: '餘額', align: 'left'},
                 {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 120, fixed: 'right'}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的資料
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析資料長度
+                    "data": res.data.data //解析資料列表
                 };
             }
         });
 
         /* 表格搜索 */
         form.on('submit(roleTbSearch)', function (data) {
-            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('member/yun/search')}"});
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('member/yun/search')}"}); 
             return false;
         });
 
-        /* 表格导出 */
+        /* 表格導出 */
         form.on('submit(roleTbExport)', function (data) {
             loading = layer.load(1, {shade: [0.3, '#fff']});
             var $ = layui.jquery;
@@ -151,13 +151,13 @@
                 success: function(res) {
                     layer.close(loading);
                     layer.msg(res.msg);
-                    // 假如返回的 res.data 是需要导出的列表数据
-                    // 1. 数组头部新增表头
-                    res.data.unshift({uid: '云账户UID',type: '云类型',email:'登录邮箱',usd:'金额',info:'账户详细',status:'状态',addtime: '创建时间'});
-                    // 3. 执行导出函数，系统会弹出弹框
+                    // 假如返回的 res.data 是需要導出的列表資料
+                    // 1. 陣列頭部新增表頭
+                    res.data.unshift({uid: '雲帳戶UID',type: '雲類型',email:'登入郵箱',usd:'金額',info:'帳戶詳細',status:'狀態',addtime: '創建時間'});
+                    // 3. 執行導出函數，系統會彈出彈框
                     excel.exportExcel({
                         sheet1: res.data
-                    }, '云账户列表.xlsx', 'xlsx');
+                    }, '雲帳戶列表.xlsx', 'xlsx');
                 },
                 error:function(res){
                     layer.close(loading);
@@ -167,26 +167,26 @@
             return false;
         });
 
-        /* 表格工具条点击事件 */
+        /* 表格工具欄點擊事件 */
         table.on('tool(roleTable)', function (obj) {
             if (obj.event === 'recharge') { // 修改
                 showRechargeModel(obj.data);
             }
         });
 
-        /* 显示账户申请弹窗 */
+        /* 顯示帳戶申請彈窗 */
         function showRechargeModel(mData) {
             admin.open({
                 type: 1,
-                title: '账户充值',
+                title: '帳戶充值',
                 area: '510px',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#roleReCloud').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單資料
                     form.val('roleReForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleReSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post("{:url('member/yun/recharge')}", data.field, function (res) {

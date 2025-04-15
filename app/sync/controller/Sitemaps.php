@@ -71,7 +71,7 @@ class Sitemaps extends BaseController
 		}
 		//购买说明
 		$sitemap->addItem('/Introduce', '0.5', 'never', date('Y-m-d'));
-		//联系我们
+		//聯絡我們
 		$sitemap->addItem('/Contact', '0.5', 'never', date('Y-m-d'));
 		//标签
 		$tags = Db::name('tags')->order('id', 'desc')->select();

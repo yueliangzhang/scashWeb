@@ -93,7 +93,7 @@ layui.define(function(exports){
           return '';
         }
         
-        //首页
+        //首頁
         if(index > 1 && config.first !== false && groups !== 0){
           pager.push('<a href="javascript:;" class="layui-laypage-first" data-page="1"  title="&#x9996;&#x9875;">'+ (config.first || 1) +'</a>');
         }

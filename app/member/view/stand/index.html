@@ -1,22 +1,22 @@
 {extend name="base" /}
-{block name="title"}独立服务器{/block}
+{block name="title"}獨立伺服器{/block}
 {block name="body"}
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 表格工具栏 -->
+            <!-- 表格工具欄 -->
             <form class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">IP地址</label>
                         <div class="layui-input-inline">
-                            <input name="ip" class="layui-input" autocomplete="off" placeholder="请输入独立IP"/>
+                            <input name="ip" class="layui-input" autocomplete="off" placeholder="請輸入獨立IP"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">到期时间</label>
+                        <label class="layui-form-label">到期時間</label>
                         <div class="layui-input-inline">
-                            <input name="end_time" id="end_time" class="layui-input icon-date" placeholder="选择到期时间" autocomplete="off"/>
+                            <input name="end_time" id="end_time" class="layui-input icon-date" placeholder="選擇到期時間" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="layui-inline">&emsp;
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </form>
-            <!-- 数据表格 -->
+            <!-- 數據表格 -->
             <table id="roleTable" lay-filter="roleTable"></table>
         </div>
     </div>
@@ -37,34 +37,34 @@
         <input name="id" type="hidden" />
         <input type="hidden" name="tax" value="{$setconfig.tax}" />
         <div class="layui-form-item">
-            <label class="layui-form-label">续期费用</label>
+            <label class="layui-form-label">續期費用</label>
             <div class="layui-input-inline" style="width:200px;">
-                <input name="seller" placeholder="请输入续期费用" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required readonly />
+                <input name="seller" placeholder="請輸入續期費用" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required readonly />
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">续期时间</label>
+            <label class="layui-form-label">續期時間</label>
             <div class="layui-input-inline" style="width:200px;">
-                <input name="num" type="number" placeholder="请输入续期几个月" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
+                <input name="num" type="number" placeholder="請輸入續期幾個月" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
             </div>
-            <div class="layui-form-mid layui-word-aux">续期几个月就填写几</div>
+            <div class="layui-form-mid layui-word-aux">續期幾個月就填寫幾</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">是否开票</label>
+            <label class="layui-form-label">是否開票</label>
             <div class="layui-input-inline" style="width:200px;">
                 <input type="radio" name="istax" value="1" title="是">
                 <input type="radio" name="istax" value="0" title="否" checked>
             </div>
         </div>
         <div class="layui-form-item text-right">
-            <button class="layui-btn" lay-filter="roleXuSubmit" lay-submit>确认续期</button>
+            <button class="layui-btn" lay-filter="roleXuSubmit" lay-submit>確認續期</button>
             <button class="layui-btn layui-btn-primary" type="button" mx-event="closeDialog">取消</button>
         </div>
     </form>
 </script>
 <!-- 表格操作列 -->
 <script type="text/html" id="roleTbBar">
-    <a class="layui-btn layui-btn-xs" lay-event="xuqi">续期</a>
+    <a class="layui-btn layui-btn-xs" lay-event="xuqi">續期</a>
 </script>
 {/block}
 {block name="script"}
@@ -87,17 +87,17 @@
             cellMinWidth: 100,
             cols: [[
                 {type: 'checkbox'},
-                {field: 'content', title: '服务器信息', align: 'left'},
-                {field: 'seller', title: '续费价格', align: 'left',totalRow: true},
-                {field: 'time', title: '添加时间<br>到期时间', align: 'left'},
+                {field: 'content', title: '伺服器資訊', align: 'left'},
+                {field: 'seller', title: '續費價格', align: 'left',totalRow: true},
+                {field: 'time', title: '添加時間<br>到期時間', align: 'left'},
                 {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 100, fixed: 'right'}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的數據
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析數據長度
+                    "data": res.data.data //解析數據列表
                 };
             }
         });
@@ -115,26 +115,26 @@
             return false;
         });
 
-        /* 表格工具条点击事件 */
+        /* 表格工具條點擊事件 */
         table.on('tool(roleTable)', function (obj) {
             if (obj.event === 'xuqi') {
                 showXuModel(obj.data);
             }
         });
 
-        /* 显示独立服务器添加弹窗 */
+        /* 顯示獨立伺服器添加彈窗 */
         function showXuModel(mData) {
             admin.open({
                 type: 1,
-                title: '服务器续期',
+                title: '伺服器續期',
                 area: '510px',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#roleXuStand').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('roleXuForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleXuSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post("{:url('member/stand/xudata')}", data.field, function (res) {

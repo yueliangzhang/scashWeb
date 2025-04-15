@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta http-equiv="Content-Language" content="zh-TW" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="applicable-device" content="pc,mobile">
     <title>{$seo.title} - {$sysconf.webname}</title>
@@ -28,7 +28,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo; 问题解决
+        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首頁</a> &raquo; 問題解決
     </div>
 </div>
 <div class="container Wauto">
@@ -53,16 +53,16 @@
                                 </a></div>
                             <h4><a href="/article/{$vo.alias}/" title="{$vo.title}">{$vo.title}</a></h4>
                             <div class="post-meta" style="text-align: left;">
-                                <!-- 添加分类 -->
-                                <span class="post-category">分类：<a href="/Solution/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></span>
-                                <!-- 添加标签 -->
+                                <!-- 添加分類 -->
+                                <span class="post-category">分類：<a href="/Solution/{$vo.cate}/" title="{$vo.classname}">{$vo.classname}</a></span>
+                                <!-- 添加標籤 -->
                                 <span class="post-tags" style="float: right;">{$vo.addtime|date='m-d H:i:s'}</span>
                             </div>
                         </li>
                         {/volist}
                     </ul>
                 </div>
-                <!--分页-->
+                <!--分頁-->
                 <nav class="text-center">
                     <div class='navigation'>
                         {$list|raw}

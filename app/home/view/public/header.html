@@ -1,5 +1,5 @@
 <header class="header noOpaque">
-    <!--导航-->
+    <!--導航-->
     <div id="navBox" class="header-nav menu" data-type="index">
         <div class="container">
             <div class="logobox">
@@ -18,31 +18,31 @@
             </div>
             <div class="navDiy pc">
                 {eq name='islogin' value='1'}
-                <a href="{:config('app.hostname')}/member" class="reg" title="个人中心">个人中心</a>
+                <a href="{:config('app.hostname')}/member" class="reg" title="個人中心">個人中心</a>
                 {else /}
-                <a href="{:config('app.hostname')}/member" class="reg" title="登录">登录</a>
+                <a href="{:config('app.hostname')}/member" class="reg" title="登錄">登錄</a>
                 {/eq}
             </div>
             <!--<div class="sbtn"><i class="fa iconfont">&#xe627;</i></div>-->
             <ul class="navbar">
-                <li class="navbar-item{eq name='control' value='index'} active{/eq}"><a href="/" title="首页">首页</a></li>
-                <li class="navbar-item{eq name='control' value='cloud'} active{/eq}{eq name='control' value='shop'} active{/eq}"><a href="/Cloud/" title="国际云厂商"><span class="nav1">云•国际</span></a></li>
-                <li class="navbar-item{eq name='control' value='server'} active{/eq}{eq name='control' value='stand'} active{/eq}"><a href="/Server/" title="物理机"><span class="nav2">独立•服务器</span></a></li>
-                <li class="navbar-item{eq name='control' value='solution'} active{/eq}{eq name='control' value='article'} active{/eq}"><a href="/Solution/" title="技术帮助"><span class="nav3">技术帮助</span></a></li>
-                <li class="navbar-item{eq name='control' value='introduce'} active{/eq}"><a href="/Introduce" title="">购买说明</a></li>
-                <li class="navbar-item{eq name='control' value='contact'} active{/eq}"><a href="/Contact" title="联系我们">联系我们</a></li>
+                <li class="navbar-item{eq name='control' value='index'} active{/eq}"><a href="/" title="首頁">首頁</a></li>
+                <li class="navbar-item{eq name='control' value='cloud'} active{/eq}{eq name='control' value='shop'} active{/eq}"><a href="/Cloud/" title="國際雲廠商"><span class="nav1">雲•國際</span></a></li>
+                <li class="navbar-item{eq name='control' value='server'} active{/eq}{eq name='control' value='stand'} active{/eq}"><a href="/Server/" title="物理機"><span class="nav2">獨立•伺服器</span></a></li>
+                <li class="navbar-item{eq name='control' value='solution'} active{/eq}{eq name='control' value='article'} active{/eq}"><a href="/Solution/" title="技術幫助"><span class="nav3">技術幫助</span></a></li>
+                <li class="navbar-item{eq name='control' value='introduce'} active{/eq}"><a href="/Introduce" title="">購買說明</a></li>
+                <li class="navbar-item{eq name='control' value='contact'} active{/eq}"><a href="/Contact" title="聯絡我們">聯絡我們</a></li>
             </ul>
         </div>
     </div>
     <div class="moble">
         <a class="moble-bars" id="btn-bars"><i class="fa nav-btn off iconfont">&#xe63d;</i></a>
         <div class="navDiy pc">
-            <a href="/Cloud/" class="login" title="云产品">云产品</a>
-            <a href="/Server/" class="login" title="物理机">物理机</a>
+            <a href="/Cloud/" class="login" title="雲產品">雲產品</a>
+            <a href="/Server/" class="login" title="物理機">物理機</a>
             {eq name='islogin' value='1'}
-            <a href="{:config('app.hostname')}/member" class="reg" title="会员中心">会员中心</a>
+            <a href="{:config('app.hostname')}/member" class="reg" title="會員中心">會員中心</a>
             {else /}
-            <a href="{:config('app.hostname')}/member" class="reg" title="登录">登录</a>
+            <a href="{:config('app.hostname')}/member" class="reg" title="登錄">登錄</a>
             {/eq}
             
         </div>
@@ -123,13 +123,13 @@
             <div class="navLeft">
                 <div class="navUl">
                     <ul>
-                        <li><span>技术帮助文档</span></li>
+                        <li><span>技術幫助文檔</span></li>
                     </ul>
                 </div>
             </div>
             <div class="navRight">
                 <div class="tabCon">
-                    <h3 style="font-weight: bold;">云计算技术帮助文档</h3>
+                    <h3 style="font-weight: bold;">雲計算技術幫助文檔</h3>
                     <div class="url">
                         <ul>
                             {volist name='nav[2]["children"]' id='vo'}

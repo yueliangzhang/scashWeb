@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta http-equiv="Content-Language" content="zh-TW" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="applicable-device" content="pc,mobile">
-    <title>{$info.title} - {$cate.parentname}代理开户 - {$sysconf.webname}</title>
+    <title>{$info.title} - {$cate.parentname}代理開戶 - {$sysconf.webname}</title>
     <meta name="description" content="{$info.des}">
     <link rel="icon" href="/static/aliyun/images/favicon.ico" type="image/x-icon">
     <meta property="og:title" content="{$info.title}">
@@ -30,7 +30,7 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首页</a> &raquo; <a href="/Cloud/" title="云产品">云产品</a> &raquo; <a href="/Cloud/{$cate.alias}/" title="{$cate.parentname}{$cate.name}">{$cate.parentname}{$cate.name}</a> &raquo; {$info.name}
+        <i class="fa fa-home"></i> <a href="{:config('app.hostname')}" title="{$sysconf.webname}">首頁</a> &raquo; <a href="/Cloud/" title="雲產品">雲產品</a> &raquo; <a href="/Cloud/{$cate.alias}/" title="{$cate.parentname}{$cate.name}">{$cate.parentname}{$cate.name}</a> &raquo; {$info.name}
     </div>
 </div>
 <div class="container">
@@ -38,7 +38,7 @@
         <div class="article">
             <div class="article-box">
                 <header class="article-top">
-                    <h2 class="article-tit">{$cate.parentname}{$info.name}代理开户</h2>
+                    <h2 class="article-tit">{$cate.parentname}{$info.name}代理開戶</h2>
                 </header>
                 <article class="article-main">
                     <div class="container_m">
@@ -48,15 +48,15 @@
                             </div>
                             <div class="shop_show_con">
                                 <div class="shop_show_infos">
-                                    <span><h2>{$info.title}代理开户</h2></span>
+                                    <span><h2>{$info.title}代理開戶</h2></span>
                                     <p><h4 style="font-weight: normal;">{$info.des}</h4></p>
                                 </div>
                                 <div class="shop_show_jg">
                                     <span>英文名： {$info.alias}</span>
-                                    <span>简称： {$info.name}</span>
-                                    <span>分类： <a href="/Cloud/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a></span>
-                                    <span>支付：USDT和支付宝，可退款</span>
-                                    <span>发票：支付宝可开发票</span>
+                                    <span>簡稱： {$info.name}</span>
+                                    <span>分類： <a href="/Cloud/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a></span>
+                                    <span>支付：USDT和支付寶，可退款</span>
+                                    <span>發票：支付寶可開發票</span>
                                     <!--<span>充值合用： $ {$info.usd}</span>
                                     <span>折合RMB：<i>￥ {:intval($info.usd*$setconfig['rate'])}</i></span>-->
                                     <span></span>
@@ -65,19 +65,19 @@
                                     <input type="hidden" name="id" value="{$info.id}">
                                     <input type="hidden" name="num" value="{:intval($info.usd*$setconfig['rate'])}">
                                     <div class="shop_show_jg">
-                                        <span>库存数量：充足</span>
+                                        <span>庫存數量：充足</span>
                                         {if $cate['pid'] neq 12 and $cate['pid'] neq 13}
-                                        <span class="shop_num_but">开户邮箱：<input type="text" name="email" id="email" placeholder="请输入开户邮箱地址" value="" style="height: 35px; line-height: 40px;" /></span>
+                                        <span class="shop_num_but">開戶郵箱：<input type="text" name="email" id="email" placeholder="請輸入開戶郵箱地址" value="" style="height: 35px; line-height: 40px;" /></span>
                                         {/if}
-                                        <span class="shop_num_but">是否开票：
+                                        <span class="shop_num_but">是否開票：
                                             <input type="radio" name="invoice" value="1">是
                                             <input type="radio" name="invoice" value="0" checked>否</span>
                                         <span class="shop_num_but">支付方式：
                                             <input type="radio" name="paytype" value="1">USDT
-                                            <input type="radio" name="paytype" value="0" checked>支付宝</span>
+                                            <input type="radio" name="paytype" value="0" checked>支付寶</span>
                                     </div>
                                     <div class="shop_show_jg">
-                                        <input type="submit" name="buying" value="立即购买" class="buy-button" />
+                                        <input type="submit" name="buying" value="立即購買" class="buy-button" />
                                     </div>
                                 </form>-->
                                 
@@ -86,14 +86,14 @@
                         <div class="shop_show_bks">
                             <div class="shop_bks_left">
                                 <div class="shop_bks_spsx">
-                                    <div class="shop_bks_spsx_title">商品属性</div>
+                                    <div class="shop_bks_spsx_title">商品屬性</div>
                                     <div class="shop_show_sx">
                                         {$info.des}
                                     </div>
 
                                 </div>
                                 <div class="shop_bks_spjj">
-                                    <div class="shop_bks_spsx_title">商品简介</div>
+                                    <div class="shop_bks_spsx_title">商品簡介</div>
                                     <div class="news_show_info">
                                         {$info.intro|raw}
                                     </div>
@@ -101,7 +101,7 @@
 
                             </div>
                             <div class="news_right_show">
-                                <div class="news_r_name">产品推荐</div>
+                                <div class="news_r_name">產品推薦</div>
                                 <div class="news_r_news">
                                     {volist name='recommend' id='vo' key='k'}
                                     <dd>
@@ -128,22 +128,22 @@
 </div>
 <script type="text/javascript">
     function validateEmail(email) {
-        // 定义一个正则表达式来匹配邮箱地址
+        // 定義一個正則表達式來匹配郵箱地址
         var re = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        // 使用正则表达式测试邮箱地址
+        // 使用正則表達式測試郵箱地址
         return re.test(String(email).toLowerCase());
     }
 
     function checkForm(form) {
-        // 获取邮箱输入字段的值
+        // 獲取郵箱輸入字段的值
         var email = form.email.value;
-        // 验证邮箱地址格式
+        // 驗證郵箱地址格式
         if (!validateEmail(email)) {
-            // 如果邮箱格式不正确，显示警告并阻止表单提交
-            alert("请输入正确的Email地址");
+            // 如果郵箱格式不正確，顯示警告並阻止表單提交
+            alert("請輸入正確的Email地址");
             return false;
         }
-        // 如果邮箱格式正确，允许表单提交
+        // 如果郵箱格式正確，允許表單提交
         return true;
     }
 </script>

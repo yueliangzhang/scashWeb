@@ -406,7 +406,7 @@ layui.define(["element", "layer", "jquery"], function (exports) {
             var tabId = location.hash.replace(/^#\//, '');
             if (tabId === null || tabId === undefined || tabId ==='') return false;
 
-            // 判断是否为首页
+            // 判断是否为首頁
             if(tabId ===options.homeInfo.href) return false;
 
             // 判断是否为右侧菜单
