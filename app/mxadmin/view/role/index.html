@@ -6,7 +6,7 @@
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 数据表格 -->
+            <!-- 資料表格 -->
             <table id="roleTable" lay-filter="roleTable"></table>
         </div>
     </div>
@@ -15,23 +15,23 @@
 <!-- 表格操作列 -->
 <script type="text/html" id="roleTbBar">
     <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="auth">权限分配</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">刪除</a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="auth">權限分配</a>
 </script>
-<!-- 表单弹窗 -->
+<!-- 表單彈窗 -->
 <script type="text/html" id="roleEditDialog">
     <form id="roleEditForm" lay-filter="roleEditForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
         <div class="layui-form-item">
-            <label class="layui-form-label layui-form-required">角色名称</label>
+            <label class="layui-form-label layui-form-required">角色名稱</label>
             <div class="layui-input-block">
-                <input name="title" placeholder="请输入角色名称" class="layui-input" lay-verType="tips" lay-verify="required" required/>
+                <input name="title" placeholder="請輸入角色名稱" class="layui-input" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">角色描述</label>
             <div class="layui-input-block">
-                <textarea name="comments" placeholder="请输入角色描述" class="layui-textarea"></textarea>
+                <textarea name="comments" placeholder="請輸入角色描述" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item text-right">
@@ -58,48 +58,48 @@
             page: {limit: 15},
             limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
             toolbar: ['<p>',
-                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量删除</button>',
+                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量刪除</button>',
                 '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加角色</button>&nbsp;',
                 '</p>'].join(''),
             cellMinWidth: 100,
             cols: [[
                 {type: 'checkbox'},
                 {field: 'id', title: '角色ID', align: 'center', sort: true, width: 90},
-                {field: 'title', title: '角色名称', align: 'center', sort: true},
+                {field: 'title', title: '角色名稱', align: 'center', sort: true},
                 {field: 'comments', title: '角色描述', align: 'center',},
-                {field: 'create_time', title: '创建时间', align: 'center', sort: true},
-                {field: 'update_time', title: '更新时间', align: 'center', sort: true},
+                {field: 'create_time', title: '創建時間', align: 'center', sort: true},
+                {field: 'update_time', title: '更新時間', align: 'center', sort: true},
                 {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 200}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的資料
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析資料長度
+                    "data": res.data.data //解析資料列表
                 };
             },
         });
 
-        /* 表格工具条点击事件 */
+        /* 表格工具條點擊事件 */
         table.on('tool(roleTable)', function (obj) {
             if (obj.event === 'edit') { // 修改
                 showEditModel(obj.data);
-            } else if (obj.event === 'del') { // 删除
+            } else if (obj.event === 'del') { // 刪除
                 doDel(obj);
-            } else if (obj.event === 'auth') {  // 权限管理
+            } else if (obj.event === 'auth') {  // 權限管理
                 showPermModel(obj.data.id, obj.data.title);
             }
         });
 
-        /* 表格头工具栏点击事件 */
+        /* 表格頭工具欄點擊事件 */
         table.on('toolbar(roleTable)', function (obj) {
             if (obj.event === 'add') { // 添加
                 showEditModel();
-            } else if (obj.event === 'del') { // 删除
+            } else if (obj.event === 'del') { // 刪除
                 var checkRows = table.checkStatus('roleTable');
                 if (checkRows.data.length === 0) {
-                    layer.msg('请选择要删除的数据', {icon: 5, anim: 6});
+                    layer.msg('請選擇要刪除的資料', {icon: 5, anim: 6});
                     return;
                 }
                 var ids = checkRows.data.map(function (d) {
@@ -109,18 +109,17 @@
             }
         });
 
-        /* 显示表单弹窗 */
+        /* 顯示表單彈窗 */
         function showEditModel(mData) {
             admin.open({
                 type: 1,
                 title: (mData ? '修改' : '添加') + '角色',
                 shade: 0.5,
-                //shadeClose: true,
                 content: $('#roleEditDialog').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單資料
                     form.val('roleEditForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleEditSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post(mData ? "{:url('mxadmin/role/edit')}" : "{:url('mxadmin/role/add')}", data.field, function (res) {
@@ -139,13 +138,12 @@
             });
         }
 
-        /* 删除 */
+        /* 刪除 */
         function doDel(obj) {
-            layer.confirm('确定要删除选中的数据吗？', {
-                title: '删除数据',
+            layer.confirm('確定要刪除選中的資料嗎？', {
+                title: '刪除資料',
                 skin: 'layui-layer-admin',
                 shade: 0.5,
-                //shadeClose: true,
             }, function (i) {
                 layer.close(i);
                 var loadIndex = layer.load(2);
@@ -164,12 +162,11 @@
             });
         }
 
-        /* 权限管理 */
+        /* 權限管理 */
         function showPermModel(id, title) {
             admin.open({
-                title: '"'+title+'"'+'的角色权限分配',
+                title: '"'+title+'"'+'的角色權限分配',
                 shade: 0.5,
-                //shadeClose: true,
                 btn: ['保存', '取消'],
                 content: '<ul id="roleAuthTree" class="ztree"></ul>',
                 success: function (layero, dIndex) {
@@ -186,13 +183,13 @@
                                     }
                                 }
                             }, res.data);
-                            // 默认展开全部节点
+                            // 預設展開全部節點
                             insTree.expandAll(true);
                         } else {
                             layer.msg(res.msg, {icon: 5, anim: 6});
                         }
                     }, 'json');
-                    // 超出一定高度滚动
+                    // 超出一定高度滾動
                     $(layero).children('.layui-layer-content').css({'max-height': '300px', 'overflow': 'auto'});
                 },
                 yes: function (dIndex) {

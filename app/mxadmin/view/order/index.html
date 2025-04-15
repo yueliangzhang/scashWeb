@@ -1,5 +1,5 @@
 {extend name="base" /}
-{block name="title"}支付订单{/block}
+{block name="title"}支付訂單{/block}
 {block name="body"}
 <style type="text/css">
     .layui-table-cell{height:40px;line-height: 40px;}
@@ -7,28 +7,28 @@
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 表格工具栏 -->
+            <!-- 表格工具欄 -->
             <form class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">用户邮箱</label>
+                        <label class="layui-form-label">用戶郵箱</label>
                         <div class="layui-input-inline">
-                            <input name="email" class="layui-input" autocomplete="off" placeholder="请输入用户注册邮箱"/>
+                            <input name="email" class="layui-input" autocomplete="off" placeholder="請輸入用戶註冊郵箱"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">订单号</label>
+                        <label class="layui-form-label">訂單號</label>
                         <div class="layui-input-inline">
-                            <input name="trade_no" class="layui-input" autocomplete="off" placeholder="输入订单号"/>
+                            <input name="trade_no" class="layui-input" autocomplete="off" placeholder="輸入訂單號"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">订单状态</label>
+                        <label class="layui-form-label">訂單狀態</label>
                         <div class="layui-input-inline">
                             <select name="status">
                                 <option value="0">--- 全部 ---</option>
                                 <option value="1">待付款</option>
-                                <option value="2">待开户/服务器</option>
+                                <option value="2">待開戶/伺服器</option>
                                 <option value="3">成功</option>
                                 <option value="4">待退款</option>
                                 <option value="5">退款成功</option>
@@ -36,69 +36,69 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">开始时间</label>
+                        <label class="layui-form-label">開始時間</label>
                         <div class="layui-input-inline">
-                            <input name="start_time" id="start_time" class="layui-input icon-date" placeholder="选择起始时间" autocomplete="off"/>
+                            <input name="start_time" id="start_time" class="layui-input icon-date" placeholder="選擇起始時間" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">结束时间</label>
+                        <label class="layui-form-label">結束時間</label>
                         <div class="layui-input-inline">
-                            <input name="end_time" id="end_time" class="layui-input icon-date" placeholder="选择结束时间" autocomplete="off"/>
+                            <input name="end_time" id="end_time" class="layui-input icon-date" placeholder="選擇結束時間" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="layui-inline">&emsp;
                         <button class="layui-btn icon-btn" lay-filter="roleTbSearch" lay-submit>
-                            <i class="layui-icon">&#xe615;</i>搜索
+                            <i class="layui-icon">&#xe615;</i>搜尋
                         </button>
                     </div>
                 </div>
             </form>
-            <!-- 数据表格 -->
+            <!-- 數據表格 -->
             <table id="roleTable" lay-filter="roleTable"></table>
         </div>
     </div>
 </div>
-<!--表单弹窗-->
-<!-- 服务器 -->
+<!--表單彈窗-->
+<!-- 伺服器 -->
 <script type="text/html" id="roleAddStand">
     <form id="roleAddForm" lay-filter="roleAddForm" class="layui-form model-form">
         <input name="id" type="hidden" />
         <input type="hidden" name="userid" />
         <div class="layui-form-item">
-            <label class="layui-form-label">服务器信息</label>
+            <label class="layui-form-label">伺服器信息</label>
             <div class="layui-input-block">
-                <textarea name="content" placeholder="请输入服务器信息" class="layui-textarea"></textarea>
+                <textarea name="content" placeholder="請輸入伺服器信息" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">续费价格</label>
+            <label class="layui-form-label">續費價格</label>
             <div class="layui-input-block">
-                <input name="seller" placeholder="请输入续费价格" class="layui-input" autocomplete="off" lay-verType="tips" />
+                <input name="seller" placeholder="請輸入續費價格" class="layui-input" autocomplete="off" lay-verType="tips" />
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">代理价格</label>
+            <label class="layui-form-label">代理價格</label>
             <div class="layui-input-block">
-                <input name="agsell" placeholder="请输入代理价格" class="layui-input" autocomplete="off" lay-verType="tips" />
+                <input name="agsell" placeholder="請輸入代理價格" class="layui-input" autocomplete="off" lay-verType="tips" />
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">出厂价格</label>
+            <label class="layui-form-label">出廠價格</label>
             <div class="layui-input-block">
-                <input name="price" placeholder="请输入出厂价格" class="layui-input" autocomplete="off" lay-verType="tips" />
+                <input name="price" placeholder="請輸入出廠價格" class="layui-input" autocomplete="off" lay-verType="tips" />
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">到期时间</label>
+            <label class="layui-form-label">到期時間</label>
             <div class="layui-input-inline" style="width: 200px;">
-                <input name="endtime" id="endtime" class="layui-input icon-date" placeholder="选择到期时间" autocomplete="off"/>
+                <input name="endtime" id="endtime" class="layui-input icon-date" placeholder="選擇到期時間" autocomplete="off"/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">备注</label>
+            <label class="layui-form-label">備註</label>
             <div class="layui-input-block">
-                <textarea name="remarks" placeholder="请输入联系客户的淘宝、微信和飞机账号" class="layui-textarea"></textarea>
+                <textarea name="remarks" placeholder="請輸入聯繫客戶的淘寶、微信和飛機帳號" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item text-right">
@@ -112,11 +112,11 @@
         <input name="id" type="hidden" />
         <input type="hidden" name="goodsId" />
         <div class="layui-form-item">
-            <label class="layui-form-label">续期月份</label>
+            <label class="layui-form-label">續期月份</label>
             <div class="layui-input-inline" style="width: 200px;">
-                <input name="endtime" type="number" class="layui-input icon-date" placeholder="选择续期几个月" autocomplete="off" />
+                <input name="endtime" type="number" class="layui-input icon-date" placeholder="選擇續期幾個月" autocomplete="off" />
             </div>
-            <div class="layui-form-mid layui-word-aux">填写1，2，3</div>
+            <div class="layui-form-mid layui-word-aux">填寫1，2，3</div>
         </div>
         <div class="layui-form-item text-right">
             <button class="layui-btn" lay-filter="roleUpSubmit" lay-submit>保存</button>
@@ -124,25 +124,25 @@
         </div>
     </form>
 </script>
-<!-- 公有云 -->
+<!-- 公有雲 -->
 <script type="text/html" id="roleAddCloud">
     <form id="roleAddForm" lay-filter="roleAddForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
         <input type="hidden" name="userid">
         <div class="layui-form-item">
-            <label class="layui-form-label">云账户UID</label>
+            <label class="layui-form-label">雲賬戶UID</label>
             <div class="layui-input-block">
-                <input name="uid" placeholder="请输入云账户UID" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+                <input name="uid" placeholder="請輸入雲賬戶UID" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">邮箱</label>
+            <label class="layui-form-label">郵箱</label>
             <div class="layui-input-block">
-                <input name="email" placeholder="请输入邮箱地址" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+                <input name="email" placeholder="請輸入郵箱地址" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">账户类型</label>
+            <label class="layui-form-label">賬戶類型</label>
             <div class="layui-input-block">
                 {volist name='type' id='vo' key='k'}
                 <input type="radio" name="type" value="{$k-1}" title="{$vo}">
@@ -150,21 +150,21 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">金额</label>
+            <label class="layui-form-label">金額</label>
             <div class="layui-input-block">
-                <input name="usd" placeholder="请输入金额" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+                <input name="usd" placeholder="請輸入金額" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">账户信息</label>
+            <label class="layui-form-label">賬戶信息</label>
             <div class="layui-input-block">
-                <textarea name="info" placeholder="请输入开户的账户信息" class="layui-textarea"></textarea>
+                <textarea name="info" placeholder="請輸入開戶的賬戶信息" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">备注</label>
+            <label class="layui-form-label">備註</label>
             <div class="layui-input-block">
-                <textarea name="remarks" placeholder="请输入联系客户的淘宝、微信和飞机账号" class="layui-textarea"></textarea>
+                <textarea name="remarks" placeholder="請輸入聯繫客戶的淘寶、微信和飛機帳號" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item text-right">
@@ -178,9 +178,9 @@
         <input name="id" type="hidden"/>
         <input type="hidden" name="goodsId" />
         <div class="layui-form-item">
-            <label class="layui-form-label">金额</label>
+            <label class="layui-form-label">金額</label>
             <div class="layui-input-inline" style="width:200px;">
-                <input name="usd" placeholder="请输入金额USD" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
+                <input name="usd" placeholder="請輸入金額USD" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required />
             </div>
             <div class="layui-form-mid layui-word-aux">美金USD</div>
         </div>
@@ -193,20 +193,20 @@
 <!-- 表格操作列 -->
 <script type="text/html" id="roleTbBar">
     {{#  if(d.status === 0){ }}
-    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">刪除</a>
     {{#  } }}
     {{# if (d.status === 1){ }}
     {{# if (d.type === 0){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="openStand">开服务器</a>
+    <a class="layui-btn layui-btn-xs" lay-event="openStand">開伺服器</a>
     {{#  } }}
     {{# if (d.type === 1){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="openCloud">开户</a>
+    <a class="layui-btn layui-btn-xs" lay-event="openCloud">開戶</a>
     {{#  } }}
     {{# if (d.type === 2){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="renewStand">服务器续期</a>
+    <a class="layui-btn layui-btn-xs" lay-event="renewStand">伺服器續期</a>
     {{#  } }}
     {{# if (d.type === 3){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="renewCloud">公有云充值</a>
+    <a class="layui-btn layui-btn-xs" lay-event="renewCloud">公有雲充值</a>
     {{#  } }}
     {{#  } }}
 </script>
@@ -232,39 +232,39 @@
             cellMinWidth: 100,
             cols: [[
                 {type: 'checkbox'},
-                {field: 'trade_no', title: '订单号', align: 'left', width: 200,unresize: true, totalRowText: '合计'},
-                {field: 'users', title: '用户信息', align: 'left',width: 180},
-                {field: 'title', title: '订单标题', align: 'left', width: 200},
+                {field: 'trade_no', title: '訂單號', align: 'left', width: 200,unresize: true, totalRowText: '合計'},
+                {field: 'users', title: '用戶信息', align: 'left',width: 180},
+                {field: 'title', title: '訂單標題', align: 'left', width: 200},
                 {
-                    title: '订单类型', templet: function (d) {
+                    title: '訂單類型', templet: function (d) {
                         return [
-                            '开服务器',
-                            '开公有云',
-                            '服务器续费',
-                            '公有云充值'
+                            '開伺服器',
+                            '開公有雲',
+                            '伺服器續費',
+                            '公有雲充值'
                         ][d.type];
                     }, align: 'left'
                 },
-                {field: 'kaihu', title: '开户邮箱', align: 'left',width:200},
-                {field: 'invoiceTitle', title: '开票信息', align: 'left', width: 220},
+                {field: 'kaihu', title: '開戶郵箱', align: 'left',width:200},
+                {field: 'invoiceTitle', title: '開票信息', align: 'left', width: 220},
                 {
-                    title: '付款类型', templet: function (d) {
+                    title: '付款類型', templet: function (d) {
                         return [
-                            '支付宝',
+                            '支付寶',
                             'USDT'
                         ][d.paytype];
                     }, align: 'left'
                 },
                 {field: 'usd', title: '美金', align: 'left', totalRow: true},
-                {field: 'num', title: '付款金额', align: 'left', totalRow: true},
-                {field: 'invoice', title: '发票金额', align: 'left', totalRow: true},
-                {field: 'addtime', title: '下单时间', align: 'left', width: 160},
-                {field: 'paytime', title: '付款时间', align: 'left', width: 160},
+                {field: 'num', title: '付款金額', align: 'left', totalRow: true},
+                {field: 'invoice', title: '發票金額', align: 'left', totalRow: true},
+                {field: 'addtime', title: '下單時間', align: 'left', width: 160},
+                {field: 'paytime', title: '付款時間', align: 'left', width: 160},
                 {
-                    title: '状态', templet: function (d) {
+                    title: '狀態', templet: function (d) {
                         return [
                             '<font color="blank">待付款</font>',
-                            '<font color="green">已付款(待开)</font>',
+                            '<font color="green">已付款(待開)</font>',
                             '<font color="blue">成功</font>',
                             '<font color="yellow">待退款</font>',
                             '<font color="red">退款成功</font>'
@@ -273,17 +273,17 @@
                 },
                 {title: '操作', toolbar: '#roleTbBar', align: 'center', minWidth: 150, fixed: 'right'}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的數據
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析數據長度
+                    "data": res.data.data //解析數據列表
                 };
             }
         });
 
-        /* 渲染时间选择 */
+        /* 渲染時間選擇 */
         laydate.render({
             elem: '#start_time',
             type: 'date',
@@ -298,38 +298,38 @@
             isInitValue: false
         });
 
-        /* 表格搜索 */
+        /* 表格搜尋 */
         form.on('submit(roleTbSearch)', function (data) {
-            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/order/search')}"});
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/order/search')}"}); 
             return false;
         });
 
-        /* 表格工具条点击事件 */
+        /* 表格工具條點擊事件 */
         table.on('tool(roleTable)', function (obj) {
-            if (obj.event === 'del') { // 删除
+            if (obj.event === 'del') { // 刪除
                 doDel(obj);
-            } else if (obj.event === 'openStand') { // 开服务器
+            } else if (obj.event === 'openStand') { // 開伺服器
                 doOpenStand(obj.data);
-            } else if (obj.event === 'openCloud') { // 开户
+            } else if (obj.event === 'openCloud') { // 開戶
                 doOpenCloud(obj.data);
-            } else if (obj.event === 'renewStand') { // 服务器续费
+            } else if (obj.event === 'renewStand') { // 伺服器續費
                 doRenewStand(obj.data);
             } else if (obj.event === 'renewCloud') {
                 doRenewCloud(obj.data);
             }
         });
 
-        /* 开服务器 */
+        /* 開伺服器 */
         function doOpenStand(mData) {
             admin.open({
                 type: 1,
-                title: '开独立服务器',
+                title: '開獨立伺服器',
                 area: '510px',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#roleAddStand').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('roleAddForm', mData);
                     laydate.render({
                         elem: '#endtime',
@@ -337,7 +337,7 @@
                         value: new Date(),
                         isInitValue: false
                     });
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleAddSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post("{:url('mxadmin/order/addStand')}", data.field, function (res) {
@@ -356,19 +356,19 @@
             });
         }
 
-        /* 公有云开户 */
+        /* 公有雲開戶 */
         function doOpenCloud(mData) {
             admin.open({
                 type: 1,
-                title: '开公有云',
+                title: '開公有雲',
                 area: '510px',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#roleAddCloud').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('roleAddForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleAddSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post("{:url('mxadmin/order/addCloud')}", data.field, function (res) {
@@ -387,19 +387,19 @@
             });
         }
 
-        /* 服务器续费 */
+        /* 伺服器續費 */
         function doRenewStand(mData) {
             admin.open({
                 type: 1,
-                title: '服务器续期',
+                title: '伺服器續期',
                 area: '510px',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#roleUpStand').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('roleUpForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleUpSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post("{:url('mxadmin/order/editStand')}", data.field, function (res) {
@@ -418,19 +418,19 @@
             });
         }
 
-        /* 公有云充值 */
+        /* 公有雲充值 */
         function doRenewCloud(mData) {
             admin.open({
                 type: 1,
-                title: '公有云充值',
+                title: '公有雲充值',
                 area: '510px',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#roleReCloud').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('roleReForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleReSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post("{:url('mxadmin/order/editCloud')}", data.field, function (res) {
@@ -449,10 +449,10 @@
             });
         }
 
-        /* 删除 */
+        /* 刪除 */
         function doDel(obj) {
-            layer.confirm('确定要删除选中的数据吗？', {
-                title: '删除数据',
+            layer.confirm('確定要刪除選中的數據嗎？', {
+                title: '刪除數據',
                 skin: 'layui-layer-admin',
                 shade: 0.5,
                 //shadeClose: true,

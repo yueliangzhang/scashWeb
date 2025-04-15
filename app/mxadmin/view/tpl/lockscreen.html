@@ -2,7 +2,7 @@
     <div class="lock-screen-time"></div>
     <div class="lock-screen-date"></div>
     <div class="lock-screen-form">
-        <input placeholder="请输入登录密码解锁" class="lock-screen-psw" maxlength="20" type="password"/>
+        <input placeholder="請輸入登入密碼解鎖" class="lock-screen-psw" maxlength="20" type="password"/>
         <i class="layui-icon layui-icon-right lock-screen-enter"></i>
         <br/>
         <div class="lock-screen-tip"></div>
@@ -10,7 +10,7 @@
     <div class="lock-screen-tool">
         <div class="lock-screen-tool-item">
             <i class="layui-icon layui-icon-logout" mx-event="logout" data-confirm="false" data-url="{:url('mxadmin/login/logout')}"></i>
-            <div class="lock-screen-tool-tip">退出登录</div>
+            <div class="lock-screen-tool-tip">登出</div>
         </div>
     </div>
 </div>
@@ -67,13 +67,13 @@
                 $psw.focus();
                 var psw = $psw.val();
                 if (!psw) {
-                    emptyRest ? restForm() : $tip.text('请输入登录密码解锁');
+                    emptyRest ? restForm() : $tip.text('請輸入登入密碼解鎖');
                 } else if (rightPsw === toMd5Hex(psw)) {
                     restForm();
                     admin.unlockScreen();
                 } else {
                     $psw.val('');
-                    $tip.text('密码不正确');
+                    $tip.text('密碼不正確');
                     $form.addClass('show-back');
                 }
             } else {

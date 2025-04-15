@@ -1,27 +1,28 @@
 {extend name="base" /}
-{block name="title"}友情链接{/block}
+
+{block name="title"}友誼鏈接{/block}
 {block name="body"}
 <div class="layui-fluid">
     <div class="layui-card">
         <div class="layui-card-body">
-            <!-- 表格工具栏 -->
+            <!-- 表格工具欄 -->
             <form class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">链接名称</label>
+                        <label class="layui-form-label">鏈接名稱</label>
                         <div class="layui-input-inline">
-                            <input name="name" class="layui-input" autocomplete="off" placeholder="输入链接名称"/>
+                            <input name="name" class="layui-input" autocomplete="off" placeholder="輸入鏈接名稱"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">链接归属</label>
+                        <label class="layui-form-label">鏈接歸屬</label>
                         <div class="layui-input-inline">
                             <select name="type">
-                                <option>请选择链接归属</option>
+                                <option>請選擇鏈接歸屬</option>
                                 <option value="1">主站</option>
-                                <option value="2">阿里云国际</option>
-                                <option value="3">腾讯云国际</option>
-                                <option value="4">华为云国际</option>
+                                <option value="2">阿里雲國際</option>
+                                <option value="3">騰訊雲國際</option>
+                                <option value="4">華為雲國際</option>
                                 <option value="5">aws</option>
                                 <option value="6">gcp</option>
                                 <option value="7">azure</option>
@@ -35,7 +36,7 @@
                     </div>
                 </div>
             </form>
-            <!-- 数据表格 -->
+            <!-- 數據表格 -->
             <table id="roleTable" lay-filter="roleTable"></table>
         </div>
     </div>
@@ -44,27 +45,27 @@
 <!-- 表格操作列 -->
 <script type="text/html" id="roleTbBar">
     <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">刪除</a>
 </script>
-<!-- 表单弹窗 -->
+<!-- 表單彈窗 -->
 <script type="text/html" id="roleEditDialog">
     <form id="roleEditForm" lay-filter="roleEditForm" class="layui-form model-form">
         <input name="id" type="hidden"/>
         <div class="layui-form-item">
-            <label class="layui-form-label">链接名称</label>
+            <label class="layui-form-label">鏈接名稱</label>
             <div class="layui-input-block">
-                <input name="name" placeholder="请输入链接名称" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+                <input name="name" placeholder="請輸入鏈接名稱" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">链接归属</label>
+            <label class="layui-form-label">鏈接歸屬</label>
             <div class="layui-input-block">
                 <select name="type">
-                    <option>请选择链接归属</option>
+                    <option>請選擇鏈接歸屬</option>
                     <option value="1">主站</option>
-                    <option value="2">阿里云国际</option>
-                    <option value="3">腾讯云国际</option>
-                    <option value="4">华为云国际</option>
+                    <option value="2">阿里雲國際</option>
+                    <option value="3">騰訊雲國際</option>
+                    <option value="4">華為雲國際</option>
                     <option value="5">aws</option>
                     <option value="6">gcp</option>
                     <option value="7">azure</option>
@@ -72,15 +73,15 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">链接地址</label>
+            <label class="layui-form-label">鏈接地址</label>
             <div class="layui-input-block">
-                <input name="url" placeholder="请输入链接地址" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
+                <input name="url" placeholder="請輸入鏈接地址" class="layui-input" autocomplete="off" lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">排序</label>
             <div class="layui-input-block" style="width: 150px">
-                <input name="sort" placeholder="请输入排序" value="100" class="layui-input" autocomplete="off" lay-verType="tips"/>
+                <input name="sort" placeholder="請輸入排序" value="100" class="layui-input" autocomplete="off" lay-verType="tips"/>
             </div>
         </div>
         <div class="layui-form-item text-right">
@@ -108,38 +109,38 @@
             page: {limit: 15},
             limits: [15, 30, 45, 60, 75, 90, 100, 200, 500],
             toolbar: ['<p>',
-                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量删除</button>',
+                '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>批量刪除</button>',
                 '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>',
                 '</p>'].join(''),
             cellMinWidth: 100,
             totalRow: true,
             cols: [[
                 {type: 'checkbox'},
-                {field: 'id', title: '编号', align: 'left'},
+                {field: 'id', title: '編號', align: 'left'},
                 {
-                    title: '链接归属', templet: function (d) {
+                    title: '鏈接歸屬', templet: function (d) {
                         return [
                             '主站',
-                            '阿里云',
-                            '腾讯云',
-                            '华为云',
+                            '阿里雲',
+                            '騰訊雲',
+                            '華為雲',
                             'AWS',
                             'gcp',
                             'azure'
                         ][d.type - 1];
                     }, align: 'left'
                 },
-                {field: 'name', title: '名称', align: 'left'},
+                {field: 'name', title: '名稱', align: 'left'},
                 {field: 'url', title: '地址', align: 'left'},
                 {field: 'sort', title: '排序', align: 'left'},
                 {title: '操作', toolbar: '#roleTbBar', align: 'center',fixed: 'right', minWidth: 140}
             ]],
-            parseData: function(res){ //res 即为原始返回的数据
+            parseData: function(res){ //res 即為原始返回的數據
                 return {
-                    "code": res.code, //解析接口状态
+                    "code": res.code, //解析接口狀態
                     "msg": res.msg, //解析提示文本
-                    "count": res.data.total, //解析数据长度
-                    "data": res.data.data //解析数据列表
+                    "count": res.data.total, //解析數據長度
+                    "data": res.data.data //解析數據列表
                 };
             }
         });
@@ -153,25 +154,25 @@
 
         /* 表格搜索 */
         form.on('submit(roleTbSearch)', function (data) {
-            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/links/search')}"});
+            insTb.reload({where: data.field, page: {curr: 1}, url:"{:url('mxadmin/links/search')}"}); 
             return false;
         });
 
-        /* 表格工具条点击事件 */
+        /* 表格工具條點擊事件 */
         table.on('tool(roleTable)', function (obj) {
-            if (obj.event === 'del') { // 删除
+            if (obj.event === 'del') { // 刪除
                 doDel(obj);
-            } else if (obj.event === 'edit') { // 审核弹窗
+            } else if (obj.event === 'edit') { // 審核彈窗
                 showEditModel(obj.data);
             }
         });
 
-        /* 表格头工具栏点击事件 */
+        /* 表格頭工具欄點擊事件 */
         table.on('toolbar(roleTable)', function (obj) {
-            if (obj.event === 'del') { // 删除
+            if (obj.event === 'del') { // 刪除
                 var checkRows = table.checkStatus('roleTable');
                 if (checkRows.data.length === 0) {
-                    layer.msg('请选择要删除的数据', {icon: 5, anim: 6});
+                    layer.msg('請選擇要刪除的數據', {icon: 5, anim: 6});
                     return;
                 }
                 var ids = checkRows.data.map(function (d) {
@@ -183,19 +184,19 @@
             }
         });
 
-        /* 显示审核弹窗 */
+        /* 顯示審核彈窗 */
         function showEditModel(mData) {
             admin.open({
                 type: 1,
-                title: (mData ? '修改' : '添加') + '友情链接',
+                title: (mData ? '修改' : '添加') + '友誼鏈接',
                 area: '510px',
                 shade: 0.5,
                 //shadeClose: true,
                 content: $('#roleEditDialog').html(),
                 success: function (layero, dIndex) {
-                    // 回显表单数据
+                    // 回顯表單數據
                     form.val('roleEditForm', mData);
-                    // 表单提交事件
+                    // 表單提交事件
                     form.on('submit(roleEditSubmit)', function (data) {
                         var loadIndex = layer.load(2);
                         $.post(mData ? "{:url('mxadmin/links/edit')}" : "{:url('mxadmin/links/add')}", data.field, function (res) {
@@ -214,10 +215,10 @@
             });
         }
 
-        /* 删除 */
+        /* 刪除 */
         function doDel(obj) {
-            layer.confirm('确定要删除选中的数据吗？', {
-                title: '删除数据',
+            layer.confirm('確定要刪除選中的數據嗎？', {
+                title: '刪除數據',
                 skin: 'layui-layer-admin',
                 shade: 0.5,
                 //shadeClose: true,

@@ -1,4 +1,4 @@
-<!-- 表单弹窗 -->
+<!-- 表單彈窗 -->
 <style>
     .layui-form-item {
         margin-top: 20px;
@@ -36,13 +36,13 @@
         <div class="layui-card">
             <div class="layui-card-body">
                 <div class="layui-form-item">
-                    <label class="layui-form-label layui-form-required">文章标题</label>
+                    <label class="layui-form-label layui-form-required">文章標題</label>
                     <div class="layui-input-inline" style="width:300px;">
-                        <input name="title" id="title" class="layui-input" autocomplete="off" placeholder="请输入文章标题" lay-verType="tips" lay-verify="required" required/>
+                        <input name="title" id="title" class="layui-input" autocomplete="off" placeholder="請輸入文章標題" lay-verType="tips" lay-verify="required" required/>
                     </div>
                 </div>
                 <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">文章内容</label>
+                    <label class="layui-form-label">文章內容</label>
                     <div class="layui-input-inline" style="width: 800px;">
                         <textarea class="TinyEditor" id="my-editor" name="content" class="layui-textarea"></textarea>
                     </div>
@@ -82,7 +82,7 @@
             convert_urls: false,
             images_upload_handler: function (blobInfo, succFun, failFun) {
                 var xhr, formData;
-                var file = blobInfo.blob();//转化为易于理解的file对象
+                var file = blobInfo.blob();//轉化為易於理解的file對象
                 xhr = new XMLHttpRequest();
                 xhr.withCredentials = false;
                 xhr.open('POST', "{:url('mxadmin/upload/upload_editor_same')}");
@@ -100,19 +100,19 @@
                     succFun(json.location);
                 };
                 formData = new FormData();
-                formData.append('file', file, file.name );//此处与源文档不一样
+                formData.append('file', file, file.name );//此處與源文檔不一樣
                 xhr.send(formData);
             },
             setup: function(editor){
-                editor.on('change',function(){ editor.save(); }); //ajax提交表单自动同步textarea
+                editor.on('change',function(){ editor.save(); }); //ajax提交表單自動同步textarea
             }
         });
 
-        var mData = admin.getLayerData('#mxForm').formdata;  // 列表页面传递的数据，#mxForm这个只要写弹窗内任意一个元素的id即可
-        // 回显数据
+        var mData = admin.getLayerData('#mxForm').formdata;  // 列表頁面傳遞的數據，#mxForm這個只要寫彈窗內任意一個元素的id即可
+        // 回顯數據
         form.val('mxForm', mData);
 
-        // 表单提交事件
+        // 表單提交事件
         form.on('submit(mxSubmit)', function (data) {
             layer.load(2);
             var url = mData ? "{:url('mxadmin/notice/edit')}" : "{:url('mxadmin/notice/add')}";
@@ -120,8 +120,8 @@
                 layer.closeAll('loading');
                 if (res.code === 1) {
                     layer.msg(res.msg, {icon: 1});
-                    admin.putLayerData('formOk', true, '#mxForm');  // 设置操作成功的标识，#mxForm这个只要写弹窗内任意一个元素的id即可
-                    admin.closeDialog('#mxForm');  // 关闭页面层弹窗
+                    admin.putLayerData('formOk', true, '#mxForm');  // 設置操作成功的標識，#mxForm這個只要寫彈窗內任意一個元素的id即可
+                    admin.closeDialog('#mxForm');  // 關閉頁面層彈窗
                 } else {
                     layer.msg(res.msg, {icon: 5, anim: 6});
                 }
