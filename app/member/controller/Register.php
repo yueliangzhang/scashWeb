@@ -90,7 +90,7 @@ class Register extends MemberBase
                 'captcha' => $captcha,
                 'expire_time' => time() + 300 // 5分钟有效期
             ]);
-            $subject = '【谷咕云开户网】 新用户邮箱验证';
+            $subject = '【T1 cloud开户网】 新用户邮箱验证';
             $body = '<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -152,7 +152,7 @@ class Register extends MemberBase
     <div class="email-container">
         <!-- 邮件头部 -->
         <div class="email-header">
-            <h1>谷咕云邮箱验证码</h1>
+            <h1>T1 cloud邮箱验证码</h1>
         </div>
 
         <!-- 邮件内容 -->

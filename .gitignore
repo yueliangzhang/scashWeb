@@ -5,3 +5,5 @@
 *.log
 *.env
 *.config
+public/static/aliyun/images/.DS_Store
+public/static/aliyun/.DS_Store
