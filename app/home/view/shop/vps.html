@@ -57,11 +57,11 @@
                                     <span>分類： <a href="/Cloud/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a></span>
                                     <span>支付：USDT和支付寶，可退款</span>
                                     <span>發票：支付寶可開發票</span>
-                                    <!--<span>充值合用： $ {$info.usd}</span>
-                                    <span>折合RMB：<i>￥ {:intval($info.usd*$setconfig['rate'])}</i></span>-->
+                                    <span>充值合用： $ {$info.usd}</span>
+                                    <span>折合RMB：<i>￥ {:intval($info.usd*$setconfig['rate'])}</i></span>
                                     <span></span>
                                 </div>
-                                <!--<form action="/shop/buying" {if $cate['pid'] neq 12 and $cate['pid'] neq 13}onsubmit="return checkForm(this);"{/if} method="post" target="_blank">
+                                <form action="/shop/buying" {if $cate['pid'] neq 12 and $cate['pid'] neq 13}onsubmit="return checkForm(this);"{/if} method="post" target="_blank">
                                     <input type="hidden" name="id" value="{$info.id}">
                                     <input type="hidden" name="num" value="{:intval($info.usd*$setconfig['rate'])}">
                                     <div class="shop_show_jg">
@@ -79,7 +79,7 @@
                                     <div class="shop_show_jg">
                                         <input type="submit" name="buying" value="立即購買" class="buy-button" />
                                     </div>
-                                </form>-->
+                                </form>
                                 
                             </div>
                         </div>
