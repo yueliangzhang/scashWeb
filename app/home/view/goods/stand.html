@@ -54,10 +54,10 @@
                                 <div class="shop_show_jg">
                                     <span>英文名： {$info.alias}</span>
                                     <span>分類： <a href="/Server/{$cate.alias}/" title="{$cate.name}">{$cate.name}</a></span>
-                                    <!--<span>價格：￥ {$info.selled}</span>
-                                    <span>折扣價：<i>￥ {:intval($info.selled*$info.discount)} {$info.discount*10}折</i></span>-->
+                                    <span>價格：￥ {$info.selled}</span>
+                                    <span>折扣價：<i>￥ {:intval($info.selled*$info.discount)} {$info.discount*10}折</i></span>
                                 </div>
-                                <!--<form action="/goods/buying" method="post" target="_blank">
+                                <form action="/goods/buying" method="post" target="_blank">
                                     <input type="hidden" name="id" value="{$info.id}">
                                     <input type="hidden" name="num" value="{:intval($info.selled*$info.discount)}">
                                     <div class="shop_show_jg">
@@ -72,7 +72,7 @@
                                     <div class="shop_show_jg">
                                         <input type="submit" name="buying" value="立即購買" class="buy-button" />
                                     </div>
-                                </form>-->
+                                </form>
                                 
                             </div>
                         </div>
