@@ -6,7 +6,7 @@
 return [
     // 应用地址
     'app_host'         => env('app.host', ''),
-    'hostname'         => 'http://127.0.0.1:8000',
+    'hostname'         => 'http://tier1cloud.com:8000',
     // 应用的命名空间
     'app_namespace'    => '',
     // 是否启用路由
